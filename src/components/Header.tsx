@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link }from 'react-router-dom';
 
 
 const HeaderLayout: React.FC = () => {
@@ -16,9 +17,9 @@ const HeaderLayout: React.FC = () => {
 
 		window.addEventListener('scroll', handleScroll);
 
-		// return () => {
-		// 	window.removeEventListener('scroll', handleScroll);
-		// };
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	}, []);
 	return (
 		<header className="header">
@@ -27,13 +28,13 @@ const HeaderLayout: React.FC = () => {
 					<nav className="navbar">
 						<ul className="nav-list">
 							<li className="nav-item">
-								<a className="nav-link" href="/">Home</a>
+								<Link className="nav-link" to="/">Home</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">About</a>
+								<Link className="nav-link" to="/about">About</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">Contact</a>
+								<Link className="nav-link" to="/contacts">Contacts</Link>
 							</li>
 						</ul>
 					</nav>

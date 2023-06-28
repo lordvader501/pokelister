@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Pokemon from '../utilities/PokeTypes.ts';
+import Pokemon from '../utilities/PokeTypes.js';
 
 const BodyLayout: React.FC = () => {
 	const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
@@ -139,7 +139,6 @@ const BodyLayout: React.FC = () => {
 				)}
 			</div>
 		</div>
-    
 	);
 };
 
