@@ -9,6 +9,7 @@ body {
     padding:0%;
     width: 50%;
     background-color: rgba(0, 0, 0, 0.2);
+    margin-left: 25%;
 }
 
 .sticky+.content {
@@ -22,6 +23,7 @@ body {
     font-family: Arial, sans-serif;
     box-shadow: 0px 5px 9px 6px #04030ee0;
 }
+
 .footer {
     background-color: #1a1b1f;
     color: #ffffff;
@@ -33,13 +35,19 @@ body {
 
 .navdiv{
     display: flex;
+    justify-content: space-between;
+}
+.center-header {
+    display: flex;
     justify-content: center;
 }
 .navbar {
     display: flex;
     justify-content: center;
 }
-
+.nav-container {
+    padding: 0%;
+}
 .nav-list {
     list-style: none;
     padding: 0;
@@ -151,4 +159,10 @@ body {
     width: 80px;
     height: 80px;
     margin-bottom: 5px;
+}
+.logo img{
+    width: 50px;
+}
+.logo {
+    padding-left: 0%;
 }

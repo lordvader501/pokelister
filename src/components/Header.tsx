@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link }from 'react-router-dom';
+import HOME_LOGO from '../utilities/constants';
 
 
 const HeaderLayout: React.FC = () => {
@@ -24,6 +25,7 @@ const HeaderLayout: React.FC = () => {
 	return (
 		<header className="header">
 			<div className="navdiv">
+				<div className="logo"><img src={'data:image/jpeg;base64,'+HOME_LOGO} alt="img" /></div>
 				<div id="nav-container">
 					<nav className="navbar">
 						<ul className="nav-list">
