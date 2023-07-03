@@ -2,11 +2,11 @@
   "name": "pokelister",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://lordvader501.github.io/pokelister",
+  "homepage": "https://lordvader501.github.io/pokelister/",
   "scripts": {
     "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "parcel build index.html",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
