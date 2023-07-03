@@ -16,6 +16,11 @@ const Applayout: React.FC = () => {
 		</>
 	);
 };
+const ShimmerUI = () => {
+	return (
+		<h1>loading</h1>
+	);
+};
 const router = createBrowserRouter([
 	{
 		path:'/pokelister/',
@@ -39,4 +44,4 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<React.Suspense><RouterProvider router={router}/></React.Suspense>);
+root.render(<React.Suspense fallback={<ShimmerUI />}><RouterProvider router={router}/></React.Suspense>);
