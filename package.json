@@ -2,7 +2,7 @@
   "name": "pokelister",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://lordvader501.github.io",
+  "homepage": "https://lordvader501.github.io/pokelister",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
