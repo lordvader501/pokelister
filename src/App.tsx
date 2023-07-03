@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import BodyLayout from './components/Body';
-import ErrorLayout from './components/Error';
 import AboutLayout from './components/About';
 import FooterLayout from './components/Footer';
 import ContactLayout from './components/Contacts';
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
 	{
 		path:'/',
 		element:<Applayout />,
-		errorElement: <ErrorLayout />,
+		errorElement: <Applayout />,
 		children:[
 			{
 				path:'/',
