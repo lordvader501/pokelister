@@ -18,12 +18,12 @@ const Applayout: React.FC = () => {
 };
 const router = createBrowserRouter([
 	{
-		path:'/',
+		path:'/pokelister/',
 		element:<Applayout />,
 		errorElement: <Applayout />,
 		children:[
 			{
-				path:'/',
+				path:'/pokelister/',
 				element: <BodyLayout />,
 			},
 			{
