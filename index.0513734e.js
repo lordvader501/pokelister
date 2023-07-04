@@ -27279,9 +27279,7 @@ const BodyLayout = ()=>{
             }
         };
         fetchPokemon();
-    }, [
-        dispatch
-    ]);
+    }, []);
     const handleSearchChange = (event)=>{
         setCurrentPage(1);
         setSearchPokemon(event.target.value);
@@ -27298,7 +27296,7 @@ const BodyLayout = ()=>{
                 children: "Pok\xe9mon List"
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 53,
+                lineNumber: 52,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27309,7 +27307,7 @@ const BodyLayout = ()=>{
                 onChange: handleSearchChange
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 54,
+                lineNumber: 53,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -27323,19 +27321,19 @@ const BodyLayout = ()=>{
                                 alt: pokemon.name
                             }, void 0, false, {
                                 fileName: "src/components/Body.tsx",
-                                lineNumber: 64,
+                                lineNumber: 63,
                                 columnNumber: 7
                             }, undefined),
                             pokemon.name
                         ]
                     }, pokemon.name, true, {
                         fileName: "src/components/Body.tsx",
-                        lineNumber: 63,
+                        lineNumber: 62,
                         columnNumber: 6
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 61,
+                lineNumber: 60,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationDefault.default), {
@@ -27346,13 +27344,13 @@ const BodyLayout = ()=>{
                 setCurrentPage: setCurrentPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 73,
+                lineNumber: 72,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.tsx",
-        lineNumber: 52,
+        lineNumber: 51,
         columnNumber: 3
     }, undefined);
 };
@@ -27384,11 +27382,27 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../utilities/hooks");
+var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
 var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
+const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
     _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
     const [pokemonsPerPage] = (0, _react.useState)(50);
-    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const fetchPokemon = async ()=>{
+        try {
+            if (next !== "" && next !== null) {
+                const response = await fetch(next);
+                const data = await response.json();
+                dispatch((0, _pokemonSliceJs.addItem)(data.results));
+                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
+                setNext(data.next);
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
     const paginate = (pageNumber)=>{
         setCurrentPage(pageNumber);
     };
@@ -27397,11 +27411,12 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
     };
     const goToNextPage = ()=>{
         if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+        else if (currentPage === totalPages) fetchPokemon();
     };
     const renderPagination = ()=>{
         const pageNumbers = [];
         const maxPagesToShow = 5;
-        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 3);
+        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
         let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
         let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
         if (totalPages <= maxPagesToShow) {
@@ -27421,7 +27436,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                             children: "1"
                         }, void 0, false, {
                             fileName: "src/components/Pagination.tsx",
-                            lineNumber: 47,
+                            lineNumber: 67,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27429,7 +27444,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                             children: "..."
                         }, void 0, false, {
                             fileName: "src/components/Pagination.tsx",
-                            lineNumber: 50,
+                            lineNumber: 70,
                             columnNumber: 7
                         }, undefined)
                     ]
@@ -27440,7 +27455,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                         children: pageNumber
                     }, pageNumber, false, {
                         fileName: "src/components/Pagination.tsx",
-                        lineNumber: 54,
+                        lineNumber: 74,
                         columnNumber: 6
                     }, undefined)),
                 endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27450,7 +27465,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                             children: "..."
                         }, void 0, false, {
                             fileName: "src/components/Pagination.tsx",
-                            lineNumber: 64,
+                            lineNumber: 84,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27459,7 +27474,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                             children: totalPages
                         }, void 0, false, {
                             fileName: "src/components/Pagination.tsx",
-                            lineNumber: 65,
+                            lineNumber: 85,
                             columnNumber: 7
                         }, undefined)
                     ]
@@ -27467,7 +27482,7 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
             ]
         }, void 0, true, {
             fileName: "src/components/Pagination.tsx",
-            lineNumber: 44,
+            lineNumber: 64,
             columnNumber: 4
         }, undefined);
     };
@@ -27482,32 +27497,36 @@ const Pagination = ({ filteredPokemonList, currentPage, setCurrentPage })=>{
                     children: "<"
                 }, void 0, false, {
                     fileName: "src/components/Pagination.tsx",
-                    lineNumber: 78,
+                    lineNumber: 98,
                     columnNumber: 6
                 }, undefined),
                 renderPagination(),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === totalPages ? "disabled" : ""}`,
+                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
                     onClick: goToNextPage,
                     children: ">"
                 }, void 0, false, {
                     fileName: "src/components/Pagination.tsx",
-                    lineNumber: 85,
+                    lineNumber: 105,
                     columnNumber: 6
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/Pagination.tsx",
-            lineNumber: 77,
+            lineNumber: 97,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/Pagination.tsx",
-        lineNumber: 75,
+        lineNumber: 95,
         columnNumber: 3
     }, undefined);
 };
-_s(Pagination, "8VJf4u0pNfZNUwlorvs7uY+qu3M=");
+_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
 _c = Pagination;
 exports.default = Pagination;
 var _c;
@@ -27518,7 +27537,7 @@ $RefreshReg$(_c, "Pagination");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
