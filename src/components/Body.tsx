@@ -3,7 +3,6 @@ import Pokemon from '../utilities/PokeTypes.js';
 import Pagination from './Pagination';
 import { useAppSelector,useAppDispatch} from '../utilities/hooks';
 import { addItem } from '../utilities/pokemonSlice.js';
-
 const BodyLayout: React.FC = () => {
 	// const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 	const [next, setNext] = useState<string|null>(null);
@@ -32,7 +31,7 @@ const BodyLayout: React.FC = () => {
 			}
 		};
 		fetchPokemon();
-	}, [dispatch]);
+	}, []);
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCurrentPage(1);

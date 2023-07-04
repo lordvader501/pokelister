@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
 import PaginationProps from '../utilities/PaginatiionProps';
+import Results from '../utilities/fetchTypes';
+import { useAppDispatch} from '../utilities/hooks';
+import { addItem } from '../utilities/pokemonSlice.js';
 
-const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList,currentPage ,setCurrentPage }) => {
+const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage }) => {
+	const dispatch = useAppDispatch();
 	const [pokemonsPerPage] = useState(50);
-	const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+	let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+	const fetchPokemon = async () => {
+		try {
+			if(next!== '' && next !== null){
+				const response = await fetch(next);
+				const data:Results = await response.json();
+				dispatch(addItem(data.results));
+				totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
+				setNext(data.next);
+			}
+		} catch (error) {
+			console.log('Error:', error);
+		}
+	};
 	const paginate = (pageNumber: number) => {
 		setCurrentPage(pageNumber);
 	};
@@ -18,12 +35,15 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList,currentPage
 		if (currentPage < totalPages) {
 			setCurrentPage(currentPage + 1);
 		}
+		else if (currentPage === totalPages) {
+			fetchPokemon();
+		}
 	};
 	const renderPagination = () => {
 		
 		const pageNumbers = [];
 		const maxPagesToShow = 5;
-		const halfMaxPagesToShow = Math.floor(maxPagesToShow / 3);
+		const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
 		let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
 		let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
 
@@ -83,7 +103,7 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList,currentPage
 					</li>
 					{renderPagination()}
 					<li
-						className={`pagination-item ${currentPage === totalPages ? 'disabled' : ''}`}
+						className={`pagination-item ${((currentPage === totalPages)&& (next===null)) ? 'disabled' : ''}`}
 						onClick={goToNextPage}
 					>
               &gt;
