@@ -5,21 +5,27 @@ import { useAppSelector,useAppDispatch} from '../utilities/hooks';
 import { addItem } from '../utilities/pokemonSlice.js';
 
 const BodyLayout: React.FC = () => {
-	const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+	// const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 	const [next, setNext] = useState<string|null>(null);
 	const [searchPokemon, setSearchPokemon] = useState('');
 	const [currentPage ,setCurrentPage] = useState(1);
 	const [pokemonsPerPage] = useState(50);
-	const pokemonlst = useAppSelector(store => store.pokemon.pokemonList);
+	const pokemonList = useAppSelector(store => store.pokemon.pokemonList);
 	const dispatch = useAppDispatch();
-
+	interface Results {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Pokemon[];
+}
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			try {
 				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=320');
-				const data = await response.json();
-				setPokemonList(data.results);
-				dispatch(addItem({name:'heel'}));
+				const data:Results = await response.json();
+				// setPokemonList(data.results);
+				// console.log(data.results);
+				dispatch(addItem(data.results));
 				setNext(data.next);
 			} catch (error) {
 				console.log('Error:', error);

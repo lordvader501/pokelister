@@ -10,11 +10,11 @@ const pokemonSlice = createSlice({
 		pokemonList: [],
 	} as PokemonState,
 	reducers: {
-		addItem: (state, action: PayloadAction<Pokemon>) => {
-			state.pokemonList.push(action.payload);
+		addItem: (state, action: PayloadAction<Pokemon[]>) => {
+			state.pokemonList.push(...action.payload);
 		}
 	}
 });
 
-export const addItem = pokemonSlice.actions;
+export const { addItem } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
