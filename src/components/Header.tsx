@@ -28,13 +28,13 @@ const HeaderLayout: React.FC = () => {
 					<nav className="navbar">
 						<ul className="nav-list">
 							<li className="nav-item">
-								<Link className="nav-link" to="/">Home</Link>
+								<Link className="nav-link" to="/pokelister">Home</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/about">About</Link>
+								<Link className="nav-link" to="/pokelister/about">About</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/contacts">Contacts</Link>
+								<Link className="nav-link" to="/pokelister/contacts">Contacts</Link>
 							</li>
 						</ul>
 					</nav>

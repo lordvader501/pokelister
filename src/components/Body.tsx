@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import Pokemon from '../utilities/PokeTypes.js';
 import Pagination from './Pagination';
+import { useAppSelector,useAppDispatch} from '../utilities/hooks';
+import { addItem } from '../utilities/pokemonSlice.js';
 
 const BodyLayout: React.FC = () => {
 	const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+	const [next, setNext] = useState<string|null>(null);
 	const [searchPokemon, setSearchPokemon] = useState('');
 	const [currentPage ,setCurrentPage] = useState(1);
 	const [pokemonsPerPage] = useState(50);
+	const pokemonlst = useAppSelector(store => store.pokemon.pokemonList);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			try {
-				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
+				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=320');
 				const data = await response.json();
 				setPokemonList(data.results);
+				dispatch(addItem({name:'heel'}));
+				setNext(data.next);
 			} catch (error) {
 				console.log('Error:', error);
 			}
 		};
 		fetchPokemon();
-	}, []);
+	}, [dispatch]);
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCurrentPage(1);
@@ -60,6 +67,8 @@ const BodyLayout: React.FC = () => {
 			<Pagination
 				filteredPokemonList={filteredPokemonList}
 				currentPage={currentPage}
+				next={next}
+				setNext= {setNext}
 				setCurrentPage={setCurrentPage}
 			/>
 		</div>

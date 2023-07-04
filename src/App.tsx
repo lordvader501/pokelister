@@ -4,39 +4,40 @@ import BodyLayout from './components/Body';
 import AboutLayout from './components/About';
 import FooterLayout from './components/Footer';
 import ContactLayout from './components/Contacts';
+import ShimmerUI from './components/ShimmerUI';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HeaderLayout from './components/Header';
+import { Provider } from 'react-redux';
+import store from './utilities/store';
 
 const Applayout: React.FC = () => {
 	return (
-		<>
-			<HeaderLayout />
-			<Outlet />
-			<FooterLayout />
-		</>
+		<Provider store={store}>
+			<React.Suspense fallback={<ShimmerUI />}>
+				<HeaderLayout />
+				<Outlet />
+				<FooterLayout />
+			</React.Suspense>
+		</Provider>
 	);
 };
-const ShimmerUI = () => {
-	return (
-		<h1>loading</h1>
-	);
-};
+
 const router = createBrowserRouter([
 	{
-		path:'/pokelister/',
+		path:'/pokelister',
 		element:<Applayout />,
 		errorElement: <Applayout />,
 		children:[
 			{
-				path:'/pokelister/',
+				path:'/pokelister',
 				element: <BodyLayout />,
 			},
 			{
-				path:'/about',
+				path:'/pokelister/about',
 				element: <AboutLayout />,
 			},
 			{
-				path:'/contacts',
+				path:'/pokelister/contacts',
 				element: <ContactLayout />,
 			}
 		]
@@ -44,4 +45,4 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<React.Suspense fallback={<ShimmerUI />}><RouterProvider router={router}/></React.Suspense>);
+root.render(<RouterProvider router={router}/>);
