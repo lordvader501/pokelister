@@ -3036,6 +3036,14 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                     lineNumber: 42,
                     columnNumber: 14
                 }, undefined)
+            },
+            {
+                path: "*",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
+                    fileName: "src/App.tsx",
+                    lineNumber: 46,
+                    columnNumber: 14
+                }, undefined)
             }
         ]
     }
@@ -3045,7 +3053,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterP
     router: router
 }, void 0, false, {
     fileName: "src/App.tsx",
-    lineNumber: 49,
+    lineNumber: 53,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -5777,10 +5785,11 @@ var _pagination = require("./Pagination");
 var _paginationDefault = parcelHelpers.interopDefault(_pagination);
 var _hooks = require("../utilities/hooks");
 var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
+var _searchJs = require("./Search.js");
+var _searchJsDefault = parcelHelpers.interopDefault(_searchJs);
 var _s = $RefreshSig$();
 const BodyLayout = ()=>{
     _s();
-    // const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
     const [next, setNext] = (0, _react.useState)(null);
     const [searchPokemon, setSearchPokemon] = (0, _react.useState)("");
     const [currentPage, setCurrentPage] = (0, _react.useState)(1);
@@ -5792,8 +5801,6 @@ const BodyLayout = ()=>{
             try {
                 const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=320");
                 const data = await response.json();
-                // setPokemonList(data.results);
-                // console.log(data.results);
                 dispatch((0, _pokemonSliceJs.addItem)(data.results));
                 setNext(data.next);
             } catch (error) {
@@ -5802,10 +5809,6 @@ const BodyLayout = ()=>{
         };
         fetchPokemon();
     }, []);
-    const handleSearchChange = (event)=>{
-        setCurrentPage(1);
-        setSearchPokemon(event.target.value);
-    };
     const filteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
     const indexOfLastPokemon = currentPage * pokemonsPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
@@ -5818,18 +5821,16 @@ const BodyLayout = ()=>{
                 children: "Pok\xe9mon List"
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 52,
+                lineNumber: 42,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                type: "text",
-                className: "search-input",
-                placeholder: "Search Pok\xe9mon",
-                value: searchPokemon,
-                onChange: handleSearchChange
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchJsDefault.default), {
+                setCurrentPage: setCurrentPage,
+                searchPokemon: searchPokemon,
+                setSearchPokemon: setSearchPokemon
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 53,
+                lineNumber: 43,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -5843,19 +5844,19 @@ const BodyLayout = ()=>{
                                 alt: pokemon.name
                             }, void 0, false, {
                                 fileName: "src/components/Body.tsx",
-                                lineNumber: 63,
+                                lineNumber: 47,
                                 columnNumber: 7
                             }, undefined),
                             pokemon.name
                         ]
                     }, pokemon.name, true, {
                         fileName: "src/components/Body.tsx",
-                        lineNumber: 62,
+                        lineNumber: 46,
                         columnNumber: 6
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 60,
+                lineNumber: 44,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationDefault.default), {
@@ -5866,13 +5867,13 @@ const BodyLayout = ()=>{
                 setCurrentPage: setCurrentPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 72,
+                lineNumber: 56,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.tsx",
-        lineNumber: 51,
+        lineNumber: 41,
         columnNumber: 3
     }, undefined);
 };
@@ -5892,7 +5893,7 @@ $RefreshReg$(_c, "BodyLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination":"6ohXp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi"}],"6ohXp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination":"6ohXp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","./Search.js":"90Ncf"}],"6ohXp":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4f6d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33398,7 +33399,46 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i01Mg":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"90Ncf":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$41a8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$41a8.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const Search = ({ setCurrentPage, searchPokemon, setSearchPokemon })=>{
+    const handleSearchChange = (event)=>{
+        setCurrentPage(1);
+        setSearchPokemon(event.target.value);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+        type: "text",
+        className: "search-input",
+        placeholder: "Search Pok\xe9mon",
+        value: searchPokemon,
+        onChange: handleSearchChange
+    }, void 0, false, {
+        fileName: "src/components/Search.tsx",
+        lineNumber: 9,
+        columnNumber: 3
+    }, undefined);
+};
+_c = Search;
+exports.default = Search;
+var _c;
+$RefreshReg$(_c, "Search");
+
+  $parcel$ReactRefreshHelpers$41a8.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"i01Mg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3649 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39466,54 +39506,59 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const Error = ()=>{
+const ErrorLayout = ()=>{
     _s();
-    const err = (0, _reactRouterDom.useRouteError)();
-    if (!(0, _reactRouterDom.isRouteErrorResponse)(err)) return null;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "error-page",
-            children: [
-                "Error : ",
-                err.status + " " + err.statusText,
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                    to: "/",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "error-go-back",
-                        children: "Home"
-                    }, void 0, false, {
-                        fileName: "src/components/Error.tsx",
-                        lineNumber: 12,
-                        columnNumber: 6
-                    }, undefined)
+    const location = (0, _reactRouterDom.useLocation)();
+    const { error } = location.state || {};
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container",
+        children: [
+            error ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: [
+                    "Error: ",
+                    error.status,
+                    " ",
+                    error.statusText
+                ]
+            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: "An unknown error occurred."
+            }, void 0, false),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                to: "/pokelister",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    children: "Home"
                 }, void 0, false, {
                     fileName: "src/components/Error.tsx",
-                    lineNumber: 11,
+                    lineNumber: 18,
                     columnNumber: 5
                 }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Error.tsx",
-            lineNumber: 9,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false);
+            }, void 0, false, {
+                fileName: "src/components/Error.tsx",
+                lineNumber: 17,
+                columnNumber: 4
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Error.tsx",
+        lineNumber: 9,
+        columnNumber: 3
+    }, undefined);
 };
-_s(Error, "U5GmGaAmh0j0MVy+E8WdBnjlm7s=", false, function() {
+_s(ErrorLayout, "pkHmaVRPskBaU4tMJuJJpV42k1I=", false, function() {
     return [
-        (0, _reactRouterDom.useRouteError)
+        (0, _reactRouterDom.useLocation)
     ];
 });
-_c = Error;
-exports.default = Error;
+_c = ErrorLayout;
+exports.default = ErrorLayout;
 var _c;
-$RefreshReg$(_c, "Error");
+$RefreshReg$(_c, "ErrorLayout");
 
   $parcel$ReactRefreshHelpers$7f2f.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
 
 //# sourceMappingURL=index.0513734e.js.map
