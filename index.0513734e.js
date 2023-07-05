@@ -5783,6 +5783,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _pagination = require("./Pagination");
 var _paginationDefault = parcelHelpers.interopDefault(_pagination);
+var _paginationTop = require("./PaginationTop");
+var _paginationTopDefault = parcelHelpers.interopDefault(_paginationTop);
 var _hooks = require("../utilities/hooks");
 var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
 var _searchJs = require("./Search.js");
@@ -5821,7 +5823,7 @@ const BodyLayout = ()=>{
                 children: "Pok\xe9mon List"
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 42,
+                lineNumber: 43,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchJsDefault.default), {
@@ -5830,7 +5832,18 @@ const BodyLayout = ()=>{
                 setSearchPokemon: setSearchPokemon
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 43,
+                lineNumber: 44,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopDefault.default), {
+                filteredPokemonList: filteredPokemonList,
+                currentPage: currentPage,
+                next: next,
+                setNext: setNext,
+                setCurrentPage: setCurrentPage
+            }, void 0, false, {
+                fileName: "src/components/Body.tsx",
+                lineNumber: 45,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -5844,19 +5857,19 @@ const BodyLayout = ()=>{
                                 alt: pokemon.name
                             }, void 0, false, {
                                 fileName: "src/components/Body.tsx",
-                                lineNumber: 47,
+                                lineNumber: 55,
                                 columnNumber: 7
                             }, undefined),
                             pokemon.name
                         ]
                     }, pokemon.name, true, {
                         fileName: "src/components/Body.tsx",
-                        lineNumber: 46,
+                        lineNumber: 54,
                         columnNumber: 6
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 44,
+                lineNumber: 52,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationDefault.default), {
@@ -5867,13 +5880,13 @@ const BodyLayout = ()=>{
                 setCurrentPage: setCurrentPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 56,
+                lineNumber: 64,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.tsx",
-        lineNumber: 41,
+        lineNumber: 42,
         columnNumber: 3
     }, undefined);
 };
@@ -5893,7 +5906,7 @@ $RefreshReg$(_c, "BodyLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination":"6ohXp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","./Search.js":"90Ncf"}],"6ohXp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination":"6ohXp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","./Search.js":"90Ncf","./PaginationTop":"hvxDj"}],"6ohXp":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4f6d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33438,7 +33451,97 @@ $RefreshReg$(_c, "Search");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"i01Mg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hvxDj":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3df2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3df2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../utilities/hooks");
+var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const [pokemonsPerPage] = (0, _react.useState)(50);
+    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const fetchPokemon = async ()=>{
+        try {
+            if (next !== "" && next !== null) {
+                const response = await fetch(next);
+                const data = await response.json();
+                dispatch((0, _pokemonSliceJs.addItem)(data.results));
+                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
+                setNext(data.next);
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+        else if (currentPage === totalPages) fetchPokemon();
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "pagination",
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item ${currentPage === 1 ? "disabled" : ""}`,
+                    onClick: goToPreviousPage,
+                    children: "<"
+                }, void 0, false, {
+                    fileName: "src/components/PaginationTop.tsx",
+                    lineNumber: 44,
+                    columnNumber: 6
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    onClick: goToNextPage,
+                    children: ">"
+                }, void 0, false, {
+                    fileName: "src/components/PaginationTop.tsx",
+                    lineNumber: 50,
+                    columnNumber: 6
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/PaginationTop.tsx",
+            lineNumber: 43,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/PaginationTop.tsx",
+        lineNumber: 41,
+        columnNumber: 3
+    }, undefined);
+};
+_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$3df2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"i01Mg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3649 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
