@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShimmerUI = () => {
 	return (
-		<div>ShimmerUI</div>
+		<div><h1>loading page</h1></div>
 	);
 };
 

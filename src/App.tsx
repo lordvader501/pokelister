@@ -5,6 +5,7 @@ import AboutLayout from './components/About';
 import FooterLayout from './components/Footer';
 import ContactLayout from './components/Contacts';
 import ShimmerUI from './components/ShimmerUI';
+import ErrorLayout from './components/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HeaderLayout from './components/Header';
 import { Provider } from 'react-redux';
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
 	{
 		path:'/pokelister',
 		element:<Applayout />,
-		errorElement: <Applayout />,
+		errorElement: <ErrorLayout />,
 		children:[
 			{
 				path:'/pokelister',
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
 			{
 				path:'/pokelister/contacts',
 				element: <ContactLayout />,
-			}
+			},
+			{
+				path: '*',
+				element: <ErrorLayout />,
+			},
 		]
 	}
 ]);

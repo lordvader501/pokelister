@@ -1,8 +1,23 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const ErrorLayout:React.FC = ()=> {
+const ErrorLayout = () => {
+	const location = useLocation();
+	const { error } = location.state || {};
+
 	return (
-		<h1>error page doesnt exist</h1>
+		<div className='container'>
+			{error ? (
+				<>
+          Error: {error.status} {error.statusText}
+				</>
+			) : (
+				<>An unknown error occurred.</>
+			)}
+			<Link to='/pokelister'>
+				<button>Home</button>
+			</Link>
+		</div>
 	);
 };
 
