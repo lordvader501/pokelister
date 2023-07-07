@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PaginationProps from '../../utilities/PaginatiionProps';
+import PaginationProps from './PaginatiionProps.js';
 import Results from '../../utilities/fetchTypes';
 import { useAppDispatch} from '../../utilities/hooks';
 import { addItem } from '../../utilities/pokemonSlice.js';

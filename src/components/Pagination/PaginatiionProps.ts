@@ -1,4 +1,4 @@
-import Pokemon from './PokeTypes';
+import Pokemon from '../../utilities/PokeTypes';
 interface PaginationProps {
   filteredPokemonList: Pokemon[];
   currentPage: number;

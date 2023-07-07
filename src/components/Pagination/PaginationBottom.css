@@ -7,14 +7,19 @@
 .pagination-list {
   list-style: none;
   display: flex;
-  padding: 0;
+  padding: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.pagination-item.down-arrow {
+  padding-top: 11px;
 }
 
 .pagination-item {
   margin: 3.5px;
   padding: 5px 10px;
   border: 2px solid #ffffff;
-  background-color: #333333;
+  background-color: #4b4b4b;
   color: #ffffff;
   border-radius: 12px;
   cursor: pointer;
@@ -22,7 +27,7 @@
 }
 
 .pagination-item:hover {
-  background-color: #555555;
+  background-color: #626262;
 }
 
 .pagination-item.active {

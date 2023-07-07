@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PaginationProps from '../../utilities/PaginatiionProps';
+import PaginationProps from './PaginatiionProps.js';
 import Results from '../../utilities/fetchTypes';
 import { useAppDispatch} from '../../utilities/hooks';
 import { addItem } from '../../utilities/pokemonSlice.js';
@@ -97,14 +97,14 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 			{totalPages > 1 && (
 				<ul className="pagination-list">
 					<li
-						className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
+						className={`pagination-item down-arrow ${currentPage === 1 ? 'disabled' : ''}`}
 						onClick={goToPreviousPage}
 					>
               &lt;
 					</li>
 					{renderPagination()}
 					<li
-						className={`pagination-item ${((currentPage === totalPages)&& (next===null)) ? 'disabled' : ''}`}
+						className={`pagination-item down-arrow ${((currentPage === totalPages)&& (next===null)) ? 'disabled' : ''}`}
 						onClick={goToNextPage}
 					>
               &gt;

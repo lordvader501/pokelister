@@ -1,3 +1,55 @@
+.logo-container {
+  width:3%;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 1250px) and (min-width: 900px) {
+  .logo-container {
+    width: 4%;
+  }
+  .site-title {
+    width: 10% !important;
+  }
+}
+@media screen and (max-width: 900px) and (min-width: 650px) {
+  .logo-container {
+    width: 5%;
+  }
+  .site-title {
+    width: 10% !important;
+  }
+}
+@media screen and (max-width: 650px) and (min-width: 350px) {
+  .logo-container {
+    width: 6.5%;
+  }
+
+}
+@media screen and (max-width: 550px) and (min-width: 450px) {
+  .logo-container {
+    width: 8%;
+  }
+}
+@media screen and (max-width: 450px) and (min-width: 350px) {
+  .logo-container {
+    width: 9.5%;
+  }
+}
+.site-title {
+  width: 25%;
+}
+
+.title-text {
+  font-size: larger;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 5px;
+}
 .sticky {
   position: fixed;
   border-radius: 50rem;
@@ -6,14 +58,21 @@
   padding: 0%;
   width: 50%;
   background-color: rgba(0, 0, 0, 0.2);
+  left:25%
 }
 
 .sticky+.content {
   padding-top: 60px;
 }
 
+.navcontainer {
+  text-align: center;
+}
+
 .header {
   background-color: #1a1b1f;
+  display: flex;
+  align-items: center;
   color: #ffffff;
   padding: 8px;
   margin-bottom: 5px;
@@ -24,11 +83,13 @@
 .navdiv {
   display: flex;
   justify-content: center;
+  width:75%;
 }
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  
 }
 
 .nav-list {
