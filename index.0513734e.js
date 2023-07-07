@@ -33574,7 +33574,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurren
             className: "pagination-list",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === 1 ? "disabled" : ""}`,
+                    className: `pagination-item down-arrow ${currentPage === 1 ? "disabled" : ""}`,
                     onClick: goToPreviousPage,
                     children: "<"
                 }, void 0, false, {
@@ -33584,7 +33584,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurren
                 }, undefined),
                 renderPagination(),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    className: `pagination-item down-arrow ${currentPage === totalPages && next === null ? "disabled" : ""}`,
                     onClick: goToNextPage,
                     children: ">"
                 }, void 0, false, {
