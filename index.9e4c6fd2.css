@@ -25,12 +25,12 @@ body {
   border: 3px solid #000000a7;
   border-radius: 15px;
   margin-top: 0;
-  padding: 6px;
+  padding: 0 8px;
 }
 
-.button-space {
+.pagination-list + .button-space {
   margin: 0;
-  padding: 6px;
+  padding: 0;
 }
 
 .pagination-item.page-end {
@@ -87,6 +87,8 @@ body {
 }
 
 .pagination-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 0;
   list-style: none;
   display: flex;
