@@ -95,7 +95,7 @@ body {
 }
 
 .pagination-item.down-arrow {
-  padding-top: 10px;
+  padding-top: 11px;
 }
 
 .pagination-item {
@@ -140,6 +140,59 @@ body {
   box-shadow: 0 -6px 9px 6px #04030ee0;
 }
 
+.logo-container {
+  align-items: center;
+  width: 3%;
+  height: auto;
+  display: flex;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (width <= 1250px) and (width >= 900px) {
+  .logo-container {
+    width: 4%;
+  }
+}
+
+@media screen and (width <= 900px) and (width >= 650px) {
+  .logo-container {
+    width: 5%;
+  }
+}
+
+@media screen and (width <= 650px) and (width >= 350px) {
+  .logo-container {
+    width: 6.5%;
+  }
+}
+
+@media screen and (width <= 550px) and (width >= 450px) {
+  .logo-container {
+    width: 8%;
+  }
+}
+
+@media screen and (width <= 450px) and (width >= 350px) {
+  .logo-container {
+    width: 9.5%;
+  }
+}
+
+.site-title {
+  width: 25%;
+}
+
+.title-text {
+  text-align: left;
+  padding-left: 5px;
+  font-size: larger;
+  font-weight: 700;
+}
+
 .sticky {
   background-color: #0003;
   border-radius: 50rem;
@@ -157,13 +210,21 @@ body {
 .header {
   color: #fff;
   background-color: #1a1b1f;
+  align-items: center;
   margin-bottom: 5px;
   padding: 8px;
   font-family: Arial, sans-serif;
+  display: flex;
   box-shadow: 0 5px 9px 6px #04030ee0;
 }
 
-.navdiv, .navbar {
+.navdiv {
+  justify-content: center;
+  width: 65%;
+  display: flex;
+}
+
+.navbar {
   justify-content: center;
   display: flex;
 }
