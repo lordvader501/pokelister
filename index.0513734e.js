@@ -5896,7 +5896,7 @@ $RefreshReg$(_c, "BodyLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationTop.js":"bsNSb","./SearchBox/Search.js":"gtlKI","./CardlList/CardList.js":"h7wKv","./Pagination/PaginationBottom.js":"jQlq4"}],"h8o22":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationBottom.js":"jQlq4","./Pagination/PaginationTop.js":"bsNSb","../utilities/pokemonSlice.js":"4Unwi","./SearchBox/Search.js":"gtlKI","./CardlList/CardList.js":"h7wKv"}],"h8o22":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
@@ -29204,7 +29204,313 @@ const useStore = /*#__PURE__*/ createStoreHook();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Unwi":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + " %exports% " + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"786KC"}],"jQlq4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c5a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c5a0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../../utilities/hooks");
+var _pokemonSliceJs = require("../../utilities/pokemonSlice.js");
+var _paginationBottomCss = require("./PaginationBottom.css");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const [pokemonsPerPage] = (0, _react.useState)(50);
+    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const fetchPokemon = async ()=>{
+        try {
+            if (next !== "" && next !== null) {
+                const response = await fetch(next);
+                const data = await response.json();
+                dispatch((0, _pokemonSliceJs.addItem)(data.results));
+                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
+                setNext(data.next);
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+    const paginate = (pageNumber)=>{
+        setCurrentPage(pageNumber);
+    };
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+        else if (currentPage === totalPages) fetchPokemon();
+    };
+    const renderPagination = ()=>{
+        const pageNumbers = [];
+        const maxPagesToShow = 5;
+        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
+        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
+        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+        if (totalPages <= maxPagesToShow) {
+            startPage = 1;
+            endPage = totalPages;
+        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
+        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
+        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(1),
+                            children: "1"
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 68,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 71,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true),
+                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
+                        onClick: ()=>paginate(pageNumber),
+                        children: pageNumber
+                    }, pageNumber, false, {
+                        fileName: "src/components/Pagination/PaginationBottom.tsx",
+                        lineNumber: 75,
+                        columnNumber: 6
+                    }, undefined)),
+                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 85,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(totalPages),
+                            children: totalPages
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 86,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 65,
+            columnNumber: 4
+        }, undefined);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "pagination",
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item down-arrow ${currentPage === 1 ? "disabled" : ""}`,
+                    onClick: goToPreviousPage,
+                    children: "<"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 99,
+                    columnNumber: 6
+                }, undefined),
+                renderPagination(),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item down-arrow ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    onClick: goToNextPage,
+                    children: ">"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 106,
+                    columnNumber: 6
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 98,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Pagination/PaginationBottom.tsx",
+        lineNumber: 96,
+        columnNumber: 3
+    }, undefined);
+};
+_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$c5a0.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","./PaginationBottom.css":"1gBvO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4Unwi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addItem", ()=>addItem);
@@ -33097,145 +33403,7 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + " %exports% " + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"786KC"}],"bsNSb":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1gBvO":[function() {},{}],"bsNSb":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33326,7 +33494,7 @@ $RefreshReg$(_c, "Pagination");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./PaginationTop.css":"dXRjn"}],"dXRjn":[function() {},{}],"gtlKI":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","./PaginationTop.css":"dXRjn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXRjn":[function() {},{}],"gtlKI":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f4f0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33343,6 +33511,7 @@ const Search = ({ setCurrentPage, searchPokemon, setSearchPokemon })=>{
     const handleSearchChange = (event)=>{
         setCurrentPage(1);
         setSearchPokemon(event.target.value);
+        console.log(searchPokemon);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
         type: "search",
@@ -33352,7 +33521,7 @@ const Search = ({ setCurrentPage, searchPokemon, setSearchPokemon })=>{
         onChange: handleSearchChange
     }, void 0, false, {
         fileName: "src/components/SearchBox/Search.tsx",
-        lineNumber: 11,
+        lineNumber: 13,
         columnNumber: 3
     }, undefined);
 };
@@ -33366,7 +33535,7 @@ $RefreshReg$(_c, "Search");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Search.css":"4XYOY"}],"4XYOY":[function() {},{}],"h7wKv":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Search.css":"4XYOY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4XYOY":[function() {},{}],"h7wKv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$79d6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33408,7 +33577,7 @@ $RefreshReg$(_c, "CardList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Card":"euwcE","./CardList.css":"9EOR1"}],"euwcE":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Card":"euwcE","./CardList.css":"9EOR1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"euwcE":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$45b7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33451,175 +33620,7 @@ $RefreshReg$(_c, "Card");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9EOR1":[function() {},{}],"jQlq4":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$c5a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$c5a0.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../../utilities/hooks");
-var _pokemonSliceJs = require("../../utilities/pokemonSlice.js");
-var _paginationBottomCss = require("./PaginationBottom.css");
-var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const [pokemonsPerPage] = (0, _react.useState)(50);
-    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const fetchPokemon = async ()=>{
-        try {
-            if (next !== "" && next !== null) {
-                const response = await fetch(next);
-                const data = await response.json();
-                dispatch((0, _pokemonSliceJs.addItem)(data.results));
-                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-                setNext(data.next);
-            }
-        } catch (error) {
-            console.log("Error:", error);
-        }
-    };
-    const paginate = (pageNumber)=>{
-        setCurrentPage(pageNumber);
-    };
-    const goToPreviousPage = ()=>{
-        if (currentPage > 1) setCurrentPage(currentPage - 1);
-    };
-    const goToNextPage = ()=>{
-        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-        else if (currentPage === totalPages) fetchPokemon();
-    };
-    const renderPagination = ()=>{
-        const pageNumbers = [];
-        const maxPagesToShow = 5;
-        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
-        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
-        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-        if (totalPages <= maxPagesToShow) {
-            startPage = 1;
-            endPage = totalPages;
-        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
-        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
-        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(1),
-                            children: "1"
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 68,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 71,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true),
-                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
-                        onClick: ()=>paginate(pageNumber),
-                        children: pageNumber
-                    }, pageNumber, false, {
-                        fileName: "src/components/Pagination/PaginationBottom.tsx",
-                        lineNumber: 75,
-                        columnNumber: 6
-                    }, undefined)),
-                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 85,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(totalPages),
-                            children: totalPages
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 86,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 65,
-            columnNumber: 4
-        }, undefined);
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "pagination",
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item down-arrow ${currentPage === 1 ? "disabled" : ""}`,
-                    onClick: goToPreviousPage,
-                    children: "<"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 99,
-                    columnNumber: 6
-                }, undefined),
-                renderPagination(),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item down-arrow ${currentPage === totalPages && next === null ? "disabled" : ""}`,
-                    onClick: goToNextPage,
-                    children: ">"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 106,
-                    columnNumber: 6
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 98,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Pagination/PaginationBottom.tsx",
-        lineNumber: 96,
-        columnNumber: 3
-    }, undefined);
-};
-_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch)
-    ];
-});
-_c = Pagination;
-exports.default = Pagination;
-var _c;
-$RefreshReg$(_c, "Pagination");
-
-  $parcel$ReactRefreshHelpers$c5a0.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./PaginationBottom.css":"1gBvO"}],"1gBvO":[function() {},{}],"9xmpe":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9EOR1":[function() {},{}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.14.0
  *
@@ -39657,12 +39658,12 @@ const HeaderLayout = ()=>{
                     className: "logo"
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 28,
+                    lineNumber: 26,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 27,
+                lineNumber: 25,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39672,12 +39673,12 @@ const HeaderLayout = ()=>{
                     children: "Pok\xe9Lister"
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 31,
+                    lineNumber: 29,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 30,
+                lineNumber: 28,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39698,12 +39699,12 @@ const HeaderLayout = ()=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 38,
+                                        lineNumber: 36,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 37,
+                                    lineNumber: 35,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39714,12 +39715,12 @@ const HeaderLayout = ()=>{
                                         children: "About"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 41,
+                                        lineNumber: 39,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 40,
+                                    lineNumber: 38,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39730,39 +39731,39 @@ const HeaderLayout = ()=>{
                                         children: "Contacts"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 44,
+                                        lineNumber: 42,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 41,
                                     columnNumber: 8
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Header/Header.tsx",
-                            lineNumber: 36,
+                            lineNumber: 34,
                             columnNumber: 7
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Header/Header.tsx",
-                        lineNumber: 35,
+                        lineNumber: 33,
                         columnNumber: 6
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 34,
+                    lineNumber: 32,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 33,
+                lineNumber: 31,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header/Header.tsx",
-        lineNumber: 26,
+        lineNumber: 24,
         columnNumber: 3
     }, undefined);
 };
