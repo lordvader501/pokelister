@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import BodyLayout from './components/Body';
-import AboutLayout from './components/About';
-import FooterLayout from './components/Footer';
-import ContactLayout from './components/Contacts';
+import AboutLayout from './components/About/About';
+import FooterLayout from './components/Footer/Footer';
+import ContactLayout from './components/Contacts/Contacts';
 import ShimmerUI from './components/ShimmerUI';
-import ErrorLayout from './components/Error';
+import ErrorLayout from './components/ErrorPage/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import HeaderLayout from './components/Header';
+import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
 import store from './utilities/store';
 

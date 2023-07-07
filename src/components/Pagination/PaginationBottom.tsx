@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import PaginationProps from '../utilities/PaginatiionProps';
-import Results from '../utilities/fetchTypes';
-import { useAppDispatch} from '../utilities/hooks';
-import { addItem } from '../utilities/pokemonSlice.js';
+import PaginationProps from '../../utilities/PaginatiionProps';
+import Results from '../../utilities/fetchTypes';
+import { useAppDispatch} from '../../utilities/hooks';
+import { addItem } from '../../utilities/pokemonSlice.js';
+import './PaginationBottom.css';
 
 const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage }) => {
 	const dispatch = useAppDispatch();

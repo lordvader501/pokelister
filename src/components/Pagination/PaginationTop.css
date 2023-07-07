@@ -1,0 +1,18 @@
+.pagination-top {
+  margin-inline-start: auto;
+  border: 3px solid rgba(0, 0, 0, 0.654);
+  background-color: rgba(29, 30, 31, 0.484);
+  border-radius: 15px;
+  margin-top: 0;
+  padding: 6px;
+}
+.button-space {
+  padding: 6px;
+  margin: 0;
+}
+
+.pagination-item.page-end {
+  cursor: not-allowed;
+  transition-property: none !important;
+  opacity: 0.25;;
+}

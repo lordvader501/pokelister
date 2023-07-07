@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Pokemon from '../utilities/PokeTypes.js';
-import Pagination from './Pagination';
+import PaginationBottom from './Pagination/PaginationBottom.js';
+import PaginationTop from './Pagination/PaginationTop.js';
 import { useAppSelector,useAppDispatch} from '../utilities/hooks';
 import { addItem } from '../utilities/pokemonSlice.js';
-import Search from './Search.js';
+import Search from './SearchBox/Search.js';
 import Results from '../utilities/fetchTypes.js';
+import CardList from './CardlList/CardList.js';
 
 const BodyLayout: React.FC = () => {
 	const [next, setNext] = useState<string | null>(null);
@@ -12,6 +14,7 @@ const BodyLayout: React.FC = () => {
 	const [currentPage ,setCurrentPage] = useState(1);
 	const [pokemonsPerPage] = useState(50);
 	const pokemonList = useAppSelector(store => store.pokemon.pokemonList);
+	const [filteredPokemonList, setFilteredPokemonList] = useState(pokemonList);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -28,32 +31,30 @@ const BodyLayout: React.FC = () => {
 		fetchPokemon();
 	}, []);
 
-	const filteredPokemonList = pokemonList.filter((pokemon: Pokemon) =>
-		pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase())
-	);
+	useEffect(()=> {
+		const newFilteredPokemonList = pokemonList.filter((pokemon: Pokemon) =>
+			pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase())
+		);
+		setFilteredPokemonList(newFilteredPokemonList);
+	},[pokemonList,searchPokemon]);
+
 	const indexOfLastPokemon = currentPage * pokemonsPerPage;
 	const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
 	const currentPokemons = filteredPokemonList.slice(indexOfFirstPokemon, indexOfLastPokemon);
-
-	
 
 	return (
 		<div className="container">
 			<h1 className="title">Pokémon List</h1>
 			<Search setCurrentPage={setCurrentPage} searchPokemon={searchPokemon} setSearchPokemon={setSearchPokemon}/>
-			<ul className="pokemon-list">
-				{currentPokemons.map((pokemon: Pokemon) => (
-					<li className="pokemon-item" key={pokemon.name}>
-						<img
-							className="pokemon-image"
-							src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`}
-							alt={pokemon.name}
-						/>
-						{pokemon.name}
-					</li>
-				))}
-			</ul>
-			<Pagination
+			<PaginationTop
+				filteredPokemonList={filteredPokemonList}
+				currentPage={currentPage}
+				next={next}
+				setNext= {setNext}
+				setCurrentPage={setCurrentPage}
+			/>
+			<CardList currentPokemons={currentPokemons} />
+			<PaginationBottom
 				filteredPokemonList={filteredPokemonList}
 				currentPage={currentPage}
 				next={next}

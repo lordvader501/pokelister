@@ -1,5 +1,7 @@
 import React from 'react';
-import SearchProps from '../utilities/SearchProps';
+import SearchProps from '../../utilities/SearchProps';
+import './Search.css';
+
 const Search:React.FC<SearchProps> = ({setCurrentPage, searchPokemon, setSearchPokemon}) => {
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCurrentPage(1);
@@ -7,7 +9,7 @@ const Search:React.FC<SearchProps> = ({setCurrentPage, searchPokemon, setSearchP
 	};
 	return (
 		<input
-			type="text"
+			type="search"
 			className="search-input"
 			placeholder="Search Pokémon"
 			value={searchPokemon}
