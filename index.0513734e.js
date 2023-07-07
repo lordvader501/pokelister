@@ -39684,6 +39684,7 @@ const HeaderLayout = ()=>{
                 className: "navdiv",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     id: "nav-container",
+                    className: "navcontainer",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
                         className: "navbar",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {

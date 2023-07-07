@@ -156,11 +156,19 @@ body {
   .logo-container {
     width: 4%;
   }
+
+  .site-title {
+    width: 10% !important;
+  }
 }
 
 @media screen and (width <= 900px) and (width >= 650px) {
   .logo-container {
     width: 5%;
+  }
+
+  .site-title {
+    width: 10% !important;
   }
 }
 
@@ -201,10 +209,15 @@ body {
   padding: 0%;
   display: flex;
   position: fixed;
+  left: 25%;
 }
 
 .sticky + .content {
   padding-top: 60px;
+}
+
+.navcontainer {
+  text-align: center;
 }
 
 .header {
@@ -220,12 +233,12 @@ body {
 
 .navdiv {
   justify-content: center;
-  width: 65%;
+  width: 75%;
   display: flex;
 }
 
 .navbar {
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
 }
 
