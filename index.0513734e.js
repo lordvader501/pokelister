@@ -2949,18 +2949,18 @@ var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
 var _body = require("./components/Body");
 var _bodyDefault = parcelHelpers.interopDefault(_body);
-var _about = require("./components/About");
+var _about = require("./components/About/About");
 var _aboutDefault = parcelHelpers.interopDefault(_about);
-var _footer = require("./components/Footer");
+var _footer = require("./components/Footer/Footer");
 var _footerDefault = parcelHelpers.interopDefault(_footer);
-var _contacts = require("./components/Contacts");
+var _contacts = require("./components/Contacts/Contacts");
 var _contactsDefault = parcelHelpers.interopDefault(_contacts);
 var _shimmerUI = require("./components/ShimmerUI");
 var _shimmerUIDefault = parcelHelpers.interopDefault(_shimmerUI);
-var _error = require("./components/Error");
+var _error = require("./components/ErrorPage/Error");
 var _errorDefault = parcelHelpers.interopDefault(_error);
 var _reactRouterDom = require("react-router-dom");
-var _header = require("./components/Header");
+var _header = require("./components/Header/Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
 var _reactRedux = require("react-redux");
 var _store = require("./utilities/store");
@@ -3064,7 +3064,7 @@ $RefreshReg$(_c, "Applayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Body":"lnxaO","./components/About":"i01Mg","./components/Footer":"eHp76","./components/Contacts":"3bBVa","react-router-dom":"9xmpe","./components/Header":"35enc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/ShimmerUI":"4tQLS","react-redux":"bdVon","./utilities/store":"4PWzD","./components/Error":"hU72F"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Body":"lnxaO","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/ShimmerUI":"4tQLS","react-redux":"bdVon","./utilities/store":"4PWzD","./components/About/About":"1CfBw","./components/Contacts/Contacts":"eBM1j","./components/Footer/Footer":"8BzfF","./components/ErrorPage/Error":"eo2jD","./components/Header/Header":"8cFjv"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -5781,14 +5781,16 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _pagination = require("./Pagination");
-var _paginationDefault = parcelHelpers.interopDefault(_pagination);
-var _paginationTop = require("./PaginationTop");
-var _paginationTopDefault = parcelHelpers.interopDefault(_paginationTop);
+var _paginationBottomJs = require("./Pagination/PaginationBottom.js");
+var _paginationBottomJsDefault = parcelHelpers.interopDefault(_paginationBottomJs);
+var _paginationTopJs = require("./Pagination/PaginationTop.js");
+var _paginationTopJsDefault = parcelHelpers.interopDefault(_paginationTopJs);
 var _hooks = require("../utilities/hooks");
 var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
-var _searchJs = require("./Search.js");
+var _searchJs = require("./SearchBox/Search.js");
 var _searchJsDefault = parcelHelpers.interopDefault(_searchJs);
+var _cardListJs = require("./CardlList/CardList.js");
+var _cardListJsDefault = parcelHelpers.interopDefault(_cardListJs);
 var _s = $RefreshSig$();
 const BodyLayout = ()=>{
     _s();
@@ -5797,6 +5799,7 @@ const BodyLayout = ()=>{
     const [currentPage, setCurrentPage] = (0, _react.useState)(1);
     const [pokemonsPerPage] = (0, _react.useState)(50);
     const pokemonList = (0, _hooks.useAppSelector)((store)=>store.pokemon.pokemonList);
+    const [filteredPokemonList, setFilteredPokemonList] = (0, _react.useState)(pokemonList);
     const dispatch = (0, _hooks.useAppDispatch)();
     (0, _react.useEffect)(()=>{
         const fetchPokemon = async ()=>{
@@ -5811,7 +5814,13 @@ const BodyLayout = ()=>{
         };
         fetchPokemon();
     }, []);
-    const filteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
+    (0, _react.useEffect)(()=>{
+        const newFilteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
+        setFilteredPokemonList(newFilteredPokemonList);
+    }, [
+        pokemonList,
+        searchPokemon
+    ]);
     const indexOfLastPokemon = currentPage * pokemonsPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = filteredPokemonList.slice(indexOfFirstPokemon, indexOfLastPokemon);
@@ -5823,7 +5832,7 @@ const BodyLayout = ()=>{
                 children: "Pok\xe9mon List"
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 43,
+                lineNumber: 47,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchJsDefault.default), {
@@ -5832,10 +5841,10 @@ const BodyLayout = ()=>{
                 setSearchPokemon: setSearchPokemon
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 44,
+                lineNumber: 48,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopDefault.default), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopJsDefault.default), {
                 filteredPokemonList: filteredPokemonList,
                 currentPage: currentPage,
                 next: next,
@@ -5843,36 +5852,17 @@ const BodyLayout = ()=>{
                 setCurrentPage: setCurrentPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 45,
+                lineNumber: 49,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "pokemon-list",
-                children: currentPokemons.map((pokemon)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: "pokemon-item",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                className: "pokemon-image",
-                                src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split("/")[6]}.png`,
-                                alt: pokemon.name
-                            }, void 0, false, {
-                                fileName: "src/components/Body.tsx",
-                                lineNumber: 55,
-                                columnNumber: 7
-                            }, undefined),
-                            pokemon.name
-                        ]
-                    }, pokemon.name, true, {
-                        fileName: "src/components/Body.tsx",
-                        lineNumber: 54,
-                        columnNumber: 6
-                    }, undefined))
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardListJsDefault.default), {
+                currentPokemons: currentPokemons
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 52,
+                lineNumber: 56,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationDefault.default), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationBottomJsDefault.default), {
                 filteredPokemonList: filteredPokemonList,
                 currentPage: currentPage,
                 next: next,
@@ -5880,17 +5870,17 @@ const BodyLayout = ()=>{
                 setCurrentPage: setCurrentPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 64,
+                lineNumber: 57,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.tsx",
-        lineNumber: 42,
+        lineNumber: 46,
         columnNumber: 3
     }, undefined);
 };
-_s(BodyLayout, "qiTq661ZBwcBQi4njMrDEsi6aFU=", false, function() {
+_s(BodyLayout, "8O8mQvNXZzOIS+V7BnTYscKvpvs=", false, function() {
     return [
         (0, _hooks.useAppSelector),
         (0, _hooks.useAppDispatch)
@@ -5906,342 +5896,7 @@ $RefreshReg$(_c, "BodyLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination":"6ohXp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","./Search.js":"90Ncf","./PaginationTop":"hvxDj"}],"6ohXp":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$4f6d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$4f6d.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../utilities/hooks");
-var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
-var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const [pokemonsPerPage] = (0, _react.useState)(50);
-    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const fetchPokemon = async ()=>{
-        try {
-            if (next !== "" && next !== null) {
-                const response = await fetch(next);
-                const data = await response.json();
-                dispatch((0, _pokemonSliceJs.addItem)(data.results));
-                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-                setNext(data.next);
-            }
-        } catch (error) {
-            console.log("Error:", error);
-        }
-    };
-    const paginate = (pageNumber)=>{
-        setCurrentPage(pageNumber);
-    };
-    const goToPreviousPage = ()=>{
-        if (currentPage > 1) setCurrentPage(currentPage - 1);
-    };
-    const goToNextPage = ()=>{
-        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-        else if (currentPage === totalPages) fetchPokemon();
-    };
-    const renderPagination = ()=>{
-        const pageNumbers = [];
-        const maxPagesToShow = 5;
-        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
-        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
-        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-        if (totalPages <= maxPagesToShow) {
-            startPage = 1;
-            endPage = totalPages;
-        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
-        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
-        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(1),
-                            children: "1"
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination.tsx",
-                            lineNumber: 67,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination.tsx",
-                            lineNumber: 70,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true),
-                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
-                        onClick: ()=>paginate(pageNumber),
-                        children: pageNumber
-                    }, pageNumber, false, {
-                        fileName: "src/components/Pagination.tsx",
-                        lineNumber: 74,
-                        columnNumber: 6
-                    }, undefined)),
-                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination.tsx",
-                            lineNumber: 84,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(totalPages),
-                            children: totalPages
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination.tsx",
-                            lineNumber: 85,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination.tsx",
-            lineNumber: 64,
-            columnNumber: 4
-        }, undefined);
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "pagination",
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === 1 ? "disabled" : ""}`,
-                    onClick: goToPreviousPage,
-                    children: "<"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination.tsx",
-                    lineNumber: 98,
-                    columnNumber: 6
-                }, undefined),
-                renderPagination(),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
-                    onClick: goToNextPage,
-                    children: ">"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination.tsx",
-                    lineNumber: 105,
-                    columnNumber: 6
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination.tsx",
-            lineNumber: 97,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Pagination.tsx",
-        lineNumber: 95,
-        columnNumber: 3
-    }, undefined);
-};
-_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch)
-    ];
-});
-_c = Pagination;
-exports.default = Pagination;
-var _c;
-$RefreshReg$(_c, "Pagination");
-
-  $parcel$ReactRefreshHelpers$4f6d.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + " %exports% " + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"786KC"}],"h8o22":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationTop.js":"bsNSb","./SearchBox/Search.js":"gtlKI","./CardlList/CardList.js":"h7wKv","./Pagination/PaginationBottom.js":"jQlq4"}],"h8o22":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
@@ -28026,6 +27681,36 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
+},{}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
 },{}],"ikw0G":[function(require,module,exports) {
 // Default to a dummy "batch" implementation that just runs the callback
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33412,50 +33097,149 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"90Ncf":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$41a8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$41a8.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const Search = ({ setCurrentPage, searchPokemon, setSearchPokemon })=>{
-    const handleSearchChange = (event)=>{
-        setCurrentPage(1);
-        setSearchPokemon(event.target.value);
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-        type: "text",
-        className: "search-input",
-        placeholder: "Search Pok\xe9mon",
-        value: searchPokemon,
-        onChange: handleSearchChange
-    }, void 0, false, {
-        fileName: "src/components/Search.tsx",
-        lineNumber: 9,
-        columnNumber: 3
-    }, undefined);
-};
-_c = Search;
-exports.default = Search;
-var _c;
-$RefreshReg$(_c, "Search");
-
-  $parcel$ReactRefreshHelpers$41a8.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hvxDj":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$3df2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + " %exports% " + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"786KC"}],"bsNSb":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$3df2.prelude(module);
+$parcel$ReactRefreshHelpers$9a25.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33463,8 +33247,9 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../utilities/hooks");
-var _pokemonSliceJs = require("../utilities/pokemonSlice.js");
+var _hooks = require("../../utilities/hooks");
+var _pokemonSliceJs = require("../../utilities/pokemonSlice.js");
+var _paginationTopCss = require("./PaginationTop.css");
 var _s = $RefreshSig$();
 const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
     _s();
@@ -33492,37 +33277,37 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurren
         else if (currentPage === totalPages) fetchPokemon();
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "pagination",
+        className: "pagination pagination-top",
         children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
+            className: "pagination-list button-space",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === 1 ? "disabled" : ""}`,
+                    className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
                     onClick: goToPreviousPage,
                     children: "<"
                 }, void 0, false, {
-                    fileName: "src/components/PaginationTop.tsx",
-                    lineNumber: 44,
+                    fileName: "src/components/Pagination/PaginationTop.tsx",
+                    lineNumber: 45,
                     columnNumber: 6
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    className: `pagination-item ${currentPage === totalPages && next === null ? "page-end" : ""}`,
                     onClick: goToNextPage,
                     children: ">"
                 }, void 0, false, {
-                    fileName: "src/components/PaginationTop.tsx",
-                    lineNumber: 50,
+                    fileName: "src/components/Pagination/PaginationTop.tsx",
+                    lineNumber: 51,
                     columnNumber: 6
                 }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/components/PaginationTop.tsx",
-            lineNumber: 43,
+            fileName: "src/components/Pagination/PaginationTop.tsx",
+            lineNumber: 44,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
-        fileName: "src/components/PaginationTop.tsx",
-        lineNumber: 41,
+        fileName: "src/components/Pagination/PaginationTop.tsx",
+        lineNumber: 42,
         columnNumber: 3
     }, undefined);
 };
@@ -33536,16 +33321,16 @@ exports.default = Pagination;
 var _c;
 $RefreshReg$(_c, "Pagination");
 
-  $parcel$ReactRefreshHelpers$3df2.postlude(module);
+  $parcel$ReactRefreshHelpers$9a25.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"i01Mg":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$3649 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./PaginationTop.css":"dXRjn"}],"dXRjn":[function() {},{}],"gtlKI":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f4f0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$3649.prelude(module);
+$parcel$ReactRefreshHelpers$f4f0.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33553,37 +33338,39 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const AboutLayout = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "About Us"
-        }, void 0, false, {
-            fileName: "src/components/About.tsx",
-            lineNumber: 6,
-            columnNumber: 4
-        }, undefined)
+var _searchCss = require("./Search.css");
+const Search = ({ setCurrentPage, searchPokemon, setSearchPokemon })=>{
+    const handleSearchChange = (event)=>{
+        setCurrentPage(1);
+        setSearchPokemon(event.target.value);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+        type: "search",
+        className: "search-input",
+        placeholder: "Search Pok\xe9mon",
+        value: searchPokemon,
+        onChange: handleSearchChange
     }, void 0, false, {
-        fileName: "src/components/About.tsx",
-        lineNumber: 5,
+        fileName: "src/components/SearchBox/Search.tsx",
+        lineNumber: 11,
         columnNumber: 3
     }, undefined);
 };
-_c = AboutLayout;
-exports.default = AboutLayout;
+_c = Search;
+exports.default = Search;
 var _c;
-$RefreshReg$(_c, "AboutLayout");
+$RefreshReg$(_c, "Search");
 
-  $parcel$ReactRefreshHelpers$3649.postlude(module);
+  $parcel$ReactRefreshHelpers$f4f0.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eHp76":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$b676 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Search.css":"4XYOY"}],"4XYOY":[function() {},{}],"h7wKv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$79d6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b676.prelude(module);
+$parcel$ReactRefreshHelpers$79d6.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33591,37 +33378,41 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const FooterLayout = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "footer",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "footer layout"
-        }, void 0, false, {
-            fileName: "src/components/Footer.tsx",
-            lineNumber: 6,
-            columnNumber: 4
-        }, undefined)
+var _card = require("./Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _cardListCss = require("./CardList.css");
+const CardList = ({ currentPokemons })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+        className: "pokemon-list",
+        children: currentPokemons.map((pokemon)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                name: pokemon.name,
+                url: pokemon.url
+            }, pokemon.name, false, {
+                fileName: "src/components/CardlList/CardList.tsx",
+                lineNumber: 14,
+                columnNumber: 5
+            }, undefined))
     }, void 0, false, {
-        fileName: "src/components/Footer.tsx",
-        lineNumber: 5,
+        fileName: "src/components/CardlList/CardList.tsx",
+        lineNumber: 12,
         columnNumber: 3
     }, undefined);
 };
-_c = FooterLayout;
-exports.default = FooterLayout;
+_c = CardList;
+exports.default = CardList;
 var _c;
-$RefreshReg$(_c, "FooterLayout");
+$RefreshReg$(_c, "CardList");
 
-  $parcel$ReactRefreshHelpers$b676.postlude(module);
+  $parcel$ReactRefreshHelpers$79d6.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3bBVa":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$09ed = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Card":"euwcE","./CardList.css":"9EOR1"}],"euwcE":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$45b7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$09ed.prelude(module);
+$parcel$ReactRefreshHelpers$45b7.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33629,33 +33420,206 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const ContactLayout = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "Contact Us"
-        }, void 0, false, {
-            fileName: "src/components/Contacts.tsx",
-            lineNumber: 6,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Contacts.tsx",
-        lineNumber: 5,
+const Card = ({ name, url })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+        className: "pokemon-item",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                className: "pokemon-image",
+                src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url.split("/")[6]}.png`,
+                alt: name
+            }, void 0, false, {
+                fileName: "src/components/CardlList/Card.tsx",
+                lineNumber: 7,
+                columnNumber: 4
+            }, undefined),
+            name
+        ]
+    }, void 0, true, {
+        fileName: "src/components/CardlList/Card.tsx",
+        lineNumber: 6,
         columnNumber: 3
     }, undefined);
 };
-_c = ContactLayout;
-exports.default = ContactLayout;
+_c = Card;
+exports.default = Card;
 var _c;
-$RefreshReg$(_c, "ContactLayout");
+$RefreshReg$(_c, "Card");
 
-  $parcel$ReactRefreshHelpers$09ed.postlude(module);
+  $parcel$ReactRefreshHelpers$45b7.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9xmpe":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9EOR1":[function() {},{}],"jQlq4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c5a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c5a0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../../utilities/hooks");
+var _pokemonSliceJs = require("../../utilities/pokemonSlice.js");
+var _paginationBottomCss = require("./PaginationBottom.css");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, next, setNext, setCurrentPage })=>{
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const [pokemonsPerPage] = (0, _react.useState)(50);
+    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const fetchPokemon = async ()=>{
+        try {
+            if (next !== "" && next !== null) {
+                const response = await fetch(next);
+                const data = await response.json();
+                dispatch((0, _pokemonSliceJs.addItem)(data.results));
+                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
+                setNext(data.next);
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+    const paginate = (pageNumber)=>{
+        setCurrentPage(pageNumber);
+    };
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+        else if (currentPage === totalPages) fetchPokemon();
+    };
+    const renderPagination = ()=>{
+        const pageNumbers = [];
+        const maxPagesToShow = 5;
+        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
+        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
+        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+        if (totalPages <= maxPagesToShow) {
+            startPage = 1;
+            endPage = totalPages;
+        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
+        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
+        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(1),
+                            children: "1"
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 68,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 71,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true),
+                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
+                        onClick: ()=>paginate(pageNumber),
+                        children: pageNumber
+                    }, pageNumber, false, {
+                        fileName: "src/components/Pagination/PaginationBottom.tsx",
+                        lineNumber: 75,
+                        columnNumber: 6
+                    }, undefined)),
+                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 85,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(totalPages),
+                            children: totalPages
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 86,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 65,
+            columnNumber: 4
+        }, undefined);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "pagination",
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item ${currentPage === 1 ? "disabled" : ""}`,
+                    onClick: goToPreviousPage,
+                    children: "<"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 99,
+                    columnNumber: 6
+                }, undefined),
+                renderPagination(),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    onClick: goToNextPage,
+                    children: ">"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 106,
+                    columnNumber: 6
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 98,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Pagination/PaginationBottom.tsx",
+        lineNumber: 96,
+        columnNumber: 3
+    }, undefined);
+};
+_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$c5a0.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/pokemonSlice.js":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./PaginationBottom.css":"1gBvO"}],"1gBvO":[function() {},{}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.14.0
  *
@@ -39399,132 +39363,7 @@ function getDoneFetcher(data) {
     return fetcher;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"35enc":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$d5a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d5a6.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouterDom = require("react-router-dom");
-var _s = $RefreshSig$();
-const HeaderLayout = ()=>{
-    _s();
-    (0, _react.useEffect)(()=>{
-        const navbar = document.getElementById("nav-container");
-        const sticky = navbar?.offsetTop || 0;
-        const handleScroll = ()=>{
-            if (navbar && window.scrollY >= sticky) navbar.classList.add("sticky");
-            else if (navbar) navbar.classList.remove("sticky");
-        };
-        window.addEventListener("scroll", handleScroll);
-        return ()=>{
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
-        className: "header",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "navdiv",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                id: "nav-container",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-                    className: "navbar",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                        className: "nav-list",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                className: "nav-item",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                    className: "nav-link",
-                                    to: "/pokelister",
-                                    children: "Home"
-                                }, void 0, false, {
-                                    fileName: "src/components/Header.tsx",
-                                    lineNumber: 31,
-                                    columnNumber: 9
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/Header.tsx",
-                                lineNumber: 30,
-                                columnNumber: 8
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                className: "nav-item",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                    className: "nav-link",
-                                    to: "/pokelister/about",
-                                    children: "About"
-                                }, void 0, false, {
-                                    fileName: "src/components/Header.tsx",
-                                    lineNumber: 34,
-                                    columnNumber: 9
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/Header.tsx",
-                                lineNumber: 33,
-                                columnNumber: 8
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                className: "nav-item",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                    className: "nav-link",
-                                    to: "/pokelister/contacts",
-                                    children: "Contacts"
-                                }, void 0, false, {
-                                    fileName: "src/components/Header.tsx",
-                                    lineNumber: 37,
-                                    columnNumber: 9
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/Header.tsx",
-                                lineNumber: 36,
-                                columnNumber: 8
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/Header.tsx",
-                        lineNumber: 29,
-                        columnNumber: 7
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/Header.tsx",
-                    lineNumber: 28,
-                    columnNumber: 6
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/Header.tsx",
-                lineNumber: 27,
-                columnNumber: 5
-            }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/Header.tsx",
-            lineNumber: 26,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Header.tsx",
-        lineNumber: 25,
-        columnNumber: 3
-    }, undefined);
-};
-_s(HeaderLayout, "OD7bBpZva5O2jO+Puf00hKivP7c=");
-_c = HeaderLayout;
-exports.default = HeaderLayout;
-var _c;
-$RefreshReg$(_c, "HeaderLayout");
-
-  $parcel$ReactRefreshHelpers$d5a6.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lOjBx":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -39595,11 +39434,126 @@ const store = (0, _toolkit.configureStore)({
 });
 exports.default = store;
 
-},{"@reduxjs/toolkit":"lL1Ef","./pokemonSlice":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hU72F":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$7f2f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"@reduxjs/toolkit":"lL1Ef","./pokemonSlice":"4Unwi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1CfBw":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$6711 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$7f2f.prelude(module);
+$parcel$ReactRefreshHelpers$6711.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const AboutLayout = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "About Us"
+        }, void 0, false, {
+            fileName: "src/components/About/About.tsx",
+            lineNumber: 6,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/About/About.tsx",
+        lineNumber: 5,
+        columnNumber: 3
+    }, undefined);
+};
+_c = AboutLayout;
+exports.default = AboutLayout;
+var _c;
+$RefreshReg$(_c, "AboutLayout");
+
+  $parcel$ReactRefreshHelpers$6711.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eBM1j":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e1ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e1ec.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const ContactLayout = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "Contact Us"
+        }, void 0, false, {
+            fileName: "src/components/Contacts/Contacts.tsx",
+            lineNumber: 6,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Contacts/Contacts.tsx",
+        lineNumber: 5,
+        columnNumber: 3
+    }, undefined);
+};
+_c = ContactLayout;
+exports.default = ContactLayout;
+var _c;
+$RefreshReg$(_c, "ContactLayout");
+
+  $parcel$ReactRefreshHelpers$e1ec.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8BzfF":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$399d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$399d.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _footerCss = require("./Footer.css");
+const FooterLayout = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "footer",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "footer layout"
+        }, void 0, false, {
+            fileName: "src/components/Footer/Footer.tsx",
+            lineNumber: 7,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Footer/Footer.tsx",
+        lineNumber: 6,
+        columnNumber: 3
+    }, undefined);
+};
+_c = FooterLayout;
+exports.default = FooterLayout;
+var _c;
+$RefreshReg$(_c, "FooterLayout");
+
+  $parcel$ReactRefreshHelpers$399d.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Footer.css":"4PUEe"}],"4PUEe":[function() {},{}],"eo2jD":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c21d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c21d.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -39631,18 +39585,18 @@ const ErrorLayout = ()=>{
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     children: "Home"
                 }, void 0, false, {
-                    fileName: "src/components/Error.tsx",
+                    fileName: "src/components/ErrorPage/Error.tsx",
                     lineNumber: 18,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
-                fileName: "src/components/Error.tsx",
+                fileName: "src/components/ErrorPage/Error.tsx",
                 lineNumber: 17,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/components/Error.tsx",
+        fileName: "src/components/ErrorPage/Error.tsx",
         lineNumber: 9,
         columnNumber: 3
     }, undefined);
@@ -39657,11 +39611,137 @@ exports.default = ErrorLayout;
 var _c;
 $RefreshReg$(_c, "ErrorLayout");
 
-  $parcel$ReactRefreshHelpers$7f2f.postlude(module);
+  $parcel$ReactRefreshHelpers$c21d.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8cFjv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1fca = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1fca.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _headerCss = require("./Header.css");
+var _s = $RefreshSig$();
+const HeaderLayout = ()=>{
+    _s();
+    (0, _react.useEffect)(()=>{
+        const navbar = document.getElementById("nav-container");
+        const sticky = navbar?.offsetTop || 0;
+        const handleScroll = ()=>{
+            if (navbar && window.scrollY >= sticky) navbar.classList.add("sticky");
+            else if (navbar) navbar.classList.remove("sticky");
+        };
+        window.addEventListener("scroll", handleScroll);
+        return ()=>{
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+        className: "header",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "navdiv",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                id: "nav-container",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                    className: "navbar",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "nav-list",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "nav-item",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    className: "nav-link",
+                                    to: "/pokelister",
+                                    children: "Home"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header/Header.tsx",
+                                    lineNumber: 31,
+                                    columnNumber: 9
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header/Header.tsx",
+                                lineNumber: 30,
+                                columnNumber: 8
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "nav-item",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    className: "nav-link",
+                                    to: "/pokelister/about",
+                                    children: "About"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header/Header.tsx",
+                                    lineNumber: 34,
+                                    columnNumber: 9
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header/Header.tsx",
+                                lineNumber: 33,
+                                columnNumber: 8
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "nav-item",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    className: "nav-link",
+                                    to: "/pokelister/contacts",
+                                    children: "Contacts"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header/Header.tsx",
+                                    lineNumber: 37,
+                                    columnNumber: 9
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header/Header.tsx",
+                                lineNumber: 36,
+                                columnNumber: 8
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Header/Header.tsx",
+                        lineNumber: 29,
+                        columnNumber: 7
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.tsx",
+                    lineNumber: 28,
+                    columnNumber: 6
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Header/Header.tsx",
+                lineNumber: 27,
+                columnNumber: 5
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/Header/Header.tsx",
+            lineNumber: 26,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Header/Header.tsx",
+        lineNumber: 25,
+        columnNumber: 3
+    }, undefined);
+};
+_s(HeaderLayout, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_c = HeaderLayout;
+exports.default = HeaderLayout;
+var _c;
+$RefreshReg$(_c, "HeaderLayout");
+
+  $parcel$ReactRefreshHelpers$1fca.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Header.css":"cYUAV"}],"cYUAV":[function() {},{}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
 
 //# sourceMappingURL=index.0513734e.js.map
