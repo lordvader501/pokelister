@@ -33541,40 +33541,42 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
         if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
         else if (currentPage === totalPages) fetchPokemon();
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "pagination pagination-top",
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list button-space",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
-                    onClick: goToPreviousPage,
-                    children: "<"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationTop.tsx",
-                    lineNumber: 46,
-                    columnNumber: 6
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item ${currentPage === totalPages && next === null ? "page-end" : ""}`,
-                    onClick: goToNextPage,
-                    children: ">"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationTop.tsx",
-                    lineNumber: 52,
-                    columnNumber: 6
-                }, undefined)
-            ]
-        }, void 0, true, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "pagination pagination-top",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "pagination-list button-space",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
+                        onClick: goToPreviousPage,
+                        children: "<"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 47,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === totalPages && next === null ? "page-end" : ""}`,
+                        onClick: goToNextPage,
+                        children: ">"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 53,
+                        columnNumber: 7
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Pagination/PaginationTop.tsx",
+                lineNumber: 46,
+                columnNumber: 6
+            }, undefined)
+        }, void 0, false, {
             fileName: "src/components/Pagination/PaginationTop.tsx",
             lineNumber: 45,
             columnNumber: 5
         }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Pagination/PaginationTop.tsx",
-        lineNumber: 43,
-        columnNumber: 3
-    }, undefined);
+    }, void 0, false);
 };
 _s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
     return [
@@ -39774,6 +39776,7 @@ const Search = ()=>{
     const handleSearchChange = (event)=>{
         dispatch((0, _pageSlice.setCurrentPage)(1));
         dispatch((0, _searchSlice.setSearchPokemon)(event.target.value));
+        console.log(searchPokemon);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
         type: "search",
@@ -39783,7 +39786,7 @@ const Search = ()=>{
         onChange: handleSearchChange
     }, void 0, false, {
         fileName: "src/components/SearchBox/Search.tsx",
-        lineNumber: 16,
+        lineNumber: 17,
         columnNumber: 3
     }, undefined);
 };

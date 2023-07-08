@@ -113,7 +113,6 @@ body {
 .pagination-item.page-end {
   cursor: not-allowed;
   opacity: .25;
-  transition-property: none !important;
 }
 
 .footer {
@@ -135,6 +134,74 @@ body {
 .logo {
   width: 100%;
   height: auto;
+}
+
+.site-title {
+  width: 25%;
+}
+
+.title-text {
+  text-align: left;
+  padding-left: 5px;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.sticky {
+  background-color: #0003;
+  border-radius: 50rem;
+  justify-content: center;
+  width: 50%;
+  padding: 0%;
+  display: flex;
+  position: fixed;
+  top: 15px;
+  left: 25%;
+}
+
+.navcontainer {
+  text-align: center;
+}
+
+.header {
+  color: #fff;
+  background-color: #1a1b1f;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 8px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  display: flex;
+  box-shadow: 0 5px 9px 6px #04030ee0;
+}
+
+.navdiv {
+  justify-content: right;
+  width: 75%;
+  display: flex;
+}
+
+.navbar {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.nav-list {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.nav-item {
+  text-align: center;
+  padding-inline: 5px;
+}
+
+.nav-link {
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  text-decoration: none;
 }
 
 @media screen and (width <= 1250px) and (width >= 900px) {
@@ -161,6 +228,11 @@ body {
   .logo-container {
     width: 6.5%;
   }
+
+  .sticky {
+    width: 60%;
+    left: 20%;
+  }
 }
 
 @media screen and (width <= 550px) and (width >= 450px) {
@@ -173,75 +245,6 @@ body {
   .logo-container {
     width: 9.5%;
   }
-}
-
-.site-title {
-  width: 25%;
-}
-
-.title-text {
-  text-align: left;
-  padding-left: 5px;
-  font-size: larger;
-  font-weight: 700;
-}
-
-.sticky {
-  background-color: #0003;
-  border-radius: 50rem;
-  justify-content: center;
-  width: 50%;
-  padding: 0%;
-  display: flex;
-  position: fixed;
-  left: 25%;
-}
-
-.sticky + .content {
-  padding-top: 60px;
-}
-
-.navcontainer {
-  text-align: center;
-}
-
-.header {
-  color: #fff;
-  background-color: #1a1b1f;
-  align-items: center;
-  margin-bottom: 5px;
-  padding: 8px;
-  font-family: Arial, sans-serif;
-  display: flex;
-  box-shadow: 0 5px 9px 6px #04030ee0;
-}
-
-.navdiv {
-  justify-content: center;
-  width: 75%;
-  display: flex;
-}
-
-.navbar {
-  justify-content: flex-start;
-  display: flex;
-}
-
-.nav-list {
-  padding: 0;
-  list-style: none;
-  display: flex;
-}
-
-.nav-item {
-  margin-right: 10px;
-}
-
-.nav-link {
-  color: #fff;
-  border-radius: 4px;
-  padding: 5px;
-  text-decoration: none;
 }
 
 .search-input {
