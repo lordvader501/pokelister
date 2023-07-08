@@ -30,7 +30,9 @@ const HeaderLayout: React.FC = () => {
 			<div className="site-title">
 				<h1 className="title-text">PokéLister</h1>
 			</div>
-			<Search />
+			<div className="search-container">
+				<Search />
+			</div>
 			<div className="navdiv">
 				<div id="nav-container" className='navcontainer'>
 					<nav className="navbar">

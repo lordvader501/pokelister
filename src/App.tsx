@@ -6,6 +6,7 @@ import FooterLayout from './components/Footer/Footer';
 import ContactLayout from './components/Contacts/Contacts';
 import ShimmerUI from './components/ShimmerUI';
 import ErrorLayout from './components/ErrorPage/Error';
+import PokemonInfo from './components/PokemonInfo/PokemonInfo';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
 			{
 				path:'/pokelister/contacts',
 				element: <ContactLayout />,
+			},
+			{
+				path: '/pokelister/pokemon/:id',
+				element: <PokemonInfo />
 			},
 			{
 				path: '*',

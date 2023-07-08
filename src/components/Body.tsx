@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Pokemon from '../utilities/PokeTypes.js';
-import PaginationBottom from './Pagination/PaginationBottom.js';
-import PaginationTop from './Pagination/PaginationTop.js';
+import Pokemon from '../utilities/PokeTypes';
+import PaginationBottom from './Pagination/PaginationBottom';
+import PaginationTop from './Pagination/PaginationTop';
 import { useAppSelector,useAppDispatch} from '../utilities/hooks';
-import { addItem } from '../utilities/Store/pokemonSlice.js';
-import Results from '../utilities/fetchTypes.js';
-import CardList from './CardlList/CardList.js';
+import { addItem } from '../utilities/Store/pokemonSlice';
+import Results from '../utilities/fetchTypes';
+import CardList from './CardlList/CardList';
 
 const BodyLayout: React.FC = () => {
 	const [next, setNext] = useState<string | null>(null);

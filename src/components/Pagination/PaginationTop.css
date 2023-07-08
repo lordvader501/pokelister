@@ -16,6 +16,5 @@
 
 .pagination-item.page-end {
   cursor: not-allowed;
-  transition-property: none !important;
   opacity: 0.25;;
 }

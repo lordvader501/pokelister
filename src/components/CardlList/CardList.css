@@ -1,3 +1,8 @@
+a {
+  color: #ffffff;
+  font-weight: 550;
+  text-decoration: none;
+}
 .pokemon-list {
   list-style: none;
   padding: 0;

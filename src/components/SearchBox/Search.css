@@ -1,17 +1,20 @@
 .search-input {
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px;
   background-color: #333333a4;
   color: #ffffff;
   border: double silver;
   border-radius: 4px;
+  font-size: 18px;
 }
-.search-container {
-  position: relative;
-  width: auto;
-}
+
 @media only screen and (max-width:900px) {
   .search-input {
-    width: 50%;
+    width: 70%;
+  }
+}
+@media only screen and (max-width:700px) {
+  .search-input {
+    width: 90%;
   }
 }

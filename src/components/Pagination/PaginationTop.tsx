@@ -40,24 +40,26 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 	};
   
 	return (
-		<div className="pagination pagination-top">
+		<>
 			{totalPages > 1 && (
-				<ul className="pagination-list button-space">
-					<li
-						className={`pagination-item ${currentPage === 1 ? 'page-end' : ''}`}
-						onClick={goToPreviousPage}
-					>
-              &lt;
-					</li>
-					<li
-						className={`pagination-item ${((currentPage === totalPages)&& (next===null)) ? 'page-end' : ''}`}
-						onClick={goToNextPage}
-					>
+				<div className="pagination pagination-top">
+					<ul className="pagination-list button-space">
+						<li
+							className={`pagination-item ${currentPage === 1 ? 'page-end' : ''}`}
+							onClick={goToPreviousPage}
+						>
+            &lt;
+						</li>
+						<li
+							className={`pagination-item ${((currentPage === totalPages)&& (next===null)) ? 'page-end' : ''}`}
+							onClick={goToNextPage}
+						>
               &gt;
-					</li>
-				</ul>
+						</li>
+					</ul>
+				</div>
 			)}
-		</div>
+		</>
 	);
 };
 

@@ -11,6 +11,7 @@ const Search:React.FC = () => {
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setCurrentPage(1));
 		dispatch(setSearchPokemon(event.target.value));
+		console.log(searchPokemon);
 	};
 	return (
 		<input
