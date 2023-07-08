@@ -39643,7 +39643,14 @@ const HeaderLayout = ()=>{
                 lineNumber: 30,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "search-container",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchDefault.default), {}, void 0, false, {
+                    fileName: "src/components/Header/Header.tsx",
+                    lineNumber: 34,
+                    columnNumber: 5
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
                 lineNumber: 33,
                 columnNumber: 4
@@ -39666,12 +39673,12 @@ const HeaderLayout = ()=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 39,
+                                        lineNumber: 41,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 38,
+                                    lineNumber: 40,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39682,12 +39689,12 @@ const HeaderLayout = ()=>{
                                         children: "About"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 42,
+                                        lineNumber: 44,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 41,
+                                    lineNumber: 43,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39698,33 +39705,33 @@ const HeaderLayout = ()=>{
                                         children: "Contacts"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 45,
+                                        lineNumber: 47,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 44,
+                                    lineNumber: 46,
                                     columnNumber: 8
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Header/Header.tsx",
-                            lineNumber: 37,
+                            lineNumber: 39,
                             columnNumber: 7
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Header/Header.tsx",
-                        lineNumber: 36,
+                        lineNumber: 38,
                         columnNumber: 6
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 34,
+                lineNumber: 36,
                 columnNumber: 4
             }, undefined)
         ]
