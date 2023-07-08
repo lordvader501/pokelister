@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link }from 'react-router-dom';
 import './Header.css';
 import { LOGO } from '../../utilities/constanats';
+import Search from '../SearchBox/Search';
 
 const HeaderLayout: React.FC = () => {
 	useEffect(() => {
@@ -19,6 +20,7 @@ const HeaderLayout: React.FC = () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+
 	
 	return (
 		<header className="header">
@@ -28,6 +30,7 @@ const HeaderLayout: React.FC = () => {
 			<div className="site-title">
 				<h1 className="title-text">PokéLister</h1>
 			</div>
+			<Search />
 			<div className="navdiv">
 				<div id="nav-container" className='navcontainer'>
 					<nav className="navbar">

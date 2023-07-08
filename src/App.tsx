@@ -9,7 +9,7 @@ import ErrorLayout from './components/ErrorPage/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
-import store from './utilities/store';
+import store from './utilities/Store/store';
 
 const Applayout: React.FC = () => {
 	return (

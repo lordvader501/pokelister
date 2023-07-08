@@ -1,12 +1,15 @@
 .search-input {
-  width: 30%;
+  width: 100%;
   padding: 10px;
   background-color: #333333a4;
   color: #ffffff;
   border: double silver;
   border-radius: 4px;
 }
-
+.search-container {
+  position: relative;
+  width: auto;
+}
 @media only screen and (max-width:900px) {
   .search-input {
     width: 50%;

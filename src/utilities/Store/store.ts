@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import pokemonSlice from './pokemonSlice';
+import pageSlice from './pageSlice';
+import searchSlice from './searchSlice';
 
 const store = configureStore({
 	reducer: {
 		pokemon: pokemonSlice,
+		pageNum: pageSlice,
+		findPokemon: searchSlice,
 	},
 });
 

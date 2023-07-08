@@ -1,13 +1,16 @@
 import React from 'react';
-import SearchProps from './SearchProps';
+// import SearchProps from './SearchProps';
 import './Search.css';
+import { useAppDispatch, useAppSelector } from '../../utilities/hooks';
+import { setCurrentPage } from '../../utilities/Store/pageSlice';
+import { setSearchPokemon } from '../../utilities/Store/searchSlice';
 
-const Search:React.FC<SearchProps> = ({setCurrentPage, searchPokemon, setSearchPokemon}) => {
-	
+const Search:React.FC = () => {
+	const searchPokemon = useAppSelector(store => store.findPokemon.searchPokemon);
+	const dispatch = useAppDispatch();
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setCurrentPage(1);
-		setSearchPokemon(event.target.value);
-		console.log(searchPokemon);
+		dispatch(setCurrentPage(1));
+		dispatch(setSearchPokemon(event.target.value));
 	};
 	return (
 		<input
