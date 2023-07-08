@@ -222,7 +222,7 @@ body {
 
 @media screen and (width <= 900px) and (width >= 650px) {
   .logo-container {
-    width: 5% !important;
+    width: 8% !important;
   }
 
   .navdiv {
@@ -240,7 +240,7 @@ body {
 
 @media screen and (width <= 650px) and (width >= 350px) {
   .logo-container {
-    width: 6.5% !important;
+    width: 8% !important;
   }
 
   .site-title {
@@ -255,13 +255,13 @@ body {
 
 @media screen and (width <= 550px) and (width >= 450px) {
   .logo-container {
-    width: 8%;
+    width: 13% !important;
   }
 }
 
 @media screen and (width <= 450px) and (width >= 350px) {
   .logo-container {
-    width: 9.5%;
+    width: 30% !important;
   }
 }
 
