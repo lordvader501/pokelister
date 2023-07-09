@@ -255,7 +255,7 @@ a {
   }
 
   .navdiv {
-    width: min-content;
+    width: 40%;
   }
 
   .site-title {
@@ -282,12 +282,24 @@ a {
   }
 
   .search-container {
-    width: 80%;
+    width: 60%;
   }
 
-  @media screen and (width <= 600px) {
+  .navdiv {
+    width: 40%;
+  }
+
+  @media screen and (width <= 630px) {
     .nav-list {
-      visibility: hidden;
+      display: none;
+    }
+
+    .search-container {
+      width: 100%;
+    }
+
+    .navdiv {
+      width: 15%;
     }
   }
 }
@@ -298,9 +310,13 @@ a {
   }
 }
 
-@media screen and (width <= 450px) and (width >= 350px) {
+@media screen and (width <= 450px) and (width >= 200px) {
   .logo-container {
     width: 30% !important;
+  }
+
+  .nav-list {
+    display: none;
   }
 }
 

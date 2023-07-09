@@ -39659,14 +39659,7 @@ const HeaderLayout = ()=>{
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: `menu-toggle ${menuOpen ? "open" : ""}`,
-                                onClick: handleMenuToggle,
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "hamburger"
-                                }, void 0, false, {
-                                    fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 52,
-                                    columnNumber: 8
-                                }, undefined)
+                                onClick: handleMenuToggle
                             }, void 0, false, {
                                 fileName: "src/components/Header/Header.tsx",
                                 lineNumber: 51,
