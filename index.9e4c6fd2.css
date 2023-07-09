@@ -138,7 +138,7 @@ a {
 
 .active {
   background-color: #04aa6d;
-  padding: 6px 8px;
+  padding: 6px 8px !important;
 }
 
 .sticky .active {
@@ -277,8 +277,18 @@ a {
   }
 
   .sticky {
-    width: 60%;
+    width: 55%;
     left: 20%;
+  }
+
+  .search-container {
+    width: 80%;
+  }
+
+  @media screen and (width <= 600px) {
+    .nav-list {
+      visibility: hidden;
+    }
   }
 }
 
@@ -313,6 +323,12 @@ a {
 @media only screen and (width <= 700px) {
   .search-input {
     width: 90%;
+  }
+}
+
+@media only screen and (width <= 600px) {
+  .search-input {
+    width: 100%;
   }
 }
 
@@ -356,18 +372,32 @@ a {
 @media screen and (width <= 600px) {
   .poke-img > img {
     width: auto;
-    height: 150px;
+    height: 300px;
+  }
+
+  .poke-head h1 {
+    font-size: 35px;
+  }
+
+  .poke-head {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
   }
 }
 
 @media screen and (width <= 400px) {
   .poke-img > img {
     width: auto;
-    height: 100px;
+    height: 250px;
   }
 
   .poke-img {
     border-radius: 1rem;
+  }
+
+  .poke-head h1 {
+    font-size: 30px;
   }
 }
 

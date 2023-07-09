@@ -39572,6 +39572,7 @@ var _s = $RefreshSig$();
 const HeaderLayout = ()=>{
     _s();
     const currLocation = (0, _reactRouterDom.useLocation)();
+    const [menuOpen, setMenuOpen] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         const navbar = document.getElementById("nav-container");
         const sticky = navbar?.offsetTop || 0;
@@ -39584,6 +39585,10 @@ const HeaderLayout = ()=>{
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+    const handleMenuToggle = ()=>{
+        setMenuOpen(!menuOpen);
+    };
+    console.log(currLocation.pathname);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
         className: "header",
         children: [
@@ -39597,17 +39602,17 @@ const HeaderLayout = ()=>{
                         className: "logo"
                     }, void 0, false, {
                         fileName: "src/components/Header/Header.tsx",
-                        lineNumber: 29,
+                        lineNumber: 37,
                         columnNumber: 6
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 28,
+                    lineNumber: 36,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 27,
+                lineNumber: 35,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -39617,97 +39622,6 @@ const HeaderLayout = ()=>{
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         className: "title-text",
                         children: "Pok\xe9Lister"
-                    }, void 0, false, {
-                        fileName: "src/components/Header/Header.tsx",
-                        lineNumber: 34,
-                        columnNumber: 6
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 33,
-                    columnNumber: 5
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/Header/Header.tsx",
-                lineNumber: 32,
-                columnNumber: 4
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "search-container",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchDefault.default), {}, void 0, false, {
-                    fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 38,
-                    columnNumber: 5
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/Header/Header.tsx",
-                lineNumber: 37,
-                columnNumber: 4
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "navdiv",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    id: "nav-container",
-                    className: "navcontainer",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-                        className: "navbar",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                            className: "nav-list",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                    className: "nav-item",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: `nav-link ${currLocation.pathname === "/pokelister" ? "active" : ""}`,
-                                        to: "/pokelister",
-                                        children: "Home"
-                                    }, void 0, false, {
-                                        fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 45,
-                                        columnNumber: 9
-                                    }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 44,
-                                    columnNumber: 8
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                    className: "nav-item",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: `nav-link ${currLocation.pathname === "/pokelister/about" ? "active" : ""}`,
-                                        to: "/pokelister/about",
-                                        children: "About"
-                                    }, void 0, false, {
-                                        fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 48,
-                                        columnNumber: 9
-                                    }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 47,
-                                    columnNumber: 8
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                    className: "nav-item",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: `nav-link ${currLocation.pathname === "/pokelister/contacts" ? "active" : ""}`,
-                                        to: "/pokelister/contacts",
-                                        children: "Contacts"
-                                    }, void 0, false, {
-                                        fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 51,
-                                        columnNumber: 9
-                                    }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 50,
-                                    columnNumber: 8
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/Header/Header.tsx",
-                            lineNumber: 43,
-                            columnNumber: 7
-                        }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Header/Header.tsx",
                         lineNumber: 42,
@@ -39722,15 +39636,123 @@ const HeaderLayout = ()=>{
                 fileName: "src/components/Header/Header.tsx",
                 lineNumber: 40,
                 columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "search-container",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchDefault.default), {}, void 0, false, {
+                    fileName: "src/components/Header/Header.tsx",
+                    lineNumber: 46,
+                    columnNumber: 5
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Header/Header.tsx",
+                lineNumber: 45,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: `navdiv ${menuOpen ? "mobile-menu-open" : ""}`,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    id: "nav-container",
+                    className: `navcontainer ${menuOpen ? "mobile-menu-open" : ""}`,
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                        className: "navbar",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: `menu-toggle ${menuOpen ? "open" : ""}`,
+                                onClick: handleMenuToggle,
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "hamburger"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header/Header.tsx",
+                                    lineNumber: 52,
+                                    columnNumber: 8
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header/Header.tsx",
+                                lineNumber: 51,
+                                columnNumber: 7
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                className: "nav-list",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                            className: `nav-link ${currLocation.pathname === "/pokelister" ? "active" : ""}`,
+                                            to: "/pokelister",
+                                            children: "Home"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header/Header.tsx",
+                                            lineNumber: 56,
+                                            columnNumber: 9
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Header/Header.tsx",
+                                        lineNumber: 55,
+                                        columnNumber: 8
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                            className: `nav-link ${currLocation.pathname === "/pokelister/about" ? "active" : ""}`,
+                                            to: "/pokelister/about",
+                                            children: "About"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header/Header.tsx",
+                                            lineNumber: 59,
+                                            columnNumber: 9
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Header/Header.tsx",
+                                        lineNumber: 58,
+                                        columnNumber: 8
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "nav-item",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                            className: `nav-link ${currLocation.pathname === "/pokelister/contacts" ? "active" : ""}`,
+                                            to: "/pokelister/contacts",
+                                            children: "Contacts"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header/Header.tsx",
+                                            lineNumber: 62,
+                                            columnNumber: 9
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/Header/Header.tsx",
+                                        lineNumber: 61,
+                                        columnNumber: 8
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Header/Header.tsx",
+                                lineNumber: 54,
+                                columnNumber: 7
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Header/Header.tsx",
+                        lineNumber: 50,
+                        columnNumber: 6
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.tsx",
+                    lineNumber: 49,
+                    columnNumber: 5
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/Header/Header.tsx",
+                lineNumber: 48,
+                columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header/Header.tsx",
-        lineNumber: 26,
+        lineNumber: 34,
         columnNumber: 3
     }, undefined);
 };
-_s(HeaderLayout, "cvKTRCmhVOhvCbgo/LeBMOu9YLY=", false, function() {
+_s(HeaderLayout, "7LDOi/2pKwQoIPk/CTkUVzTaEp4=", false, function() {
     return [
         (0, _reactRouterDom.useLocation)
     ];
