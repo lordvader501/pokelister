@@ -319,6 +319,8 @@ a {
 .poke-img > img {
   width: auto;
   height: 250px;
+  margin: -5px;
+  padding: 10px;
 }
 
 .info-div {
@@ -333,6 +335,18 @@ a {
   border-radius: 2rem;
   width: -moz-fit-content;
   width: fit-content;
+  box-shadow: 1px 1px 11px 2px #0003;
+}
+
+.poke-head {
+  width: 100%;
+  display: inline-flex;
+}
+
+.poke-head h1 {
+  text-transform: capitalize;
+  margin-left: 5%;
+  font-size: 50px;
 }
 
 .container {

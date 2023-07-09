@@ -39881,40 +39881,68 @@ var _s = $RefreshSig$();
 const PokemonInfo = ()=>{
     _s();
     const { id } = (0, _reactRouterDom.useParams)();
+    const [pokemon, setPokemon] = (0, _react.useState)();
     (0, _react.useEffect)(()=>{
-        fetch("https://pokeapi.co/api/v2/pokemon/" + id).then((req)=>req.json()).then((req)=>console.log(req));
+        const fetchPokemonDetails = async ()=>{
+            try {
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
+                const data = await response.json();
+                setPokemon(data);
+                console.log(data);
+            } catch (error) {
+                console.log("Error: ", error);
+            }
+        };
+        fetchPokemonDetails();
     }, []);
+    console.log(pokemon);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "container",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "info-div",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "poke-img",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-                    alt: id
-                }, void 0, false, {
-                    fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                    lineNumber: 15,
-                    columnNumber: 6
-                }, undefined)
-            }, void 0, false, {
+                className: "poke-head",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "poke-img",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+                            alt: id
+                        }, void 0, false, {
+                            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                            lineNumber: 30,
+                            columnNumber: 7
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                        lineNumber: 29,
+                        columnNumber: 6
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: pokemon?.species.name
+                    }, void 0, false, {
+                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                        lineNumber: 32,
+                        columnNumber: 6
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                lineNumber: 14,
+                lineNumber: 28,
                 columnNumber: 5
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-            lineNumber: 13,
+            lineNumber: 27,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-        lineNumber: 12,
+        lineNumber: 26,
         columnNumber: 3
     }, undefined);
 };
-_s(PokemonInfo, "XT1vicrm+NSYLQxrGm9hA77HN9Y=", false, function() {
+_s(PokemonInfo, "EsT8uqN7c3a4mplLVokH8Qx1Z/g=", false, function() {
     return [
         (0, _reactRouterDom.useParams)
     ];
