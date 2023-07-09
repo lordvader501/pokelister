@@ -130,9 +130,27 @@ a {
   box-shadow: 0 -6px 9px 6px #04030ee0;
 }
 
-.active {
+.nav-link:hover {
   color: #fff;
+  background-color: #353d3a;
+  padding: 6px 12px !important;
+}
+
+.active {
   background-color: #04aa6d;
+  padding: 6px 8px !important;
+}
+
+.sticky .active {
+  background-color: #04aa6d63;
+  border-radius: 50rem;
+  padding: 9px 15px !important;
+}
+
+.sticky .nav-link:hover {
+  background-color: #353d3a;
+  border-radius: 50rem;
+  padding: 9px 15px !important;
 }
 
 .logo-container {
@@ -298,6 +316,45 @@ a {
   }
 }
 
+.poke-img > img {
+  width: auto;
+  height: 250px;
+}
 
+.info-div {
+  width: 90%;
+  height: auto;
+  position: relative;
+  top: 50px;
+}
+
+.poke-img {
+  background: linear-gradient(161deg, #222127 28%, #6e6e76 100%, #d4d8d9 100%);
+  border-radius: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.container {
+  justify-content: flex-start;
+}
+
+@media screen and (width <= 600px) {
+  .poke-img > img {
+    width: auto;
+    height: 150px;
+  }
+}
+
+@media screen and (width <= 400px) {
+  .poke-img > img {
+    width: auto;
+    height: 100px;
+  }
+
+  .poke-img {
+    border-radius: 1rem;
+  }
+}
 
 /*# sourceMappingURL=index.9e4c6fd2.css.map */

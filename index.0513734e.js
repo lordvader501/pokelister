@@ -39571,6 +39571,7 @@ var _searchDefault = parcelHelpers.interopDefault(_search);
 var _s = $RefreshSig$();
 const HeaderLayout = ()=>{
     _s();
+    const currLocation = (0, _reactRouterDom.useLocation)();
     (0, _react.useEffect)(()=>{
         const navbar = document.getElementById("nav-container");
         const sticky = navbar?.offsetTop || 0;
@@ -39656,7 +39657,7 @@ const HeaderLayout = ()=>{
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                                     className: "nav-item",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: "nav-link",
+                                        className: `nav-link ${currLocation.pathname === "/pokelister" ? "active" : ""}`,
                                         to: "/pokelister",
                                         children: "Home"
                                     }, void 0, false, {
@@ -39672,7 +39673,7 @@ const HeaderLayout = ()=>{
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                                     className: "nav-item",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: "nav-link",
+                                        className: `nav-link ${currLocation.pathname === "/pokelister/about" ? "active" : ""}`,
                                         to: "/pokelister/about",
                                         children: "About"
                                     }, void 0, false, {
@@ -39688,7 +39689,7 @@ const HeaderLayout = ()=>{
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                                     className: "nav-item",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        className: "nav-link",
+                                        className: `nav-link ${currLocation.pathname === "/pokelister/contacts" ? "active" : ""}`,
                                         to: "/pokelister/contacts",
                                         children: "Contacts"
                                     }, void 0, false, {
@@ -39729,7 +39730,11 @@ const HeaderLayout = ()=>{
         columnNumber: 3
     }, undefined);
 };
-_s(HeaderLayout, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_s(HeaderLayout, "cvKTRCmhVOhvCbgo/LeBMOu9YLY=", false, function() {
+    return [
+        (0, _reactRouterDom.useLocation)
+    ];
+});
 _c = HeaderLayout;
 exports.default = HeaderLayout;
 var _c;
@@ -39880,7 +39885,29 @@ const PokemonInfo = ()=>{
         fetch("https://pokeapi.co/api/v2/pokemon/" + id).then((req)=>req.json()).then((req)=>console.log(req));
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container"
+        className: "container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "info-div",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "poke-img",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+                    alt: id
+                }, void 0, false, {
+                    fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                    lineNumber: 15,
+                    columnNumber: 6
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                lineNumber: 14,
+                columnNumber: 5
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+            lineNumber: 13,
+            columnNumber: 4
+        }, undefined)
     }, void 0, false, {
         fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
         lineNumber: 12,
