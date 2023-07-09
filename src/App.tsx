@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import BodyLayout from './components/Body';
 import AboutLayout from './components/About/About';
@@ -11,16 +11,30 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
 import store from './utilities/Store/store';
+import { useAppDispatch } from './utilities/hooks';
+import { addItem } from './utilities/Store/pokemonSlice';
+import Results from './utilities/fetchTypes';
 
 const Applayout: React.FC = () => {
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		const fetchPokemon = async () => {
+			try {
+				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1281');
+				const data: Results = await response.json();
+				dispatch(addItem(data.results));
+			} catch (error) {
+				console.log('Error:', error);
+			}
+		};
+		fetchPokemon();
+	}, []);
 	return (
-		<Provider store={store}>
-			<React.Suspense fallback={<ShimmerUI />}>
-				<HeaderLayout />
-				<Outlet />
-				<FooterLayout />
-			</React.Suspense>
-		</Provider>
+		<React.Suspense fallback={<ShimmerUI />}>
+			<HeaderLayout />
+			<Outlet />
+			<FooterLayout />
+		</React.Suspense>
 	);
 };
 
@@ -55,4 +69,4 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<RouterProvider router={router}/>);
+root.render(<Provider store={store}><RouterProvider router={router}/></Provider>);

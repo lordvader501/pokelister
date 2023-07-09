@@ -1,3 +1,25 @@
+
+.nav-link:hover {
+  background-color: #353d3a;
+  color: white;
+  padding: 6px 12px !important;
+}
+.active {
+  background-color: #04AA6D;
+  padding: 6px 8px !important;
+}
+
+.sticky .active {
+  background-color: #04aa6d63;
+  border-radius: 50rem;
+  padding: 9px 15px !important;
+}
+.sticky .nav-link:hover {
+  background-color: #353d3a;
+  border-radius: 50rem;
+  padding: 9px 15px !important;
+}
+
 .logo-container {
   width:3%;
   height: auto;

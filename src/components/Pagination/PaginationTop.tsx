@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PaginationProps from './PaginatiionProps.js';
-import Results from '../../utilities/fetchTypes';
 import { useAppDispatch} from '../../utilities/hooks';
-import { addItem } from '../../utilities/Store/pokemonSlice.js';
 import './PaginationTop.css';
 import { setCurrentPage } from '../../utilities/Store/pageSlice.js';
 
-const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, next, setNext }) => {
+const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, pokemonsPerPage }) => {
 	const dispatch = useAppDispatch();
-	const [pokemonsPerPage] = useState(50);
-	let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-	const fetchPokemon = async () => {
-		try {
-			if(next!== '' && next !== null){
-				const response = await fetch(next);
-				const data:Results = await response.json();
-				dispatch(addItem(data.results));
-				totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-				setNext(data.next);
-			}
-		} catch (error) {
-			console.log('Error:', error);
-		}
-	};
+	const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+	
 
 	const goToPreviousPage = () => {
 		if (currentPage > 1) {
@@ -33,9 +18,6 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 	const goToNextPage = () => {
 		if (currentPage < totalPages) {
 			dispatch(setCurrentPage(currentPage + 1));
-		}
-		else if (currentPage === totalPages) {
-			fetchPokemon();
 		}
 	};
   
@@ -51,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
             &lt;
 						</li>
 						<li
-							className={`pagination-item ${((currentPage === totalPages)&& (next===null)) ? 'page-end' : ''}`}
+							className={`pagination-item ${(currentPage === totalPages) ? 'page-end' : ''}`}
 							onClick={goToNextPage}
 						>
               &gt;

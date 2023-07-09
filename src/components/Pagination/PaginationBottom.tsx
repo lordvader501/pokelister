@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
-import PaginationProps from './PaginatiionProps.js';
-import Results from '../../utilities/fetchTypes';
+import React from 'react';
+import PaginationProps from './PaginatiionProps';
 import { useAppDispatch} from '../../utilities/hooks';
-import { addItem } from '../../utilities/Store/pokemonSlice.js';
 import './PaginationBottom.css';
-import { setCurrentPage } from '../../utilities/Store/pageSlice.js';
+import { setCurrentPage } from '../../utilities/Store/pageSlice';
 
-const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, next, setNext }) => {
+const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPage, pokemonsPerPage }) => {
 	const dispatch = useAppDispatch();
-	const [pokemonsPerPage] = useState(50);
-	let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-	const fetchPokemon = async () => {
-		try {
-			if(next!== '' && next !== null){
-				const response = await fetch(next);
-				const data:Results = await response.json();
-				dispatch(addItem(data.results));
-				totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-				setNext(data.next);
-			}
-		} catch (error) {
-			console.log('Error:', error);
-		}
-	};
+	const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+	
 	const paginate = (pageNumber: number) => {
 		dispatch(setCurrentPage(pageNumber));
 	};
@@ -36,10 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 	const goToNextPage = () => {
 		if (currentPage < totalPages) {
 			dispatch(setCurrentPage(currentPage + 1));
-		}
-		else if (currentPage === totalPages) {
-			fetchPokemon();
-		}
+		}	
 	};
 	const renderPagination = () => {
 		
@@ -105,7 +87,7 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 					</li>
 					{renderPagination()}
 					<li
-						className={`pagination-item down-arrow ${((currentPage === totalPages)&& (next===null)) ? 'disabled' : ''}`}
+						className={`pagination-item down-arrow ${(currentPage === totalPages) ? 'disabled' : ''}`}
 						onClick={goToNextPage}
 					>
               &gt;
