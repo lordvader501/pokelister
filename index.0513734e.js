@@ -2967,51 +2967,66 @@ var _headerDefault = parcelHelpers.interopDefault(_header);
 var _reactRedux = require("react-redux");
 var _store = require("./utilities/Store/store");
 var _storeDefault = parcelHelpers.interopDefault(_store);
+var _hooks = require("./utilities/hooks");
+var _pokemonSlice = require("./utilities/Store/pokemonSlice");
+var _s = $RefreshSig$();
 const Applayout = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
-        store: (0, _storeDefault.default),
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Suspense, {
-            fallback: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerUIDefault.default), {}, void 0, false, void 0, void 0),
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 19,
-                    columnNumber: 5
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 20,
-                    columnNumber: 5
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 21,
-                    columnNumber: 5
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/App.tsx",
-            lineNumber: 18,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    (0, _react.useEffect)(()=>{
+        const fetchPokemon = async ()=>{
+            try {
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1281");
+                const data = await response.json();
+                dispatch((0, _pokemonSlice.addItem)(data.results));
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        };
+        fetchPokemon();
+    }, []);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Suspense, {
+        fallback: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerUIDefault.default), {}, void 0, false, void 0, void 0),
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 34,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 35,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 36,
+                columnNumber: 4
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/App.tsx",
-        lineNumber: 17,
+        lineNumber: 33,
         columnNumber: 3
     }, undefined);
 };
+_s(Applayout, "DKdeqxp2QYw2p6z8/ErYMRK/Ubo=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
 _c = Applayout;
 const router = (0, _reactRouterDom.createBrowserRouter)([
     {
         path: "/pokelister",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Applayout, {}, void 0, false, {
             fileName: "src/App.tsx",
-            lineNumber: 30,
+            lineNumber: 44,
             columnNumber: 11
         }, undefined),
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
             fileName: "src/App.tsx",
-            lineNumber: 31,
+            lineNumber: 45,
             columnNumber: 17
         }, undefined),
         children: [
@@ -3019,7 +3034,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 35,
+                    lineNumber: 49,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3027,7 +3042,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister/about",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 39,
+                    lineNumber: 53,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3035,7 +3050,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister/contacts",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactsDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 43,
+                    lineNumber: 57,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3043,7 +3058,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister/pokemon/:id",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pokemonInfoDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 47,
+                    lineNumber: 61,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3051,7 +3066,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "*",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 51,
+                    lineNumber: 65,
                     columnNumber: 14
                 }, undefined)
             }
@@ -3059,11 +3074,18 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
     }
 ]);
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterProvider), {
-    router: router
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
+    store: (0, _storeDefault.default),
+    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterProvider), {
+        router: router
+    }, void 0, false, {
+        fileName: "src/App.tsx",
+        lineNumber: 72,
+        columnNumber: 37
+    }, undefined)
 }, void 0, false, {
     fileName: "src/App.tsx",
-    lineNumber: 58,
+    lineNumber: 72,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -3074,7 +3096,7 @@ $RefreshReg$(_c, "Applayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Body":"lnxaO","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/ShimmerUI":"4tQLS","react-redux":"bdVon","./components/About/About":"1CfBw","./components/Contacts/Contacts":"eBM1j","./components/Footer/Footer":"8BzfF","./components/ErrorPage/Error":"eo2jD","./components/Header/Header":"8cFjv","./utilities/Store/store":"cCZc7","./components/PokemonInfo/PokemonInfo":"jAh2M"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Body":"lnxaO","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/ShimmerUI":"4tQLS","react-redux":"bdVon","./components/About/About":"1CfBw","./components/Contacts/Contacts":"eBM1j","./components/Footer/Footer":"8BzfF","./components/ErrorPage/Error":"eo2jD","./components/Header/Header":"8cFjv","./utilities/Store/store":"cCZc7","./components/PokemonInfo/PokemonInfo":"jAh2M","./utilities/hooks":"h8o22","./utilities/Store/pokemonSlice":"6Ag0A"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -5796,34 +5818,22 @@ var _paginationBottomDefault = parcelHelpers.interopDefault(_paginationBottom);
 var _paginationTop = require("./Pagination/PaginationTop");
 var _paginationTopDefault = parcelHelpers.interopDefault(_paginationTop);
 var _hooks = require("../utilities/hooks");
-var _pokemonSlice = require("../utilities/Store/pokemonSlice");
+// import { addItem } from '../utilities/Store/pokemonSlice';
+// import Results from '../utilities/fetchTypes';
 var _cardList = require("./CardlList/CardList");
 var _cardListDefault = parcelHelpers.interopDefault(_cardList);
 var _s = $RefreshSig$();
 const BodyLayout = ()=>{
     _s();
-    const [next, setNext] = (0, _react.useState)(null);
+    // const [next, setNext] = useState<string | null>(null);
     // const [searchPokemon, setSearchPokemon] = useState('');
     // const [currentPage ,setCurrentPage] = useState(1);
-    const [pokemonsPerPage] = (0, _react.useState)(50);
+    const [pokemonsPerPage] = (0, _react.useState)(30);
     const pokemonList = (0, _hooks.useAppSelector)((store)=>store.pokemon.pokemonList);
     const [filteredPokemonList, setFilteredPokemonList] = (0, _react.useState)(pokemonList);
-    const dispatch = (0, _hooks.useAppDispatch)();
+    // const dispatch = useAppDispatch();
     const currentPage = (0, _hooks.useAppSelector)((store)=>store.pageNum.currentPage);
     const searchPokemon = (0, _hooks.useAppSelector)((store)=>store.findPokemon.searchPokemon);
-    (0, _react.useEffect)(()=>{
-        const fetchPokemon = async ()=>{
-            try {
-                const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=320");
-                const data = await response.json();
-                dispatch((0, _pokemonSlice.addItem)(data.results));
-                setNext(data.next);
-            } catch (error) {
-                console.log("Error:", error);
-            }
-        };
-        fetchPokemon();
-    }, []);
     (0, _react.useEffect)(()=>{
         const newFilteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
         setFilteredPokemonList(newFilteredPokemonList);
@@ -5842,47 +5852,44 @@ const BodyLayout = ()=>{
                 children: "Pok\xe9mon List"
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 48,
+                lineNumber: 34,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopDefault.default), {
                 filteredPokemonList: filteredPokemonList,
                 currentPage: currentPage,
-                next: next,
-                setNext: setNext
+                pokemonsPerPage: pokemonsPerPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 49,
+                lineNumber: 35,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardListDefault.default), {
                 currentPokemons: currentPokemons
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 55,
+                lineNumber: 40,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationBottomDefault.default), {
                 filteredPokemonList: filteredPokemonList,
                 currentPage: currentPage,
-                next: next,
-                setNext: setNext
+                pokemonsPerPage: pokemonsPerPage
             }, void 0, false, {
                 fileName: "src/components/Body.tsx",
-                lineNumber: 56,
+                lineNumber: 41,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.tsx",
-        lineNumber: 47,
+        lineNumber: 33,
         columnNumber: 3
     }, undefined);
 };
-_s(BodyLayout, "pGSZZW7WJi+WIraZEC4zNaXWHG4=", false, function() {
+_s(BodyLayout, "sjHH0RqR+bc6mwZKfcnwpr9oVkQ=", false, function() {
     return [
         (0, _hooks.useAppSelector),
-        (0, _hooks.useAppDispatch),
         (0, _hooks.useAppSelector),
         (0, _hooks.useAppSelector)
     ];
@@ -5897,7 +5904,7 @@ $RefreshReg$(_c, "BodyLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationBottom":"jQlq4","../utilities/Store/pokemonSlice":"6Ag0A","./CardlList/CardList":"h7wKv","./Pagination/PaginationTop":"bsNSb"}],"h8o22":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationBottom":"jQlq4","./CardlList/CardList":"h7wKv","./Pagination/PaginationTop":"bsNSb"}],"h8o22":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
@@ -29356,37 +29363,21 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _hooks = require("../../utilities/hooks");
-var _pokemonSliceJs = require("../../utilities/Store/pokemonSlice.js");
 var _paginationBottomCss = require("./PaginationBottom.css");
-var _pageSliceJs = require("../../utilities/Store/pageSlice.js");
+var _pageSlice = require("../../utilities/Store/pageSlice");
 var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
+const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
     _s();
     const dispatch = (0, _hooks.useAppDispatch)();
-    const [pokemonsPerPage] = (0, _react.useState)(50);
-    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const fetchPokemon = async ()=>{
-        try {
-            if (next !== "" && next !== null) {
-                const response = await fetch(next);
-                const data = await response.json();
-                dispatch((0, _pokemonSliceJs.addItem)(data.results));
-                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-                setNext(data.next);
-            }
-        } catch (error) {
-            console.log("Error:", error);
-        }
-    };
+    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
     const paginate = (pageNumber)=>{
-        dispatch((0, _pageSliceJs.setCurrentPage)(pageNumber));
+        dispatch((0, _pageSlice.setCurrentPage)(pageNumber));
     };
     const goToPreviousPage = ()=>{
-        if (currentPage > 1) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage - 1));
+        if (currentPage > 1) dispatch((0, _pageSlice.setCurrentPage)(currentPage - 1));
     };
     const goToNextPage = ()=>{
-        if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
-        else if (currentPage === totalPages) fetchPokemon();
+        if (currentPage < totalPages) dispatch((0, _pageSlice.setCurrentPage)(currentPage + 1));
     };
     const renderPagination = ()=>{
         const pageNumbers = [];
@@ -29411,7 +29402,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                             children: "1"
                         }, void 0, false, {
                             fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 69,
+                            lineNumber: 51,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -29419,7 +29410,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                             children: "..."
                         }, void 0, false, {
                             fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 72,
+                            lineNumber: 54,
                             columnNumber: 7
                         }, undefined)
                     ]
@@ -29430,7 +29421,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                         children: pageNumber
                     }, pageNumber, false, {
                         fileName: "src/components/Pagination/PaginationBottom.tsx",
-                        lineNumber: 76,
+                        lineNumber: 58,
                         columnNumber: 6
                     }, undefined)),
                 endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -29440,7 +29431,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                             children: "..."
                         }, void 0, false, {
                             fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 86,
+                            lineNumber: 68,
                             columnNumber: 7
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -29449,7 +29440,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                             children: totalPages
                         }, void 0, false, {
                             fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 87,
+                            lineNumber: 69,
                             columnNumber: 7
                         }, undefined)
                     ]
@@ -29457,7 +29448,7 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
             ]
         }, void 0, true, {
             fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 66,
+            lineNumber: 48,
             columnNumber: 4
         }, undefined);
     };
@@ -29472,32 +29463,32 @@ const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
                     children: "<"
                 }, void 0, false, {
                     fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 100,
+                    lineNumber: 82,
                     columnNumber: 6
                 }, undefined),
                 renderPagination(),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item down-arrow ${currentPage === totalPages && next === null ? "disabled" : ""}`,
+                    className: `pagination-item down-arrow ${currentPage === totalPages ? "disabled" : ""}`,
                     onClick: goToNextPage,
                     children: ">"
                 }, void 0, false, {
                     fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 107,
+                    lineNumber: 89,
                     columnNumber: 6
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 99,
+            lineNumber: 81,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/Pagination/PaginationBottom.tsx",
-        lineNumber: 97,
+        lineNumber: 79,
         columnNumber: 3
     }, undefined);
 };
-_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
+_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
     return [
         (0, _hooks.useAppDispatch)
     ];
@@ -29512,24 +29503,24 @@ $RefreshReg$(_c, "Pagination");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/Store/pokemonSlice.js":"6Ag0A","./PaginationBottom.css":"1gBvO","../../utilities/Store/pageSlice.js":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6Ag0A":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","./PaginationBottom.css":"1gBvO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utilities/Store/pageSlice":"6eryl"}],"1gBvO":[function() {},{}],"6eryl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "addItem", ()=>addItem);
+parcelHelpers.export(exports, "setCurrentPage", ()=>setCurrentPage);
 var _toolkit = require("@reduxjs/toolkit");
-const pokemonSlice = (0, _toolkit.createSlice)({
-    name: "pokemon",
+const pageSlice = (0, _toolkit.createSlice)({
+    name: "pageNum",
     initialState: {
-        pokemonList: []
+        currentPage: 1.
     },
     reducers: {
-        addItem: (state, action)=>{
-            state.pokemonList.push(...action.payload);
+        setCurrentPage: (state, action)=>{
+            state.currentPage = action.payload;
         }
     }
 });
-const { addItem } = pokemonSlice.actions;
-exports.default = pokemonSlice.reducer;
+const { setCurrentPage } = pageSlice.actions;
+exports.default = pageSlice.reducer;
 
 },{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33405,26 +33396,7 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1gBvO":[function() {},{}],"6eryl":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "setCurrentPage", ()=>setCurrentPage);
-var _toolkit = require("@reduxjs/toolkit");
-const pageSlice = (0, _toolkit.createSlice)({
-    name: "pageNum",
-    initialState: {
-        currentPage: 1.
-    },
-    reducers: {
-        setCurrentPage: (state, action)=>{
-            state.currentPage = action.payload;
-        }
-    }
-});
-const { setCurrentPage } = pageSlice.actions;
-exports.default = pageSlice.reducer;
-
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7wKv":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7wKv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$79d6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33439,18 +33411,19 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _card = require("./Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
 var _cardListCss = require("./CardList.css");
+var _reactRouterDom = require("react-router-dom");
 const CardList = ({ currentPokemons })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
         className: "pokemon-list",
-        children: currentPokemons.map((pokemon)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                href: "/pokelister/pokemon/" + pokemon.url.split("/")[6],
+        children: currentPokemons.map((pokemon)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                to: "pokemon/" + pokemon.url.split("/")[6],
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
                     name: pokemon.name,
                     url: pokemon.url
                 }, void 0, false, {
                     fileName: "src/components/CardlList/CardList.tsx",
                     lineNumber: 15,
-                    columnNumber: 83
+                    columnNumber: 72
                 }, undefined)
             }, pokemon.name, false, {
                 fileName: "src/components/CardlList/CardList.tsx",
@@ -33473,7 +33446,7 @@ $RefreshReg$(_c, "CardList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Card":"euwcE","./CardList.css":"9EOR1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"euwcE":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Card":"euwcE","./CardList.css":"9EOR1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}],"euwcE":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$45b7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33516,101 +33489,7 @@ $RefreshReg$(_c, "Card");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9EOR1":[function() {},{}],"bsNSb":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9a25.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../../utilities/hooks");
-var _pokemonSliceJs = require("../../utilities/Store/pokemonSlice.js");
-var _paginationTopCss = require("./PaginationTop.css");
-var _pageSliceJs = require("../../utilities/Store/pageSlice.js");
-var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, next, setNext })=>{
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const [pokemonsPerPage] = (0, _react.useState)(50);
-    let totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const fetchPokemon = async ()=>{
-        try {
-            if (next !== "" && next !== null) {
-                const response = await fetch(next);
-                const data = await response.json();
-                dispatch((0, _pokemonSliceJs.addItem)(data.results));
-                totalPages = Math.ceil((filteredPokemonList.length + data.results.length) / pokemonsPerPage);
-                setNext(data.next);
-            }
-        } catch (error) {
-            console.log("Error:", error);
-        }
-    };
-    const goToPreviousPage = ()=>{
-        if (currentPage > 1) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage - 1));
-    };
-    const goToNextPage = ()=>{
-        if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
-        else if (currentPage === totalPages) fetchPokemon();
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "pagination pagination-top",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "pagination-list button-space",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
-                        onClick: goToPreviousPage,
-                        children: "<"
-                    }, void 0, false, {
-                        fileName: "src/components/Pagination/PaginationTop.tsx",
-                        lineNumber: 47,
-                        columnNumber: 7
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === totalPages && next === null ? "page-end" : ""}`,
-                        onClick: goToNextPage,
-                        children: ">"
-                    }, void 0, false, {
-                        fileName: "src/components/Pagination/PaginationTop.tsx",
-                        lineNumber: 53,
-                        columnNumber: 7
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/Pagination/PaginationTop.tsx",
-                lineNumber: 46,
-                columnNumber: 6
-            }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/Pagination/PaginationTop.tsx",
-            lineNumber: 45,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false);
-};
-_s(Pagination, "mctLLTMKyjILsUhWS2KyDf/RrA0=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch)
-    ];
-});
-_c = Pagination;
-exports.default = Pagination;
-var _c;
-$RefreshReg$(_c, "Pagination");
-
-  $parcel$ReactRefreshHelpers$9a25.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","../../utilities/Store/pokemonSlice.js":"6Ag0A","./PaginationTop.css":"dXRjn","../../utilities/Store/pageSlice.js":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXRjn":[function() {},{}],"9xmpe":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9EOR1":[function() {},{}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.14.0
  *
@@ -39354,7 +39233,85 @@ function getDoneFetcher(data) {
     return fetcher;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lOjBx":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsNSb":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9a25.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../../utilities/hooks");
+var _paginationTopCss = require("./PaginationTop.css");
+var _pageSliceJs = require("../../utilities/Store/pageSlice.js");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage - 1));
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "pagination pagination-top",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "pagination-list button-space",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
+                        onClick: goToPreviousPage,
+                        children: "<"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 29,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === totalPages ? "page-end" : ""}`,
+                        onClick: goToNextPage,
+                        children: ">"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 35,
+                        columnNumber: 7
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Pagination/PaginationTop.tsx",
+                lineNumber: 28,
+                columnNumber: 6
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/Pagination/PaginationTop.tsx",
+            lineNumber: 27,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false);
+};
+_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$9a25.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","./PaginationTop.css":"dXRjn","../../utilities/Store/pageSlice.js":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXRjn":[function() {},{}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -39631,10 +39588,17 @@ const HeaderLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "logo-container",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: (0, _constanats.LOGO),
-                    alt: "logo",
-                    className: "logo"
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                    to: "/pokelister",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _constanats.LOGO),
+                        alt: "logo",
+                        className: "logo"
+                    }, void 0, false, {
+                        fileName: "src/components/Header/Header.tsx",
+                        lineNumber: 29,
+                        columnNumber: 6
+                    }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
                     lineNumber: 28,
@@ -39645,31 +39609,38 @@ const HeaderLayout = ()=>{
                 lineNumber: 27,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "site-title",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    className: "title-text",
-                    children: "Pok\xe9Lister"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                to: "/pokelister",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "site-title",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        className: "title-text",
+                        children: "Pok\xe9Lister"
+                    }, void 0, false, {
+                        fileName: "src/components/Header/Header.tsx",
+                        lineNumber: 34,
+                        columnNumber: 6
+                    }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 31,
+                    lineNumber: 33,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 30,
+                lineNumber: 32,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "search-container",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchDefault.default), {}, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 34,
+                    lineNumber: 38,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 33,
+                lineNumber: 37,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39690,12 +39661,12 @@ const HeaderLayout = ()=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 41,
+                                        lineNumber: 45,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 40,
+                                    lineNumber: 44,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39706,12 +39677,12 @@ const HeaderLayout = ()=>{
                                         children: "About"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 44,
+                                        lineNumber: 48,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 47,
                                     columnNumber: 8
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39722,33 +39693,33 @@ const HeaderLayout = ()=>{
                                         children: "Contacts"
                                     }, void 0, false, {
                                         fileName: "src/components/Header/Header.tsx",
-                                        lineNumber: 47,
+                                        lineNumber: 51,
                                         columnNumber: 9
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header/Header.tsx",
-                                    lineNumber: 46,
+                                    lineNumber: 50,
                                     columnNumber: 8
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Header/Header.tsx",
-                            lineNumber: 39,
+                            lineNumber: 43,
                             columnNumber: 7
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/Header/Header.tsx",
-                        lineNumber: 38,
+                        lineNumber: 42,
                         columnNumber: 6
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header/Header.tsx",
-                    lineNumber: 37,
+                    lineNumber: 41,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header/Header.tsx",
-                lineNumber: 36,
+                lineNumber: 40,
                 columnNumber: 4
             }, undefined)
         ]
@@ -39868,7 +39839,26 @@ const store = (0, _toolkit.configureStore)({
 });
 exports.default = store;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./pokemonSlice":"6Ag0A","./pageSlice":"6eryl","./searchSlice":"6ohxQ"}],"jAh2M":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./pokemonSlice":"6Ag0A","./pageSlice":"6eryl","./searchSlice":"6ohxQ"}],"6Ag0A":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addItem", ()=>addItem);
+var _toolkit = require("@reduxjs/toolkit");
+const pokemonSlice = (0, _toolkit.createSlice)({
+    name: "pokemon",
+    initialState: {
+        pokemonList: []
+    },
+    reducers: {
+        addItem: (state, action)=>{
+            state.pokemonList.push(...action.payload);
+        }
+    }
+});
+const { addItem } = pokemonSlice.actions;
+exports.default = pokemonSlice.reducer;
+
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jAh2M":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2f57 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

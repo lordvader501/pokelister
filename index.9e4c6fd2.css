@@ -130,6 +130,11 @@ a {
   box-shadow: 0 -6px 9px 6px #04030ee0;
 }
 
+.active {
+  color: #fff;
+  background-color: #04aa6d;
+}
+
 .logo-container {
   align-items: center;
   width: 3%;
