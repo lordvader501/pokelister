@@ -133,24 +133,24 @@ a {
 .nav-link:hover {
   color: #fff;
   background-color: #353d3a;
-  padding: 6px 12px !important;
+  padding: 6px 12px;
 }
 
 .active {
   background-color: #04aa6d;
-  padding: 6px 8px !important;
+  padding: 6px 8px;
 }
 
 .sticky .active {
   background-color: #04aa6d63;
   border-radius: 50rem;
-  padding: 9px 15px !important;
+  padding: 9px 15px;
 }
 
 .sticky .nav-link:hover {
   background-color: #353d3a;
   border-radius: 50rem;
-  padding: 9px 15px !important;
+  padding: 9px 15px;
 }
 
 .logo-container {
