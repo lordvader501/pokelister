@@ -2,7 +2,7 @@
 .nav-link:hover {
   background-color: #353d3a;
   color: white;
-  padding: 6px 12px !important;
+  padding: 6px 12px;
 }
 .active {
   background-color: #04AA6D;
@@ -12,12 +12,12 @@
 .sticky .active {
   background-color: #04aa6d63;
   border-radius: 50rem;
-  padding: 9px 15px !important;
+  padding: 9px 15px ;
 }
 .sticky .nav-link:hover {
   background-color: #353d3a;
   border-radius: 50rem;
-  padding: 9px 15px !important;
+  padding: 9px 15px ;
 }
 
 .logo-container {
@@ -106,6 +106,31 @@
   border-radius: 4px;
 }
 
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #757474;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.open .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.open .bar2 {
+  opacity: 0;
+}
+
+.open .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+.menu-toggle {
+  display: none;
+}
+
 @media screen and (max-width: 1250px) and (min-width: 900px) {
   .logo-container {
     width: 5%;
@@ -121,7 +146,7 @@
     width: 8% !important;
   }
   .navdiv{
-    width:min-content;
+    width: 40%;
   }
   .site-title {
     width: 45% !important;
@@ -139,11 +164,16 @@
     width: 35%;
   }
   .sticky {
-    width: 60%;
+    width: 55%;
     left: 20%;
   }
-
-}
+  .search-container {
+    width: 60%;
+  }
+  .navdiv {
+    width: 40%;
+  }
+  }
 
 @media screen and (max-width: 550px) and (min-width: 450px) {
   .logo-container {
@@ -151,8 +181,50 @@
   }
 }
 
-@media screen and (max-width: 450px) and (min-width: 350px) {
+@media screen and (max-width: 450px) and (min-width: 200px) {
   .logo-container {
     width: 30% !important;
+  }
+  .nav-list {
+    display: none;
+  }
+}
+@media screen and (max-width:630px) and (min-width:250px) {
+  .navcontainer.mobile-menu-open .nav-list{
+    display: block;
+  }
+  .nav-link:hover{
+    background-color: #04AA6D;
+  }
+  .nav-list {
+    display: none;
+    position: absolute;
+    padding-top: 15px;
+    top: 65px;
+    right: 5%;
+    width: 90%;
+    height: 50%;
+    background-color: #353d3a;
+    z-index: 1;
+  }
+  .nav-item {
+    padding-top: 15px;
+  }
+  .menu-toggle {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .nav-item {
+
+    margin-top: 10px;
+  }
+
+  .search-container {
+    width: 90%;
+  }
+
+  .navdiv {
+    width: 15%;
   }
 }

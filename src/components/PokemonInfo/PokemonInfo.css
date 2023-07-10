@@ -32,16 +32,27 @@
 
 @media screen and (max-width:600px) {
 	.poke-img>img {
-			height: 150px;
-			width: auto;
-		}
+		height: 300px;
+		width: auto;
+	}
+	.poke-head h1{
+		font-size: 35px;
+	}
+	.poke-head {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
 @media screen and (max-width:400px) {
 	.poke-img>img {
-		height: 100px;
+		height: 250px;
 		width: auto;
 	}
 	.poke-img{
 		border-radius: 1rem;
+	}
+	.poke-head h1 {
+		font-size: 30px;
 	}
 }
