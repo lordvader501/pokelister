@@ -14,6 +14,8 @@ import store from './utilities/Store/store';
 import { useAppDispatch } from './utilities/hooks';
 import { addItem } from './utilities/Store/pokemonSlice';
 import Results from './utilities/fetchTypes';
+import SignUp from './components/SignInAndSignUp/SignUp';
+import SignIn from './components/SignInAndSignUp/SignIn';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
 			{
 				path:'/pokelister/contacts',
 				element: <ContactLayout />,
+			},
+			{
+				path:'/pokelister/signup',
+				element: <SignUp />,
+			},
+			{
+				path:'/pokelister/signin',
+				element: <SignIn />,
 			},
 			{
 				path: '/pokelister/pokemon/:id',

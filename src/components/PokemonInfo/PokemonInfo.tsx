@@ -23,7 +23,7 @@ const PokemonInfo: React.FC = () => {
 	},[]);
 	console.log(pokemon);
 	return (
-		<div className='container'>
+		<div className='container info-container'>
 			<div className="info-div">
 				<div className='poke-head'>
 					<div className="poke-img">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Header.css';
+import './Header.scss';
 import { LOGO } from '../../utilities/constanats';
 import Search from '../SearchBox/Search';
 
@@ -29,7 +29,7 @@ const HeaderLayout: React.FC = () => {
 	const handleMenuToggle = (): void => {
 		setMenuOpen(!menuOpen);
 	};
-	console.log(currLocation.pathname);
+	
 	return (
 		<header className="header">
 			<div className="logo-container">
@@ -62,6 +62,12 @@ const HeaderLayout: React.FC = () => {
 							</li>
 							<li className="nav-item">
 								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/contacts') ? 'active':''}`} to="/pokelister/contacts">Contacts</Link>
+							</li>
+							<li className="nav-item">
+								<Link className={`nav-link signup ${(currLocation.pathname === '/pokelister/signup') ? 'active':''}`} to="/pokelister/signup">SignUp</Link>
+							</li>
+							<li className="nav-item">
+								<Link className={`nav-link signin ${(currLocation.pathname === '/pokelister/signin') ? 'active':''}`} to="/pokelister/signin">SignIn</Link>
 							</li>
 						</ul>
 					</nav>
