@@ -130,6 +130,40 @@ a {
   box-shadow: 0 -6px 9px 6px #04030ee0;
 }
 
+.search-input {
+  color: #fff;
+  background-color: #333333a4;
+  border: double silver;
+  border-radius: 4px;
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+@media only screen and (width <= 900px) {
+  .search-input {
+    width: 70%;
+  }
+}
+
+@media only screen and (width <= 700px) {
+  .search-input {
+    width: 90%;
+  }
+}
+
+@media only screen and (width <= 600px) {
+  .search-input {
+    width: 100%;
+  }
+}
+
+@media only screen and (width <= 450px) {
+  .search-input {
+    width: 95%;
+  }
+}
+
 .nav-link:hover {
   color: #fff;
   background-color: #353d3a;
@@ -239,6 +273,25 @@ a {
   text-decoration: none;
 }
 
+.signup {
+  background-color: #353d3a;
+  border: 2px solid;
+}
+
+.signup:hover, .signup.active {
+  background-color: #04aa6d;
+}
+
+.signin {
+  background-color: #3e4442;
+  border: 2px solid #3e4442;
+}
+
+.signin.active {
+  background-color: #04aa6d;
+  border: none;
+}
+
 .bar1, .bar2, .bar3 {
   background-color: #757474;
   width: 35px;
@@ -335,7 +388,7 @@ a {
   }
 }
 
-@media screen and (width <= 630px) and (width >= 250px) {
+@media screen and (width <= 750px) and (width >= 250px) {
   .navcontainer.mobile-menu-open .nav-list {
     display: block;
   }
@@ -382,40 +435,6 @@ a {
   }
 }
 
-.search-input {
-  color: #fff;
-  background-color: #333333a4;
-  border: double silver;
-  border-radius: 4px;
-  width: 100%;
-  padding: 5px 10px;
-  font-size: 18px;
-}
-
-@media only screen and (width <= 900px) {
-  .search-input {
-    width: 70%;
-  }
-}
-
-@media only screen and (width <= 700px) {
-  .search-input {
-    width: 90%;
-  }
-}
-
-@media only screen and (width <= 600px) {
-  .search-input {
-    width: 100%;
-  }
-}
-
-@media only screen and (width <= 450px) {
-  .search-input {
-    width: 95%;
-  }
-}
-
 .poke-img > img {
   width: auto;
   height: 250px;
@@ -449,7 +468,7 @@ a {
   font-size: 50px;
 }
 
-.container {
+.info-container {
   justify-content: flex-start;
 }
 
@@ -483,6 +502,53 @@ a {
   .poke-head h1 {
     font-size: 30px;
   }
+}
+
+.form-container {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.form-container form {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.form-container form label {
+  width: 60%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-container form input {
+  color: #fff;
+  background: #534e4e;
+  border: 0;
+  border-radius: 5px;
+  width: 60%;
+  margin: 10px 0;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.form-container form button {
+  background-color: #7fffd4;
+  border: 0;
+  border-radius: 5px;
+  width: 30%;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.form-container ::placeholder {
+  color: #fff;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
