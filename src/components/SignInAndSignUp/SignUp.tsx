@@ -64,7 +64,7 @@ const SignUp = () => {
 	return (
 		<div className='container'>
 			<div className='form-container'>
-				<form onSubmit={(e)=> e.preventDefault()}>
+				<form onSubmit={ handleSubmit(onSubmit) }>
 					{
 						(!googleSigin) ?
 							(<>
@@ -81,7 +81,7 @@ const SignUp = () => {
 								<input placeholder='retype Password' type="password" {...register('password2', { required: true, minLength: 8, maxLength: 15, validate: (val:string) => (val === watch('password1')) })} />
 								{errors.password2 && <span>Please enter correct password</span>}
 								<div className="form-button">
-									<button type="submit" onSubmit={ handleSubmit(onSubmit) }>Sign Up</button>
+									<button type="submit">Sign Up</button>
 									<button type="button" onClick={changeSignInmethod}>Sign up with different account</button>
 								</div>
 							</>
