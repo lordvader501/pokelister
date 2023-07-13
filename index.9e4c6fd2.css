@@ -541,7 +541,8 @@ a {
   background-color: #7fffd4;
   border: 0;
   border-radius: 5px;
-  width: 30%;
+  width: 40%;
+  margin-bottom: 5px;
   padding: 10px;
   font-weight: 600;
 }
@@ -549,6 +550,13 @@ a {
 .form-container ::placeholder {
   color: #fff;
   font-weight: 500;
+}
+
+.form-button {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  display: flex;
 }
 
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
