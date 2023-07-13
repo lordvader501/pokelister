@@ -21,6 +21,7 @@
     "@types/react-redux": "^7.1.25",
     "@typescript-eslint/eslint-plugin": "5.60.0",
     "@typescript-eslint/parser": "5.60.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",
     "firebase": "^10.0.0",
