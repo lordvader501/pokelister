@@ -31,14 +31,23 @@
     button {
       background-color: aquamarine;
       border:0;
-      width: 30%;
+      width: 40%;
       padding: 10px 10px 10px 10px;
       font-weight: 600;
       border-radius: 5px;
+      margin-bottom: 5px;
+
     }
   }
   ::placeholder {
     color: #fff;
     font-weight: 500;
   }
+}
+
+.form-button {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

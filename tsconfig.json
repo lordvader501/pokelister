@@ -100,8 +100,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx"
-, "src/utilities/autoScrollNavbar.js"  ],
+    "src/**/*.tsx",
+  ],
   "exclude": [
     "node_modules"
   ]
