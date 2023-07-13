@@ -77519,7 +77519,7 @@ const SignUp = ()=>{
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "form-container",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                onSubmit: (e)=>e.preventDefault(),
+                onSubmit: handleSubmit(onSubmit),
                 children: !googleSigin ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -77637,7 +77637,6 @@ const SignUp = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "submit",
-                                    onSubmit: handleSubmit(onSubmit),
                                     children: "Sign Up"
                                 }, void 0, false, {
                                     fileName: "src/components/SignInAndSignUp/SignUp.tsx",
