@@ -3023,7 +3023,7 @@ _s(Applayout, "DKdeqxp2QYw2p6z8/ErYMRK/Ubo=", false, function() {
 _c = Applayout;
 const router = (0, _reactRouterDom.createBrowserRouter)([
     {
-        path: "/pokelister",
+        path: "/pokelister/",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Applayout, {}, void 0, false, {
             fileName: "src/App.tsx",
             lineNumber: 42,
@@ -39751,7 +39751,7 @@ const HeaderLayout = ()=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "logo-container",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                    to: "/pokelister",
+                    to: "/pokelister/",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                         src: (0, _constanats.LOGO),
                         alt: "logo",
@@ -39772,7 +39772,7 @@ const HeaderLayout = ()=>{
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                to: "/pokelister",
+                to: "/pokelister/",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "site-title",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -39850,8 +39850,8 @@ const HeaderLayout = ()=>{
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                                         className: "nav-item",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                            className: `nav-link ${currLocation.pathname === "/pokelister" ? "active" : ""}`,
-                                            to: "/pokelister",
+                                            className: `nav-link ${currLocation.pathname === "/pokelister/" ? "active" : ""}`,
+                                            to: "/pokelister/",
                                             children: "Home"
                                         }, void 0, false, {
                                             fileName: "src/components/Header/Header.tsx",
