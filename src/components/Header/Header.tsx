@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 import { LOGO } from '../../utilities/constanats';
 import Search from '../SearchBox/Search';
+import { UserContext } from '../../utilities/Contexts/User.context';
+import { signOutUser } from '../../utilities/Auth/firebase';
 
 const HeaderLayout: React.FC = () => {
 	const currLocation = useLocation();
-	const [menuOpen, setMenuOpen] = useState(false);
+	const [ menuOpen, setMenuOpen ] = useState(false);
+	const { currUser } = useContext(UserContext);
 
 	useEffect(() => {
 		const navbar:HTMLElement |null = document.getElementById('nav-container');
@@ -29,6 +32,7 @@ const HeaderLayout: React.FC = () => {
 	const handleMenuToggle = (): void => {
 		setMenuOpen(!menuOpen);
 	};
+	
 	
 	return (
 		<header className="header">
@@ -63,12 +67,22 @@ const HeaderLayout: React.FC = () => {
 							<li className="nav-item">
 								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/contacts') ? 'active':''}`} to="/pokelister/contacts">Contacts</Link>
 							</li>
-							<li className="nav-item">
-								<Link className={`nav-link signup ${(currLocation.pathname === '/pokelister/signup') ? 'active':''}`} to="/pokelister/signup">SignUp</Link>
-							</li>
-							<li className="nav-item">
-								<Link className={`nav-link signin ${(currLocation.pathname === '/pokelister/signin') ? 'active':''}`} to="/pokelister/signin">SignIn</Link>
-							</li>
+							{
+								!currUser ? (
+									<>
+										<li className="nav-item">
+											<Link className={`nav-link signup ${(currLocation.pathname === '/pokelister/signup') ? 'active':''}`} to="/pokelister/signup">Sign Up</Link>
+										</li>
+										<li className="nav-item">
+											<Link className={`nav-link signin ${(currLocation.pathname === '/pokelister/signin') ? 'active':''}`} to="/pokelister/signin">Sign In</Link>
+										</li>
+									</>
+								) : (
+									<li className='nav-item'>
+										<Link to='/pokelister/signin' onClick={signOutUser}>Sign Out</Link>
+									</li>
+								)
+							}
 						</ul>
 					</nav>
 				</div>

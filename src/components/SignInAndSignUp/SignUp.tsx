@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-
 import './Signup.scss';
 import { createAuthUserWithEmailAndPass, createUserDocFromAuth, signInWithGooglePopup } from '../../utilities/Auth/firebase';
 
@@ -29,23 +28,19 @@ const SignUp = () => {
 		if(!googleSigin){
 			try {
 				const {user} = await createAuthUserWithEmailAndPass(newdata.email,newdata.password);
-				console.log(user);
 				const displayName = newdata.firstname + ' ' + newdata.lastname;
 				await createUserDocFromAuth(user, {firstname, lastname, displayName});
 				reset();
-				navigate('/pokelister/signin');
+				navigate('/pokelister');
 
 			} catch (error) {
 				console.log(error);
 			}
 		} else {
 			try {
-				const {user} = await signInWithGooglePopup();
-				console.log(user);
-				const [firstname , lastname]  = user.displayName ? user.displayName.split(' ') : ['', ''];
-				await createUserDocFromAuth(user, {firstname, lastname});
+				await signInWithGooglePopup();
 				reset();
-				navigate('/pokelister/signin');
+				navigate('/pokelister');
 
 			} catch (error) {
 				console.log(error);
@@ -75,7 +70,7 @@ const SignUp = () => {
 								<label>Email ID:</label>
 								<input placeholder= 'Email ID' type="email" {...register('email', {required:true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i})} />
 								<label>Password:</label>
-								<input placeholder='Password' type="password" {...register('password1', { required: true, minLength: 8, maxLength: 15 })} />
+								<input placeholder='Password' type="password" {...register('password1', { required: true, minLength: 8, maxLength: 15, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/})} />
 								{errors.password1 && <span>Please enter correct password</span>}
 								<label>Password:</label>
 								<input placeholder='retype Password' type="password" {...register('password2', { required: true, minLength: 8, maxLength: 15, validate: (val:string) => (val === watch('password1')) })} />

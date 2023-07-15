@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './Signup.scss';
-import { signInWithGooglePopup, createUserDocFromAuth, signinAuthUserWithEmailAndPass } from '../../utilities/Auth/firebase';
+import { signInWithGooglePopup, signinAuthUserWithEmailAndPass } from '../../utilities/Auth/firebase';
 import { useNavigate } from 'react-router-dom';
 
 interface SignInProps {
@@ -18,8 +18,7 @@ const SignIn = () => {
 		const { email, password } = data;
 		if(!googleSigin){
 			try {
-				const {user} = await signinAuthUserWithEmailAndPass( email, password);
-				console.log(user);
+				await signinAuthUserWithEmailAndPass( email, password);
 				reset();
 				navigate('/pokelister');
 
@@ -28,10 +27,7 @@ const SignIn = () => {
 			}
 		} else {
 			try {
-				const {user} = await signInWithGooglePopup();
-				console.log(user);
-				const [firstname , lastname]  = user.displayName ? user.displayName.split(' ') : ['', ''];
-				await createUserDocFromAuth(user, {firstname, lastname});
+				await signInWithGooglePopup();
 				reset();
 				navigate('/pokelister');
 

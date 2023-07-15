@@ -16,6 +16,7 @@ import { addItem } from './utilities/Store/pokemonSlice';
 import Results from './utilities/fetchTypes';
 import SignUp from './components/SignInAndSignUp/SignUp';
 import SignIn from './components/SignInAndSignUp/SignIn';
+import { UserProvider } from './utilities/Contexts/User.context';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -33,9 +34,11 @@ const Applayout: React.FC = () => {
 	}, []);
 	return (
 		<React.Suspense fallback={<ShimmerUI />}>
-			<HeaderLayout />
-			<Outlet />
-			<FooterLayout />
+			<UserProvider>
+				<HeaderLayout />
+				<Outlet />
+				<FooterLayout />
+			</UserProvider>
 		</React.Suspense>
 	);
 };
