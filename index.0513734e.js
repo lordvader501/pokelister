@@ -3066,7 +3066,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                     const { currUser } = (0, _react.useContext)((0, _userContext.UserContext));
                     const navigate = (0, _reactRouterDom.useNavigate)();
                     (0, _react.useEffect)(()=>{
-                        if (currUser) navigate("/pokelister");
+                        if (currUser) navigate("/pokelister/");
                     }, [
                         currUser
                     ]);
@@ -3088,7 +3088,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                     const { currUser } = (0, _react.useContext)((0, _userContext.UserContext));
                     const navigate = (0, _reactRouterDom.useNavigate)();
                     (0, _react.useEffect)(()=>{
-                        if (currUser) navigate("/pokelister");
+                        if (currUser) navigate("/pokelister/");
                     }, [
                         currUser
                     ]);
@@ -75416,14 +75416,14 @@ const SignUp = ()=>{
                 displayName
             });
             reset();
-            navigate("/pokelister");
+            navigate("/pokelister/");
         } catch (error) {
             console.log(error);
         }
         else try {
             await (0, _firebase.signInWithGooglePopup)();
             reset();
-            navigate("/pokelister");
+            navigate("/pokelister/");
         } catch (error) {
             console.log(error);
         }
@@ -77715,7 +77715,7 @@ const SignIn = ()=>{
         if (!googleSigin) try {
             await (0, _firebase.signinAuthUserWithEmailAndPass)(email, password);
             reset();
-            navigate("/pokelister");
+            navigate("/pokelister/");
         } catch (error) {
             if (error instanceof (0, _app.FirebaseError)) {
                 if (error.code === "auth/wrong-password") alert("worng password");
@@ -77727,7 +77727,7 @@ const SignIn = ()=>{
         else try {
             await (0, _firebase.signInWithGooglePopup)();
             reset();
-            navigate("/pokelister");
+            navigate("/pokelister/");
         } catch (error) {
             console.log(error);
         }
