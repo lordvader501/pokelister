@@ -3036,7 +3036,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
         }, undefined),
         children: [
             {
-                path: "/pokelister",
+                path: "/pokelister/",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
                     lineNumber: 46,
