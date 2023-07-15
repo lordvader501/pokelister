@@ -2967,14 +2967,14 @@ var _headerDefault = parcelHelpers.interopDefault(_header);
 var _reactRedux = require("react-redux");
 var _store = require("./utilities/Store/store");
 var _storeDefault = parcelHelpers.interopDefault(_store);
-var _hooks = require("./utilities/hooks");
+var _hooks = require("./utilities/Hooks/hooks");
 var _pokemonSlice = require("./utilities/Store/pokemonSlice");
 var _signUp = require("./components/SignInAndSignUp/SignUp");
 var _signUpDefault = parcelHelpers.interopDefault(_signUp);
 var _signIn = require("./components/SignInAndSignUp/SignIn");
 var _signInDefault = parcelHelpers.interopDefault(_signIn);
 var _userContext = require("./utilities/Contexts/User.context");
-var _s = $RefreshSig$();
+var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$();
 const Applayout = ()=>{
     _s();
     const dispatch = (0, _hooks.useAppDispatch)();
@@ -2992,30 +2992,24 @@ const Applayout = ()=>{
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Suspense, {
         fallback: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerUIDefault.default), {}, void 0, false, void 0, void 0),
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContext.UserProvider), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 36,
-                    columnNumber: 5
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 37,
-                    columnNumber: 5
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 38,
-                    columnNumber: 5
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/App.tsx",
-            lineNumber: 35,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 35,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 36,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
+                fileName: "src/App.tsx",
+                lineNumber: 37,
+                columnNumber: 4
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/App.tsx",
         lineNumber: 34,
         columnNumber: 10
@@ -3032,12 +3026,12 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
         path: "/pokelister",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Applayout, {}, void 0, false, {
             fileName: "src/App.tsx",
-            lineNumber: 44,
+            lineNumber: 42,
             columnNumber: 12
         }, undefined),
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
             fileName: "src/App.tsx",
-            lineNumber: 45,
+            lineNumber: 43,
             columnNumber: 17
         }, undefined),
         children: [
@@ -3045,7 +3039,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 48,
+                    lineNumber: 46,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3053,7 +3047,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister/about",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 51,
+                    lineNumber: 49,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3061,31 +3055,59 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/pokelister/contacts",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactsDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 54,
+                    lineNumber: 52,
                     columnNumber: 14
                 }, undefined)
             },
             {
                 path: "/pokelister/signup",
-                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 57,
-                    columnNumber: 14
-                }, undefined)
+                Component: _s1(()=>{
+                    _s1();
+                    const { currUser } = (0, _react.useContext)((0, _userContext.UserContext));
+                    const navigate = (0, _reactRouterDom.useNavigate)();
+                    (0, _react.useEffect)(()=>{
+                        if (currUser) navigate("/pokelister");
+                    }, [
+                        currUser
+                    ]);
+                    return !currUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpDefault.default), {}, void 0, false, {
+                        fileName: "src/App.tsx",
+                        lineNumber: 65,
+                        columnNumber: 27
+                    }, undefined);
+                }, "DtEjCz8nVYHeH9+5wYOmUc1/FSY=", false, function() {
+                    return [
+                        (0, _reactRouterDom.useNavigate)
+                    ];
+                })
             },
             {
                 path: "/pokelister/signin",
-                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signInDefault.default), {}, void 0, false, {
-                    fileName: "src/App.tsx",
-                    lineNumber: 60,
-                    columnNumber: 14
-                }, undefined)
+                Component: _s2(()=>{
+                    _s2();
+                    const { currUser } = (0, _react.useContext)((0, _userContext.UserContext));
+                    const navigate = (0, _reactRouterDom.useNavigate)();
+                    (0, _react.useEffect)(()=>{
+                        if (currUser) navigate("/pokelister");
+                    }, [
+                        currUser
+                    ]);
+                    return !currUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signInDefault.default), {}, void 0, false, {
+                        fileName: "src/App.tsx",
+                        lineNumber: 79,
+                        columnNumber: 27
+                    }, undefined);
+                }, "DtEjCz8nVYHeH9+5wYOmUc1/FSY=", false, function() {
+                    return [
+                        (0, _reactRouterDom.useNavigate)
+                    ];
+                })
             },
             {
                 path: "/pokelister/pokemon/:id",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pokemonInfoDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 63,
+                    lineNumber: 83,
                     columnNumber: 14
                 }, undefined)
             },
@@ -3093,7 +3115,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "*",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
                     fileName: "src/App.tsx",
-                    lineNumber: 66,
+                    lineNumber: 86,
                     columnNumber: 14
                 }, undefined)
             }
@@ -3103,16 +3125,22 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
     store: (0, _storeDefault.default),
-    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterProvider), {
-        router: router
+    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContext.UserProvider), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterProvider), {
+            router: router
+        }, void 0, false, {
+            fileName: "src/App.tsx",
+            lineNumber: 90,
+            columnNumber: 51
+        }, undefined)
     }, void 0, false, {
         fileName: "src/App.tsx",
-        lineNumber: 70,
+        lineNumber: 90,
         columnNumber: 37
     }, undefined)
 }, void 0, false, {
     fileName: "src/App.tsx",
-    lineNumber: 70,
+    lineNumber: 90,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -3123,7 +3151,7 @@ $RefreshReg$(_c, "Applayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Body":"lnxaO","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/ShimmerUI":"4tQLS","react-redux":"bdVon","./components/About/About":"1CfBw","./components/Contacts/Contacts":"eBM1j","./components/Footer/Footer":"8BzfF","./components/ErrorPage/Error":"eo2jD","./components/Header/Header":"8cFjv","./utilities/Store/store":"cCZc7","./components/PokemonInfo/PokemonInfo":"jAh2M","./utilities/hooks":"h8o22","./utilities/Store/pokemonSlice":"6Ag0A","./components/SignInAndSignUp/SignIn":"hZSh2","./components/SignInAndSignUp/SignUp":"2xRiQ","./utilities/Contexts/User.context":"kzYMG"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/Body":"lnxaO","./components/About/About":"1CfBw","./components/Footer/Footer":"8BzfF","./components/Contacts/Contacts":"eBM1j","./components/ShimmerUI":"4tQLS","./components/ErrorPage/Error":"eo2jD","./components/PokemonInfo/PokemonInfo":"jAh2M","react-router-dom":"9xmpe","./components/Header/Header":"8cFjv","react-redux":"bdVon","./utilities/Store/store":"cCZc7","./utilities/Hooks/hooks":"dNnm6","./utilities/Store/pokemonSlice":"6Ag0A","./components/SignInAndSignUp/SignUp":"2xRiQ","./components/SignInAndSignUp/SignIn":"hZSh2","./utilities/Contexts/User.context":"kzYMG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -5828,436 +5856,28 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lnxaO":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$5a2c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5a2c.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _paginationBottom = require("./Pagination/PaginationBottom");
-var _paginationBottomDefault = parcelHelpers.interopDefault(_paginationBottom);
-var _paginationTop = require("./Pagination/PaginationTop");
-var _paginationTopDefault = parcelHelpers.interopDefault(_paginationTop);
-var _hooks = require("../utilities/hooks");
-// import { addItem } from '../utilities/Store/pokemonSlice';
-// import Results from '../utilities/fetchTypes';
-var _cardList = require("./CardlList/CardList");
-var _cardListDefault = parcelHelpers.interopDefault(_cardList);
-var _s = $RefreshSig$();
-const BodyLayout = ()=>{
-    _s();
-    // const [next, setNext] = useState<string | null>(null);
-    // const [searchPokemon, setSearchPokemon] = useState('');
-    // const [currentPage ,setCurrentPage] = useState(1);
-    const [pokemonsPerPage] = (0, _react.useState)(30);
-    const pokemonList = (0, _hooks.useAppSelector)((store)=>store.pokemon.pokemonList);
-    const [filteredPokemonList, setFilteredPokemonList] = (0, _react.useState)(pokemonList);
-    // const dispatch = useAppDispatch();
-    const currentPage = (0, _hooks.useAppSelector)((store)=>store.pageNum.currentPage);
-    const searchPokemon = (0, _hooks.useAppSelector)((store)=>store.findPokemon.searchPokemon);
-    (0, _react.useEffect)(()=>{
-        const newFilteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
-        setFilteredPokemonList(newFilteredPokemonList);
-    }, [
-        pokemonList,
-        searchPokemon
-    ]);
-    const indexOfLastPokemon = currentPage * pokemonsPerPage;
-    const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-    const currentPokemons = filteredPokemonList.slice(indexOfFirstPokemon, indexOfLastPokemon);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                className: "title",
-                children: "Pok\xe9mon List"
-            }, void 0, false, {
-                fileName: "src/components/Body.tsx",
-                lineNumber: 27,
-                columnNumber: 4
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopDefault.default), {
-                filteredPokemonList: filteredPokemonList,
-                currentPage: currentPage,
-                pokemonsPerPage: pokemonsPerPage
-            }, void 0, false, {
-                fileName: "src/components/Body.tsx",
-                lineNumber: 28,
-                columnNumber: 4
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardListDefault.default), {
-                currentPokemons: currentPokemons
-            }, void 0, false, {
-                fileName: "src/components/Body.tsx",
-                lineNumber: 29,
-                columnNumber: 4
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationBottomDefault.default), {
-                filteredPokemonList: filteredPokemonList,
-                currentPage: currentPage,
-                pokemonsPerPage: pokemonsPerPage
-            }, void 0, false, {
-                fileName: "src/components/Body.tsx",
-                lineNumber: 30,
-                columnNumber: 4
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/Body.tsx",
-        lineNumber: 26,
-        columnNumber: 10
-    }, undefined);
+},{}],"lOjBx":[function(require,module,exports) {
+"use strict";
+var m = require("aaccff5d309d9239");
+var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.createRoot(c, o);
+    } finally{
+        i.usingClientEntryPoint = false;
+    }
 };
-_s(BodyLayout, "sjHH0RqR+bc6mwZKfcnwpr9oVkQ=", false, function() {
-    return [
-        (0, _hooks.useAppSelector),
-        (0, _hooks.useAppSelector),
-        (0, _hooks.useAppSelector)
-    ];
-});
-_c = BodyLayout;
-exports.default = BodyLayout;
-var _c;
-$RefreshReg$(_c, "BodyLayout");
-
-  $parcel$ReactRefreshHelpers$5a2c.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../utilities/hooks":"h8o22","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Pagination/PaginationBottom":"jQlq4","./CardlList/CardList":"h7wKv","./Pagination/PaginationTop":"bsNSb"}],"h8o22":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
-parcelHelpers.export(exports, "useAppSelector", ()=>useAppSelector);
-var _reactRedux = require("react-redux");
-const useAppDispatch = (0, _reactRedux.useDispatch);
-const useAppSelector = (0, _reactRedux.useSelector);
-
-},{"react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
-// The primary entry point assumes we're working with standard ReactDOM/RN, but
-// older versions that do not include `useSyncExternalStore` (React 16.9 - 17.x).
-// Because of that, the useSyncExternalStore compat shim is needed.
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "batch", ()=>(0, _reactBatchedUpdates.unstable_batchedUpdates));
-var _shim = require("use-sync-external-store/shim");
-var _withSelector = require("use-sync-external-store/shim/with-selector");
-var _reactBatchedUpdates = require("./utils/reactBatchedUpdates");
-var _batch = require("./utils/batch");
-var _useSelector = require("./hooks/useSelector");
-var _connect = require("./components/connect");
-var _exports = require("./exports");
-parcelHelpers.exportAll(_exports, exports);
-(0, _useSelector.initializeUseSelector)((0, _withSelector.useSyncExternalStoreWithSelector));
-(0, _connect.initializeConnect)((0, _shim.useSyncExternalStore)); // Enable batched updates in our subscriptions for use
-// with standard React renderers (ReactDOM, React Native)
-(0, _batch.setBatch)((0, _reactBatchedUpdates.unstable_batchedUpdates));
-
-},{"use-sync-external-store/shim":"hyxdF","use-sync-external-store/shim/with-selector":"iDrhg","./utils/reactBatchedUpdates":"5K86X","./utils/batch":"ikw0G","./hooks/useSelector":"l3rFI","./components/connect":"5gOIw","./exports":"iAa1P","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hyxdF":[function(require,module,exports) {
-"use strict";
-module.exports = require("5ab7799a565bbe74");
-
-},{"5ab7799a565bbe74":"khU3l"}],"khU3l":[function(require,module,exports) {
-/**
- * @license React
- * use-sync-external-store-shim.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ "use strict";
-(function() {
-    "use strict";
-    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("d49206e28a986e9f");
-    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function error(format) {
-        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
-        printWarning("error", format, args);
+exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.hydrateRoot(c, h, o);
+    } finally{
+        i.usingClientEntryPoint = false;
     }
-    function printWarning(level, format, args) {
-        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-        var stack = ReactDebugCurrentFrame.getStackAddendum();
-        if (stack !== "") {
-            format += "%s";
-            args = args.concat([
-                stack
-            ]);
-        } // eslint-disable-next-line react-internal/safe-string-coercion
-        var argsWithFormat = args.map(function(item) {
-            return String(item);
-        }); // Careful: RN currently depends on this prefix
-        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
-        // breaks IE9: https://github.com/facebook/react/issues/13610
-        // eslint-disable-next-line react-internal/no-production-logging
-        Function.prototype.apply.call(console[level], console, argsWithFormat);
-    }
-    /**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */ function is(x, y) {
-        return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
-        ;
-    }
-    var objectIs = typeof Object.is === "function" ? Object.is : is;
-    // dispatch for CommonJS interop named imports.
-    var useState = React.useState, useEffect = React.useEffect, useLayoutEffect = React.useLayoutEffect, useDebugValue = React.useDebugValue;
-    var didWarnOld18Alpha = false;
-    var didWarnUncachedGetSnapshot = false; // Disclaimer: This shim breaks many of the rules of React, and only works
-    // because of a very particular set of implementation details and assumptions
-    // -- change any one of them and it will break. The most important assumption
-    // is that updates are always synchronous, because concurrent rendering is
-    // only available in versions of React that also have a built-in
-    // useSyncExternalStore API. And we only use this shim when the built-in API
-    // does not exist.
-    //
-    // Do not assume that the clever hacks used by this hook also work in general.
-    // The point of this shim is to replace the need for hacks by other libraries.
-    function useSyncExternalStore(subscribe, getSnapshot, // React do not expose a way to check if we're hydrating. So users of the shim
-    // will need to track that themselves and return the correct value
-    // from `getSnapshot`.
-    getServerSnapshot) {
-        if (!didWarnOld18Alpha) {
-            if (React.startTransition !== undefined) {
-                didWarnOld18Alpha = true;
-                error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
-            }
-        }
-        // breaks the rules of React, and only works here because of specific
-        // implementation details, most importantly that updates are
-        // always synchronous.
-        var value = getSnapshot();
-        if (!didWarnUncachedGetSnapshot) {
-            var cachedValue = getSnapshot();
-            if (!objectIs(value, cachedValue)) {
-                error("The result of getSnapshot should be cached to avoid an infinite loop");
-                didWarnUncachedGetSnapshot = true;
-            }
-        }
-        // re-render whenever the subscribed state changes by updating an some
-        // arbitrary useState hook. Then, during render, we call getSnapshot to read
-        // the current value.
-        //
-        // Because we don't actually use the state returned by the useState hook, we
-        // can save a bit of memory by storing other stuff in that slot.
-        //
-        // To implement the early bailout, we need to track some things on a mutable
-        // object. Usually, we would put that in a useRef hook, but we can stash it in
-        // our useState hook instead.
-        //
-        // To force a re-render, we call forceUpdate({inst}). That works because the
-        // new object always fails an equality check.
-        var _useState = useState({
-            inst: {
-                value: value,
-                getSnapshot: getSnapshot
-            }
-        }), inst = _useState[0].inst, forceUpdate = _useState[1]; // Track the latest getSnapshot function with a ref. This needs to be updated
-        // in the layout phase so we can access it during the tearing check that
-        // happens on subscribe.
-        useLayoutEffect(function() {
-            inst.value = value;
-            inst.getSnapshot = getSnapshot; // Whenever getSnapshot or subscribe changes, we need to check in the
-            // commit phase if there was an interleaved mutation. In concurrent mode
-            // this can happen all the time, but even in synchronous mode, an earlier
-            // effect may have mutated the store.
-            if (checkIfSnapshotChanged(inst)) // Force a re-render.
-            forceUpdate({
-                inst: inst
-            });
-        }, [
-            subscribe,
-            value,
-            getSnapshot
-        ]);
-        useEffect(function() {
-            // Check for changes right before subscribing. Subsequent changes will be
-            // detected in the subscription handler.
-            if (checkIfSnapshotChanged(inst)) // Force a re-render.
-            forceUpdate({
-                inst: inst
-            });
-            var handleStoreChange = function() {
-                // TODO: Because there is no cross-renderer API for batching updates, it's
-                // up to the consumer of this library to wrap their subscription event
-                // with unstable_batchedUpdates. Should we try to detect when this isn't
-                // the case and print a warning in development?
-                // The store changed. Check if the snapshot changed since the last time we
-                // read from the store.
-                if (checkIfSnapshotChanged(inst)) // Force a re-render.
-                forceUpdate({
-                    inst: inst
-                });
-            }; // Subscribe to the store and return a clean-up function.
-            return subscribe(handleStoreChange);
-        }, [
-            subscribe
-        ]);
-        useDebugValue(value);
-        return value;
-    }
-    function checkIfSnapshotChanged(inst) {
-        var latestGetSnapshot = inst.getSnapshot;
-        var prevValue = inst.value;
-        try {
-            var nextValue = latestGetSnapshot();
-            return !objectIs(prevValue, nextValue);
-        } catch (error) {
-            return true;
-        }
-    }
-    function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
-        // Note: The shim does not use getServerSnapshot, because pre-18 versions of
-        // React do not expose a way to check if we're hydrating. So users of the shim
-        // will need to track that themselves and return the correct value
-        // from `getSnapshot`.
-        return getSnapshot();
-    }
-    var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
-    var isServerEnvironment = !canUseDOM;
-    var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore;
-    var useSyncExternalStore$2 = React.useSyncExternalStore !== undefined ? React.useSyncExternalStore : shim;
-    exports.useSyncExternalStore = useSyncExternalStore$2;
-    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-})();
+};
 
-},{"d49206e28a986e9f":"21dqq"}],"iDrhg":[function(require,module,exports) {
-"use strict";
-module.exports = require("825b2585cf61f03e");
-
-},{"825b2585cf61f03e":"vU6Qe"}],"vU6Qe":[function(require,module,exports) {
-/**
- * @license React
- * use-sync-external-store-shim/with-selector.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ "use strict";
-(function() {
-    "use strict";
-    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("2f25dc3829c8e76e");
-    var shim = require("c4afd16660885105");
-    /**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */ function is(x, y) {
-        return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
-        ;
-    }
-    var objectIs = typeof Object.is === "function" ? Object.is : is;
-    var useSyncExternalStore = shim.useSyncExternalStore;
-    // for CommonJS interop.
-    var useRef = React.useRef, useEffect = React.useEffect, useMemo = React.useMemo, useDebugValue = React.useDebugValue; // Same as useSyncExternalStore, but supports selector and isEqual arguments.
-    function useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, selector, isEqual) {
-        // Use this to track the rendered snapshot.
-        var instRef = useRef(null);
-        var inst;
-        if (instRef.current === null) {
-            inst = {
-                hasValue: false,
-                value: null
-            };
-            instRef.current = inst;
-        } else inst = instRef.current;
-        var _useMemo = useMemo(function() {
-            // Track the memoized state using closure variables that are local to this
-            // memoized instance of a getSnapshot function. Intentionally not using a
-            // useRef hook, because that state would be shared across all concurrent
-            // copies of the hook/component.
-            var hasMemo = false;
-            var memoizedSnapshot;
-            var memoizedSelection;
-            var memoizedSelector = function(nextSnapshot) {
-                if (!hasMemo) {
-                    // The first time the hook is called, there is no memoized result.
-                    hasMemo = true;
-                    memoizedSnapshot = nextSnapshot;
-                    var _nextSelection = selector(nextSnapshot);
-                    if (isEqual !== undefined) // Even if the selector has changed, the currently rendered selection
-                    // may be equal to the new selection. We should attempt to reuse the
-                    // current value if possible, to preserve downstream memoizations.
-                    {
-                        if (inst.hasValue) {
-                            var currentSelection = inst.value;
-                            if (isEqual(currentSelection, _nextSelection)) {
-                                memoizedSelection = currentSelection;
-                                return currentSelection;
-                            }
-                        }
-                    }
-                    memoizedSelection = _nextSelection;
-                    return _nextSelection;
-                } // We may be able to reuse the previous invocation's result.
-                // We may be able to reuse the previous invocation's result.
-                var prevSnapshot = memoizedSnapshot;
-                var prevSelection = memoizedSelection;
-                if (objectIs(prevSnapshot, nextSnapshot)) // The snapshot is the same as last time. Reuse the previous selection.
-                return prevSelection;
-                 // The snapshot has changed, so we need to compute a new selection.
-                // The snapshot has changed, so we need to compute a new selection.
-                var nextSelection = selector(nextSnapshot); // If a custom isEqual function is provided, use that to check if the data
-                // has changed. If it hasn't, return the previous selection. That signals
-                // to React that the selections are conceptually equal, and we can bail
-                // out of rendering.
-                // If a custom isEqual function is provided, use that to check if the data
-                // has changed. If it hasn't, return the previous selection. That signals
-                // to React that the selections are conceptually equal, and we can bail
-                // out of rendering.
-                if (isEqual !== undefined && isEqual(prevSelection, nextSelection)) return prevSelection;
-                memoizedSnapshot = nextSnapshot;
-                memoizedSelection = nextSelection;
-                return nextSelection;
-            }; // Assigning this to a constant so that Flow knows it can't change.
-            // Assigning this to a constant so that Flow knows it can't change.
-            var maybeGetServerSnapshot = getServerSnapshot === undefined ? null : getServerSnapshot;
-            var getSnapshotWithSelector = function() {
-                return memoizedSelector(getSnapshot());
-            };
-            var getServerSnapshotWithSelector = maybeGetServerSnapshot === null ? undefined : function() {
-                return memoizedSelector(maybeGetServerSnapshot());
-            };
-            return [
-                getSnapshotWithSelector,
-                getServerSnapshotWithSelector
-            ];
-        }, [
-            getSnapshot,
-            getServerSnapshot,
-            selector,
-            isEqual
-        ]), getSelection = _useMemo[0], getServerSelection = _useMemo[1];
-        var value = useSyncExternalStore(subscribe, getSelection, getServerSelection);
-        useEffect(function() {
-            inst.hasValue = true;
-            inst.value = value;
-        }, [
-            value
-        ]);
-        useDebugValue(value);
-        return value;
-    }
-    exports.useSyncExternalStoreWithSelector = useSyncExternalStoreWithSelector;
-    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-})();
-
-},{"2f25dc3829c8e76e":"21dqq","c4afd16660885105":"hyxdF"}],"5K86X":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "unstable_batchedUpdates", ()=>(0, _reactDom.unstable_batchedUpdates));
-var _reactDom = require("react-dom");
-
-},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j6uA9":[function(require,module,exports) {
+},{"aaccff5d309d9239":"j6uA9"}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -27716,7 +27336,583 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"gkKU3":[function(require,module,exports) {
+},{}],"lnxaO":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5a2c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5a2c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _paginationBottom = require("./Pagination/PaginationBottom");
+var _paginationBottomDefault = parcelHelpers.interopDefault(_paginationBottom);
+var _paginationTop = require("./Pagination/PaginationTop");
+var _paginationTopDefault = parcelHelpers.interopDefault(_paginationTop);
+var _hooks = require("../utilities/Hooks/hooks");
+var _cardList = require("./CardlList/CardList");
+var _cardListDefault = parcelHelpers.interopDefault(_cardList);
+var _s = $RefreshSig$();
+const BodyLayout = ()=>{
+    _s();
+    const [pokemonsPerPage] = (0, _react.useState)(30);
+    const pokemonList = (0, _hooks.useAppSelector)((store)=>store.pokemon.pokemonList);
+    const [filteredPokemonList, setFilteredPokemonList] = (0, _react.useState)(pokemonList);
+    const currentPage = (0, _hooks.useAppSelector)((store)=>store.pageNum.currentPage);
+    const searchPokemon = (0, _hooks.useAppSelector)((store)=>store.findPokemon.searchPokemon);
+    (0, _react.useEffect)(()=>{
+        const newFilteredPokemonList = pokemonList.filter((pokemon)=>pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase()));
+        setFilteredPokemonList(newFilteredPokemonList);
+    }, [
+        pokemonList,
+        searchPokemon
+    ]);
+    const indexOfLastPokemon = currentPage * pokemonsPerPage;
+    const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
+    const currentPokemons = filteredPokemonList.slice(indexOfFirstPokemon, indexOfLastPokemon);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "title",
+                children: "Pok\xe9mon List"
+            }, void 0, false, {
+                fileName: "src/components/Body.tsx",
+                lineNumber: 21,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationTopDefault.default), {
+                filteredPokemonList: filteredPokemonList,
+                currentPage: currentPage,
+                pokemonsPerPage: pokemonsPerPage
+            }, void 0, false, {
+                fileName: "src/components/Body.tsx",
+                lineNumber: 22,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardListDefault.default), {
+                currentPokemons: currentPokemons
+            }, void 0, false, {
+                fileName: "src/components/Body.tsx",
+                lineNumber: 23,
+                columnNumber: 4
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paginationBottomDefault.default), {
+                filteredPokemonList: filteredPokemonList,
+                currentPage: currentPage,
+                pokemonsPerPage: pokemonsPerPage
+            }, void 0, false, {
+                fileName: "src/components/Body.tsx",
+                lineNumber: 24,
+                columnNumber: 4
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Body.tsx",
+        lineNumber: 20,
+        columnNumber: 10
+    }, undefined);
+};
+_s(BodyLayout, "sjHH0RqR+bc6mwZKfcnwpr9oVkQ=", false, function() {
+    return [
+        (0, _hooks.useAppSelector),
+        (0, _hooks.useAppSelector),
+        (0, _hooks.useAppSelector)
+    ];
+});
+_c = BodyLayout;
+exports.default = BodyLayout;
+var _c;
+$RefreshReg$(_c, "BodyLayout");
+
+  $parcel$ReactRefreshHelpers$5a2c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Pagination/PaginationBottom":"jQlq4","./Pagination/PaginationTop":"bsNSb","../utilities/Hooks/hooks":"dNnm6","./CardlList/CardList":"h7wKv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jQlq4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c5a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c5a0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooks = require("../../utilities/Hooks/hooks");
+var _paginationBottomCss = require("./PaginationBottom.css");
+var _pageSlice = require("../../utilities/Store/pageSlice");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const paginate = (pageNumber)=>{
+        dispatch((0, _pageSlice.setCurrentPage)(pageNumber));
+    };
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) dispatch((0, _pageSlice.setCurrentPage)(currentPage - 1));
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) dispatch((0, _pageSlice.setCurrentPage)(currentPage + 1));
+    };
+    const renderPagination = ()=>{
+        const pageNumbers = [];
+        const maxPagesToShow = 5;
+        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
+        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
+        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+        if (totalPages <= maxPagesToShow) {
+            startPage = 1;
+            endPage = totalPages;
+        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
+        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
+        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(1),
+                            children: "1"
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 45,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 48,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true),
+                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
+                        onClick: ()=>paginate(pageNumber),
+                        children: pageNumber
+                    }, pageNumber, false, {
+                        fileName: "src/components/Pagination/PaginationBottom.tsx",
+                        lineNumber: 50,
+                        columnNumber: 36
+                    }, undefined)),
+                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item disabled",
+                            children: "..."
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 54,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            className: "pagination-item",
+                            onClick: ()=>paginate(totalPages),
+                            children: totalPages
+                        }, void 0, false, {
+                            fileName: "src/components/Pagination/PaginationBottom.tsx",
+                            lineNumber: 55,
+                            columnNumber: 7
+                        }, undefined)
+                    ]
+                }, void 0, true)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 43,
+            columnNumber: 12
+        }, undefined);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "pagination",
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            className: "pagination-list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item down-arrow ${currentPage === 1 ? "disabled" : ""}`,
+                    onClick: goToPreviousPage,
+                    children: "<"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 63,
+                    columnNumber: 6
+                }, undefined),
+                renderPagination(),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: `pagination-item down-arrow ${currentPage === totalPages ? "disabled" : ""}`,
+                    onClick: goToNextPage,
+                    children: ">"
+                }, void 0, false, {
+                    fileName: "src/components/Pagination/PaginationBottom.tsx",
+                    lineNumber: 67,
+                    columnNumber: 6
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Pagination/PaginationBottom.tsx",
+            lineNumber: 62,
+            columnNumber: 23
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Pagination/PaginationBottom.tsx",
+        lineNumber: 61,
+        columnNumber: 10
+    }, undefined);
+};
+_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$c5a0.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/Hooks/hooks":"dNnm6","./PaginationBottom.css":"1gBvO","../../utilities/Store/pageSlice":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dNnm6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
+parcelHelpers.export(exports, "useAppSelector", ()=>useAppSelector);
+var _reactRedux = require("react-redux");
+const useAppDispatch = (0, _reactRedux.useDispatch);
+const useAppSelector = (0, _reactRedux.useSelector);
+
+},{"react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
+// The primary entry point assumes we're working with standard ReactDOM/RN, but
+// older versions that do not include `useSyncExternalStore` (React 16.9 - 17.x).
+// Because of that, the useSyncExternalStore compat shim is needed.
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "batch", ()=>(0, _reactBatchedUpdates.unstable_batchedUpdates));
+var _shim = require("use-sync-external-store/shim");
+var _withSelector = require("use-sync-external-store/shim/with-selector");
+var _reactBatchedUpdates = require("./utils/reactBatchedUpdates");
+var _batch = require("./utils/batch");
+var _useSelector = require("./hooks/useSelector");
+var _connect = require("./components/connect");
+var _exports = require("./exports");
+parcelHelpers.exportAll(_exports, exports);
+(0, _useSelector.initializeUseSelector)((0, _withSelector.useSyncExternalStoreWithSelector));
+(0, _connect.initializeConnect)((0, _shim.useSyncExternalStore)); // Enable batched updates in our subscriptions for use
+// with standard React renderers (ReactDOM, React Native)
+(0, _batch.setBatch)((0, _reactBatchedUpdates.unstable_batchedUpdates));
+
+},{"use-sync-external-store/shim":"hyxdF","use-sync-external-store/shim/with-selector":"iDrhg","./utils/reactBatchedUpdates":"5K86X","./utils/batch":"ikw0G","./hooks/useSelector":"l3rFI","./components/connect":"5gOIw","./exports":"iAa1P","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hyxdF":[function(require,module,exports) {
+"use strict";
+module.exports = require("5ab7799a565bbe74");
+
+},{"5ab7799a565bbe74":"khU3l"}],"khU3l":[function(require,module,exports) {
+/**
+ * @license React
+ * use-sync-external-store-shim.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+(function() {
+    "use strict";
+    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
+    var React = require("d49206e28a986e9f");
+    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    function error(format) {
+        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
+        printWarning("error", format, args);
+    }
+    function printWarning(level, format, args) {
+        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+        var stack = ReactDebugCurrentFrame.getStackAddendum();
+        if (stack !== "") {
+            format += "%s";
+            args = args.concat([
+                stack
+            ]);
+        } // eslint-disable-next-line react-internal/safe-string-coercion
+        var argsWithFormat = args.map(function(item) {
+            return String(item);
+        }); // Careful: RN currently depends on this prefix
+        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
+        // breaks IE9: https://github.com/facebook/react/issues/13610
+        // eslint-disable-next-line react-internal/no-production-logging
+        Function.prototype.apply.call(console[level], console, argsWithFormat);
+    }
+    /**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */ function is(x, y) {
+        return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
+        ;
+    }
+    var objectIs = typeof Object.is === "function" ? Object.is : is;
+    // dispatch for CommonJS interop named imports.
+    var useState = React.useState, useEffect = React.useEffect, useLayoutEffect = React.useLayoutEffect, useDebugValue = React.useDebugValue;
+    var didWarnOld18Alpha = false;
+    var didWarnUncachedGetSnapshot = false; // Disclaimer: This shim breaks many of the rules of React, and only works
+    // because of a very particular set of implementation details and assumptions
+    // -- change any one of them and it will break. The most important assumption
+    // is that updates are always synchronous, because concurrent rendering is
+    // only available in versions of React that also have a built-in
+    // useSyncExternalStore API. And we only use this shim when the built-in API
+    // does not exist.
+    //
+    // Do not assume that the clever hacks used by this hook also work in general.
+    // The point of this shim is to replace the need for hacks by other libraries.
+    function useSyncExternalStore(subscribe, getSnapshot, // React do not expose a way to check if we're hydrating. So users of the shim
+    // will need to track that themselves and return the correct value
+    // from `getSnapshot`.
+    getServerSnapshot) {
+        if (!didWarnOld18Alpha) {
+            if (React.startTransition !== undefined) {
+                didWarnOld18Alpha = true;
+                error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
+            }
+        }
+        // breaks the rules of React, and only works here because of specific
+        // implementation details, most importantly that updates are
+        // always synchronous.
+        var value = getSnapshot();
+        if (!didWarnUncachedGetSnapshot) {
+            var cachedValue = getSnapshot();
+            if (!objectIs(value, cachedValue)) {
+                error("The result of getSnapshot should be cached to avoid an infinite loop");
+                didWarnUncachedGetSnapshot = true;
+            }
+        }
+        // re-render whenever the subscribed state changes by updating an some
+        // arbitrary useState hook. Then, during render, we call getSnapshot to read
+        // the current value.
+        //
+        // Because we don't actually use the state returned by the useState hook, we
+        // can save a bit of memory by storing other stuff in that slot.
+        //
+        // To implement the early bailout, we need to track some things on a mutable
+        // object. Usually, we would put that in a useRef hook, but we can stash it in
+        // our useState hook instead.
+        //
+        // To force a re-render, we call forceUpdate({inst}). That works because the
+        // new object always fails an equality check.
+        var _useState = useState({
+            inst: {
+                value: value,
+                getSnapshot: getSnapshot
+            }
+        }), inst = _useState[0].inst, forceUpdate = _useState[1]; // Track the latest getSnapshot function with a ref. This needs to be updated
+        // in the layout phase so we can access it during the tearing check that
+        // happens on subscribe.
+        useLayoutEffect(function() {
+            inst.value = value;
+            inst.getSnapshot = getSnapshot; // Whenever getSnapshot or subscribe changes, we need to check in the
+            // commit phase if there was an interleaved mutation. In concurrent mode
+            // this can happen all the time, but even in synchronous mode, an earlier
+            // effect may have mutated the store.
+            if (checkIfSnapshotChanged(inst)) // Force a re-render.
+            forceUpdate({
+                inst: inst
+            });
+        }, [
+            subscribe,
+            value,
+            getSnapshot
+        ]);
+        useEffect(function() {
+            // Check for changes right before subscribing. Subsequent changes will be
+            // detected in the subscription handler.
+            if (checkIfSnapshotChanged(inst)) // Force a re-render.
+            forceUpdate({
+                inst: inst
+            });
+            var handleStoreChange = function() {
+                // TODO: Because there is no cross-renderer API for batching updates, it's
+                // up to the consumer of this library to wrap their subscription event
+                // with unstable_batchedUpdates. Should we try to detect when this isn't
+                // the case and print a warning in development?
+                // The store changed. Check if the snapshot changed since the last time we
+                // read from the store.
+                if (checkIfSnapshotChanged(inst)) // Force a re-render.
+                forceUpdate({
+                    inst: inst
+                });
+            }; // Subscribe to the store and return a clean-up function.
+            return subscribe(handleStoreChange);
+        }, [
+            subscribe
+        ]);
+        useDebugValue(value);
+        return value;
+    }
+    function checkIfSnapshotChanged(inst) {
+        var latestGetSnapshot = inst.getSnapshot;
+        var prevValue = inst.value;
+        try {
+            var nextValue = latestGetSnapshot();
+            return !objectIs(prevValue, nextValue);
+        } catch (error) {
+            return true;
+        }
+    }
+    function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
+        // Note: The shim does not use getServerSnapshot, because pre-18 versions of
+        // React do not expose a way to check if we're hydrating. So users of the shim
+        // will need to track that themselves and return the correct value
+        // from `getSnapshot`.
+        return getSnapshot();
+    }
+    var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
+    var isServerEnvironment = !canUseDOM;
+    var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore;
+    var useSyncExternalStore$2 = React.useSyncExternalStore !== undefined ? React.useSyncExternalStore : shim;
+    exports.useSyncExternalStore = useSyncExternalStore$2;
+    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+})();
+
+},{"d49206e28a986e9f":"21dqq"}],"iDrhg":[function(require,module,exports) {
+"use strict";
+module.exports = require("825b2585cf61f03e");
+
+},{"825b2585cf61f03e":"vU6Qe"}],"vU6Qe":[function(require,module,exports) {
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+(function() {
+    "use strict";
+    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
+    var React = require("2f25dc3829c8e76e");
+    var shim = require("c4afd16660885105");
+    /**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */ function is(x, y) {
+        return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y // eslint-disable-line no-self-compare
+        ;
+    }
+    var objectIs = typeof Object.is === "function" ? Object.is : is;
+    var useSyncExternalStore = shim.useSyncExternalStore;
+    // for CommonJS interop.
+    var useRef = React.useRef, useEffect = React.useEffect, useMemo = React.useMemo, useDebugValue = React.useDebugValue; // Same as useSyncExternalStore, but supports selector and isEqual arguments.
+    function useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, selector, isEqual) {
+        // Use this to track the rendered snapshot.
+        var instRef = useRef(null);
+        var inst;
+        if (instRef.current === null) {
+            inst = {
+                hasValue: false,
+                value: null
+            };
+            instRef.current = inst;
+        } else inst = instRef.current;
+        var _useMemo = useMemo(function() {
+            // Track the memoized state using closure variables that are local to this
+            // memoized instance of a getSnapshot function. Intentionally not using a
+            // useRef hook, because that state would be shared across all concurrent
+            // copies of the hook/component.
+            var hasMemo = false;
+            var memoizedSnapshot;
+            var memoizedSelection;
+            var memoizedSelector = function(nextSnapshot) {
+                if (!hasMemo) {
+                    // The first time the hook is called, there is no memoized result.
+                    hasMemo = true;
+                    memoizedSnapshot = nextSnapshot;
+                    var _nextSelection = selector(nextSnapshot);
+                    if (isEqual !== undefined) // Even if the selector has changed, the currently rendered selection
+                    // may be equal to the new selection. We should attempt to reuse the
+                    // current value if possible, to preserve downstream memoizations.
+                    {
+                        if (inst.hasValue) {
+                            var currentSelection = inst.value;
+                            if (isEqual(currentSelection, _nextSelection)) {
+                                memoizedSelection = currentSelection;
+                                return currentSelection;
+                            }
+                        }
+                    }
+                    memoizedSelection = _nextSelection;
+                    return _nextSelection;
+                } // We may be able to reuse the previous invocation's result.
+                // We may be able to reuse the previous invocation's result.
+                var prevSnapshot = memoizedSnapshot;
+                var prevSelection = memoizedSelection;
+                if (objectIs(prevSnapshot, nextSnapshot)) // The snapshot is the same as last time. Reuse the previous selection.
+                return prevSelection;
+                 // The snapshot has changed, so we need to compute a new selection.
+                // The snapshot has changed, so we need to compute a new selection.
+                var nextSelection = selector(nextSnapshot); // If a custom isEqual function is provided, use that to check if the data
+                // has changed. If it hasn't, return the previous selection. That signals
+                // to React that the selections are conceptually equal, and we can bail
+                // out of rendering.
+                // If a custom isEqual function is provided, use that to check if the data
+                // has changed. If it hasn't, return the previous selection. That signals
+                // to React that the selections are conceptually equal, and we can bail
+                // out of rendering.
+                if (isEqual !== undefined && isEqual(prevSelection, nextSelection)) return prevSelection;
+                memoizedSnapshot = nextSnapshot;
+                memoizedSelection = nextSelection;
+                return nextSelection;
+            }; // Assigning this to a constant so that Flow knows it can't change.
+            // Assigning this to a constant so that Flow knows it can't change.
+            var maybeGetServerSnapshot = getServerSnapshot === undefined ? null : getServerSnapshot;
+            var getSnapshotWithSelector = function() {
+                return memoizedSelector(getSnapshot());
+            };
+            var getServerSnapshotWithSelector = maybeGetServerSnapshot === null ? undefined : function() {
+                return memoizedSelector(maybeGetServerSnapshot());
+            };
+            return [
+                getSnapshotWithSelector,
+                getServerSnapshotWithSelector
+            ];
+        }, [
+            getSnapshot,
+            getServerSnapshot,
+            selector,
+            isEqual
+        ]), getSelection = _useMemo[0], getServerSelection = _useMemo[1];
+        var value = useSyncExternalStore(subscribe, getSelection, getServerSelection);
+        useEffect(function() {
+            inst.hasValue = true;
+            inst.value = value;
+        }, [
+            value
+        ]);
+        useDebugValue(value);
+        return value;
+    }
+    exports.useSyncExternalStoreWithSelector = useSyncExternalStoreWithSelector;
+    /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+})();
+
+},{"2f25dc3829c8e76e":"21dqq","c4afd16660885105":"hyxdF"}],"5K86X":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "unstable_batchedUpdates", ()=>(0, _reactDom.unstable_batchedUpdates));
+var _reactDom = require("react-dom");
+
+},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -29239,298 +29435,7 @@ const useStore = /*#__PURE__*/ createStoreHook();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + " %exports% " + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"786KC"}],"jQlq4":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$c5a0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$c5a0.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../../utilities/hooks");
-var _paginationBottomCss = require("./PaginationBottom.css");
-var _pageSlice = require("../../utilities/Store/pageSlice");
-var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const paginate = (pageNumber)=>{
-        dispatch((0, _pageSlice.setCurrentPage)(pageNumber));
-    };
-    const goToPreviousPage = ()=>{
-        if (currentPage > 1) dispatch((0, _pageSlice.setCurrentPage)(currentPage - 1));
-    };
-    const goToNextPage = ()=>{
-        if (currentPage < totalPages) dispatch((0, _pageSlice.setCurrentPage)(currentPage + 1));
-    };
-    const renderPagination = ()=>{
-        const pageNumbers = [];
-        const maxPagesToShow = 5;
-        const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
-        let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
-        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-        if (totalPages <= maxPagesToShow) {
-            startPage = 1;
-            endPage = totalPages;
-        } else if (currentPage <= halfMaxPagesToShow) endPage = maxPagesToShow;
-        else if (currentPage + halfMaxPagesToShow >= totalPages) startPage = totalPages - maxPagesToShow + 1;
-        for(let i = startPage; i <= endPage; i++)pageNumbers.push(i);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                startPage > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(1),
-                            children: "1"
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 45,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 48,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true),
-                pageNumbers.map((pageNumber)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === pageNumber ? "active" : ""}`,
-                        onClick: ()=>paginate(pageNumber),
-                        children: pageNumber
-                    }, pageNumber, false, {
-                        fileName: "src/components/Pagination/PaginationBottom.tsx",
-                        lineNumber: 50,
-                        columnNumber: 36
-                    }, undefined)),
-                endPage < totalPages && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item disabled",
-                            children: "..."
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 54,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "pagination-item",
-                            onClick: ()=>paginate(totalPages),
-                            children: totalPages
-                        }, void 0, false, {
-                            fileName: "src/components/Pagination/PaginationBottom.tsx",
-                            lineNumber: 55,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 43,
-            columnNumber: 12
-        }, undefined);
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "pagination",
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-            className: "pagination-list",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item down-arrow ${currentPage === 1 ? "disabled" : ""}`,
-                    onClick: goToPreviousPage,
-                    children: "<"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 63,
-                    columnNumber: 6
-                }, undefined),
-                renderPagination(),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                    className: `pagination-item down-arrow ${currentPage === totalPages ? "disabled" : ""}`,
-                    onClick: goToNextPage,
-                    children: ">"
-                }, void 0, false, {
-                    fileName: "src/components/Pagination/PaginationBottom.tsx",
-                    lineNumber: 67,
-                    columnNumber: 6
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/Pagination/PaginationBottom.tsx",
-            lineNumber: 62,
-            columnNumber: 23
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Pagination/PaginationBottom.tsx",
-        lineNumber: 61,
-        columnNumber: 10
-    }, undefined);
-};
-_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch)
-    ];
-});
-_c = Pagination;
-exports.default = Pagination;
-var _c;
-$RefreshReg$(_c, "Pagination");
-
-  $parcel$ReactRefreshHelpers$c5a0.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","./PaginationBottom.css":"1gBvO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utilities/Store/pageSlice":"6eryl"}],"1gBvO":[function() {},{}],"6eryl":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1gBvO":[function() {},{}],"6eryl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setCurrentPage", ()=>setCurrentPage);
@@ -33423,7 +33328,223 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7wKv":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + " %exports% " + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"786KC"}],"bsNSb":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9a25.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _hooksJs = require("../../utilities/Hooks/hooks.js");
+var _paginationTopCss = require("./PaginationTop.css");
+var _pageSliceJs = require("../../utilities/Store/pageSlice.js");
+var _s = $RefreshSig$();
+const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
+    _s();
+    const dispatch = (0, _hooksJs.useAppDispatch)();
+    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
+    const goToPreviousPage = ()=>{
+        if (currentPage > 1) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage - 1));
+    };
+    const goToNextPage = ()=>{
+        if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "pagination pagination-top",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "pagination-list button-space",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
+                        onClick: goToPreviousPage,
+                        children: "<"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 26,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: `pagination-item ${currentPage === totalPages ? "page-end" : ""}`,
+                        onClick: goToNextPage,
+                        children: ">"
+                    }, void 0, false, {
+                        fileName: "src/components/Pagination/PaginationTop.tsx",
+                        lineNumber: 29,
+                        columnNumber: 7
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Pagination/PaginationTop.tsx",
+                lineNumber: 25,
+                columnNumber: 6
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/Pagination/PaginationTop.tsx",
+            lineNumber: 24,
+            columnNumber: 23
+        }, undefined)
+    }, void 0, false);
+};
+_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
+    return [
+        (0, _hooksJs.useAppDispatch)
+    ];
+});
+_c = Pagination;
+exports.default = Pagination;
+var _c;
+$RefreshReg$(_c, "Pagination");
+
+  $parcel$ReactRefreshHelpers$9a25.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/Hooks/hooks.js":"dNnm6","./PaginationTop.css":"dXRjn","../../utilities/Store/pageSlice.js":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXRjn":[function() {},{}],"h7wKv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$79d6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33473,7 +33594,7 @@ $RefreshReg$(_c, "CardList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Card":"euwcE","./CardList.css":"9EOR1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}],"euwcE":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Card":"euwcE","./CardList.css":"9EOR1","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"euwcE":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$45b7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39271,143 +39392,7 @@ function getDoneFetcher(data) {
     return fetcher;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsNSb":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9a25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9a25.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _hooks = require("../../utilities/hooks");
-var _paginationTopCss = require("./PaginationTop.css");
-var _pageSliceJs = require("../../utilities/Store/pageSlice.js");
-var _s = $RefreshSig$();
-const Pagination = ({ filteredPokemonList, currentPage, pokemonsPerPage })=>{
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const totalPages = Math.ceil(filteredPokemonList.length / pokemonsPerPage);
-    const goToPreviousPage = ()=>{
-        if (currentPage > 1) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage - 1));
-    };
-    const goToNextPage = ()=>{
-        if (currentPage < totalPages) dispatch((0, _pageSliceJs.setCurrentPage)(currentPage + 1));
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: totalPages > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "pagination pagination-top",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "pagination-list button-space",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === 1 ? "page-end" : ""}`,
-                        onClick: goToPreviousPage,
-                        children: "<"
-                    }, void 0, false, {
-                        fileName: "src/components/Pagination/PaginationTop.tsx",
-                        lineNumber: 26,
-                        columnNumber: 7
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: `pagination-item ${currentPage === totalPages ? "page-end" : ""}`,
-                        onClick: goToNextPage,
-                        children: ">"
-                    }, void 0, false, {
-                        fileName: "src/components/Pagination/PaginationTop.tsx",
-                        lineNumber: 29,
-                        columnNumber: 7
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/Pagination/PaginationTop.tsx",
-                lineNumber: 25,
-                columnNumber: 6
-            }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/Pagination/PaginationTop.tsx",
-            lineNumber: 24,
-            columnNumber: 23
-        }, undefined)
-    }, void 0, false);
-};
-_s(Pagination, "BJQ1DUn/XFEl2NsQ3DWyHAXfnkY=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch)
-    ];
-});
-_c = Pagination;
-exports.default = Pagination;
-var _c;
-$RefreshReg$(_c, "Pagination");
-
-  $parcel$ReactRefreshHelpers$9a25.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utilities/hooks":"h8o22","./PaginationTop.css":"dXRjn","../../utilities/Store/pageSlice.js":"6eryl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXRjn":[function() {},{}],"lOjBx":[function(require,module,exports) {
-"use strict";
-var m = require("aaccff5d309d9239");
-var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-exports.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-        return m.createRoot(c, o);
-    } finally{
-        i.usingClientEntryPoint = false;
-    }
-};
-exports.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-        return m.hydrateRoot(c, h, o);
-    } finally{
-        i.usingClientEntryPoint = false;
-    }
-};
-
-},{"aaccff5d309d9239":"j6uA9"}],"4tQLS":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$deb4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$deb4.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const ShimmerUI = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "loading page"
-        }, void 0, false, {
-            fileName: "src/components/ShimmerUI.tsx",
-            lineNumber: 3,
-            columnNumber: 15
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/ShimmerUI.tsx",
-        lineNumber: 3,
-        columnNumber: 10
-    }, undefined);
-};
-_c = ShimmerUI;
-exports.default = ShimmerUI;
-var _c;
-$RefreshReg$(_c, "ShimmerUI");
-
-  $parcel$ReactRefreshHelpers$deb4.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1CfBw":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1CfBw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6711 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39441,44 +39426,6 @@ var _c;
 $RefreshReg$(_c, "AboutLayout");
 
   $parcel$ReactRefreshHelpers$6711.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eBM1j":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$e1ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$e1ec.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const ContactLayout = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "Contact Us"
-        }, void 0, false, {
-            fileName: "src/components/Contacts/Contacts.tsx",
-            lineNumber: 4,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/Contacts/Contacts.tsx",
-        lineNumber: 3,
-        columnNumber: 10
-    }, undefined);
-};
-_c = ContactLayout;
-exports.default = ContactLayout;
-var _c;
-$RefreshReg$(_c, "ContactLayout");
-
-  $parcel$ReactRefreshHelpers$e1ec.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
@@ -39522,7 +39469,82 @@ $RefreshReg$(_c, "FooterLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Footer.css":"4PUEe"}],"4PUEe":[function() {},{}],"eo2jD":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Footer.css":"4PUEe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4PUEe":[function() {},{}],"eBM1j":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e1ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e1ec.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const ContactLayout = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "Contact Us"
+        }, void 0, false, {
+            fileName: "src/components/Contacts/Contacts.tsx",
+            lineNumber: 4,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/Contacts/Contacts.tsx",
+        lineNumber: 3,
+        columnNumber: 10
+    }, undefined);
+};
+_c = ContactLayout;
+exports.default = ContactLayout;
+var _c;
+$RefreshReg$(_c, "ContactLayout");
+
+  $parcel$ReactRefreshHelpers$e1ec.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4tQLS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$deb4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$deb4.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const ShimmerUI = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "loading page"
+        }, void 0, false, {
+            fileName: "src/components/ShimmerUI.tsx",
+            lineNumber: 3,
+            columnNumber: 15
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/ShimmerUI.tsx",
+        lineNumber: 3,
+        columnNumber: 10
+    }, undefined);
+};
+_c = ShimmerUI;
+exports.default = ShimmerUI;
+var _c;
+$RefreshReg$(_c, "ShimmerUI");
+
+  $parcel$ReactRefreshHelpers$deb4.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eo2jD":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c21d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39589,7 +39611,101 @@ $RefreshReg$(_c, "ErrorLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8cFjv":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jAh2M":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2f57 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2f57.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _pokemonInfoCss = require("./PokemonInfo.css");
+var _s = $RefreshSig$();
+const PokemonInfo = ()=>{
+    _s();
+    const { id } = (0, _reactRouterDom.useParams)();
+    const [pokemon, setPokemon] = (0, _react.useState)();
+    (0, _react.useEffect)(()=>{
+        const fetchPokemonDetails = async ()=>{
+            try {
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
+                const data = await response.json();
+                setPokemon(data);
+                console.log(data);
+            } catch (error) {
+                console.log("Error: ", error);
+            }
+        };
+        fetchPokemonDetails();
+    }, []);
+    console.log(pokemon);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "container info-container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "info-div",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "poke-head",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "poke-img",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+                            alt: id
+                        }, void 0, false, {
+                            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                            lineNumber: 28,
+                            columnNumber: 7
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                        lineNumber: 27,
+                        columnNumber: 6
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: pokemon?.species.name
+                    }, void 0, false, {
+                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                        lineNumber: 30,
+                        columnNumber: 6
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+                lineNumber: 26,
+                columnNumber: 5
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+            lineNumber: 25,
+            columnNumber: 4
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
+        lineNumber: 24,
+        columnNumber: 10
+    }, undefined);
+};
+_s(PokemonInfo, "iV3mheR9aernxGa7Nna0fpK2O/s=", false, function() {
+    return [
+        (0, _reactRouterDom.useParams)
+    ];
+});
+_c = PokemonInfo;
+exports.default = PokemonInfo;
+var _c;
+$RefreshReg$(_c, "PokemonInfo");
+
+  $parcel$ReactRefreshHelpers$2f57.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","./PokemonInfo.css":"itqeW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"itqeW":[function() {},{}],"8cFjv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1fca = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39874,7 +39990,7 @@ $RefreshReg$(_c, "HeaderLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utilities/constanats":"3YgyQ","../SearchBox/Search":"gtlKI","./Header.scss":"1AYao","../../utilities/Contexts/User.context":"kzYMG","../../utilities/Auth/firebase":"3RihC"}],"3YgyQ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","./Header.scss":"1AYao","../../utilities/constanats":"3YgyQ","../SearchBox/Search":"gtlKI","../../utilities/Contexts/User.context":"kzYMG","../../utilities/Auth/firebase":"3RihC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1AYao":[function() {},{}],"3YgyQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO", ()=>LOGO);
@@ -39894,7 +40010,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 // import SearchProps from './SearchProps';
 var _searchCss = require("./Search.css");
-var _hooks = require("../../utilities/hooks");
+var _hooks = require("../../utilities/Hooks/hooks");
 var _pageSlice = require("../../utilities/Store/pageSlice");
 var _searchSlice = require("../../utilities/Store/searchSlice");
 var _s = $RefreshSig$();
@@ -39935,7 +40051,7 @@ $RefreshReg$(_c, "Search");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Search.css":"4XYOY","../../utilities/hooks":"h8o22","../../utilities/Store/pageSlice":"6eryl","../../utilities/Store/searchSlice":"6ohxQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4XYOY":[function() {},{}],"6ohxQ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Search.css":"4XYOY","../../utilities/Hooks/hooks":"dNnm6","../../utilities/Store/pageSlice":"6eryl","../../utilities/Store/searchSlice":"6ohxQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4XYOY":[function() {},{}],"6ohxQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setSearchPokemon", ()=>setSearchPokemon);
@@ -39954,7 +40070,7 @@ const searchSlice = (0, _toolkit.createSlice)({
 const { setSearchPokemon } = searchSlice.actions;
 exports.default = searchSlice.reducer;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1AYao":[function() {},{}],"kzYMG":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kzYMG":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1570 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40016,7 +40132,7 @@ $RefreshReg$(_c, "UserProvider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./../Auth/firebase":"3RihC"}],"3RihC":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./../Auth/firebase":"3RihC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3RihC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "auth", ()=>auth);
@@ -40079,7 +40195,7 @@ const onAuthStateChangedListener = (callback)=>{
     (0, _auth.onAuthStateChanged)(auth, callback);
 };
 
-},{"firebase/app":"aM3Fo","firebase/auth":"79vzg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","firebase/firestore":"8A4BC"}],"aM3Fo":[function(require,module,exports) {
+},{"firebase/app":"aM3Fo","firebase/auth":"79vzg","firebase/firestore":"8A4BC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aM3Fo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("@firebase/app");
@@ -75242,7 +75358,7 @@ const store = (0, _toolkit.configureStore)({
 });
 exports.default = store;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./pokemonSlice":"6Ag0A","./pageSlice":"6eryl","./searchSlice":"6ohxQ"}],"6Ag0A":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","./pokemonSlice":"6Ag0A","./pageSlice":"6eryl","./searchSlice":"6ohxQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6Ag0A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addItem", ()=>addItem);
@@ -75261,105 +75377,11 @@ const pokemonSlice = (0, _toolkit.createSlice)({
 const { addItem } = pokemonSlice.actions;
 exports.default = pokemonSlice.reducer;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jAh2M":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$2f57 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2xRiQ":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e0e7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$2f57.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouterDom = require("react-router-dom");
-var _pokemonInfoCss = require("./PokemonInfo.css");
-var _s = $RefreshSig$();
-const PokemonInfo = ()=>{
-    _s();
-    const { id } = (0, _reactRouterDom.useParams)();
-    const [pokemon, setPokemon] = (0, _react.useState)();
-    (0, _react.useEffect)(()=>{
-        const fetchPokemonDetails = async ()=>{
-            try {
-                const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
-                const data = await response.json();
-                setPokemon(data);
-                console.log(data);
-            } catch (error) {
-                console.log("Error: ", error);
-            }
-        };
-        fetchPokemonDetails();
-    }, []);
-    console.log(pokemon);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container info-container",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "info-div",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "poke-head",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "poke-img",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                            src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-                            alt: id
-                        }, void 0, false, {
-                            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                            lineNumber: 28,
-                            columnNumber: 7
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                        lineNumber: 27,
-                        columnNumber: 6
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: pokemon?.species.name
-                    }, void 0, false, {
-                        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                        lineNumber: 30,
-                        columnNumber: 6
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-                lineNumber: 26,
-                columnNumber: 5
-            }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-            lineNumber: 25,
-            columnNumber: 4
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/PokemonInfo/PokemonInfo.tsx",
-        lineNumber: 24,
-        columnNumber: 10
-    }, undefined);
-};
-_s(PokemonInfo, "iV3mheR9aernxGa7Nna0fpK2O/s=", false, function() {
-    return [
-        (0, _reactRouterDom.useParams)
-    ];
-});
-_c = PokemonInfo;
-exports.default = PokemonInfo;
-var _c;
-$RefreshReg$(_c, "PokemonInfo");
-
-  $parcel$ReactRefreshHelpers$2f57.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","./PokemonInfo.css":"itqeW","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}],"itqeW":[function() {},{}],"hZSh2":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$cdb3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$cdb3.prelude(module);
+$parcel$ReactRefreshHelpers$e0e7.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -75368,19 +75390,31 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactHookForm = require("react-hook-form");
+var _reactRouterDom = require("react-router-dom");
 var _signupScss = require("./Signup.scss");
 var _firebase = require("../../utilities/Auth/firebase");
-var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const SignIn = ()=>{
+const SignUp = ()=>{
     _s();
-    const { register, handleSubmit, formState: { errors }, reset } = (0, _reactHookForm.useForm)();
+    const { register, handleSubmit, watch, formState: { errors }, reset } = (0, _reactHookForm.useForm)();
     const [googleSigin, setGoogleSignin] = (0, _react.useState)(false);
     const navigate = (0, _reactRouterDom.useNavigate)();
     const onSubmit = async (data)=>{
-        const { email, password } = data;
+        const { firstname, lastname, email, password1 } = data;
+        const newdata = {
+            firstname: firstname.trim(),
+            lastname: lastname.trim(),
+            email: email,
+            password: password1.trim()
+        };
         if (!googleSigin) try {
-            await (0, _firebase.signinAuthUserWithEmailAndPass)(email, password);
+            const { user } = await (0, _firebase.createAuthUserWithEmailAndPass)(newdata.email, newdata.password);
+            const displayName = newdata.firstname + " " + newdata.lastname;
+            await (0, _firebase.createUserDocFromAuth)(user, {
+                firstname,
+                lastname,
+                displayName
+            });
             reset();
             navigate("/pokelister");
         } catch (error) {
@@ -75409,11 +75443,47 @@ const SignIn = ()=>{
                 children: !googleSigin ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            children: "First Name:"
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 74,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            placeholder: "First Name",
+                            ...register("firstname", {
+                                required: true,
+                                maxLength: 20
+                            })
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 75,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            children: "Last Name:"
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 79,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            placeholder: "Last Name",
+                            ...register("lastname", {
+                                required: true,
+                                maxLength: 20
+                            })
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 80,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                             children: "Email ID:"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 54,
-                            columnNumber: 8
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 84,
+                            columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             placeholder: "Email ID",
@@ -75423,62 +75493,91 @@ const SignIn = ()=>{
                                 pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i
                             })
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 55,
-                            columnNumber: 8
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 85,
+                            columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                             children: "Password:"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 59,
-                            columnNumber: 8
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 89,
+                            columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             placeholder: "Password",
                             type: "password",
-                            ...register("password", {
+                            ...register("password1", {
                                 required: true,
                                 minLength: 8,
-                                maxLength: 15
+                                maxLength: 15,
+                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/
                             })
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 60,
-                            columnNumber: 8
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 90,
+                            columnNumber: 9
                         }, undefined),
-                        errors.password && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        errors.password1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             children: "Please enter correct password"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 65,
-                            columnNumber: 28
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 96,
+                            columnNumber: 30
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            children: "Password:"
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 97,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            placeholder: "retype Password",
+                            type: "password",
+                            ...register("password2", {
+                                required: true,
+                                minLength: 8,
+                                maxLength: 15,
+                                validate: (val)=>val === watch("password1")
+                            })
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 98,
+                            columnNumber: 9
+                        }, undefined),
+                        errors.password2 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            children: "Please enter correct password"
+                        }, void 0, false, {
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 104,
+                            columnNumber: 30
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "form-button",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "submit",
-                                    children: "Sign In"
+                                    children: "Sign Up"
                                 }, void 0, false, {
-                                    fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                                    lineNumber: 67,
-                                    columnNumber: 9
+                                    fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                                    lineNumber: 106,
+                                    columnNumber: 10
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "button",
                                     onClick: changeSignInmethod,
-                                    children: "Sign In with different account"
+                                    children: "Sign up with different account"
                                 }, void 0, false, {
-                                    fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                                    lineNumber: 68,
-                                    columnNumber: 9
+                                    fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                                    lineNumber: 107,
+                                    columnNumber: 10
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                            lineNumber: 66,
-                            columnNumber: 8
+                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                            lineNumber: 105,
+                            columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -75487,44 +75586,44 @@ const SignIn = ()=>{
                         onClick: googleSubmit,
                         children: "Sign Up with Google"
                     }, void 0, false, {
-                        fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                        lineNumber: 71,
-                        columnNumber: 9
+                        fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                        lineNumber: 110,
+                        columnNumber: 10
                     }, undefined)
                 }, void 0, false)
             }, void 0, false, {
-                fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-                lineNumber: 52,
+                fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+                lineNumber: 72,
                 columnNumber: 5
             }, undefined)
         }, void 0, false, {
-            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-            lineNumber: 51,
+            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+            lineNumber: 71,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
-        fileName: "src/components/SignInAndSignUp/SignIn.tsx",
-        lineNumber: 50,
+        fileName: "src/components/SignInAndSignUp/SignUp.tsx",
+        lineNumber: 70,
         columnNumber: 10
     }, undefined);
 };
-_s(SignIn, "Tv4gunCR+efGLK6bCLsPrPd0LrY=", false, function() {
+_s(SignUp, "AaZ3STLAedytiuC8/Zm/o08qMlo=", false, function() {
     return [
         (0, _reactHookForm.useForm),
         (0, _reactRouterDom.useNavigate)
     ];
 });
-_c = SignIn;
-exports.default = SignIn;
+_c = SignUp;
+exports.default = SignUp;
 var _c;
-$RefreshReg$(_c, "SignIn");
+$RefreshReg$(_c, "SignUp");
 
-  $parcel$ReactRefreshHelpers$cdb3.postlude(module);
+  $parcel$ReactRefreshHelpers$e0e7.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-hook-form":"kRky9","./Signup.scss":"Ra0wu","../../utilities/Auth/firebase":"3RihC","react-router-dom":"9xmpe"}],"kRky9":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-hook-form":"kRky9","react-router-dom":"9xmpe","./Signup.scss":"Ra0wu","../../utilities/Auth/firebase":"3RihC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kRky9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Controller", ()=>Controller);
@@ -77588,11 +77687,11 @@ function createFormControl(props = {}, flushRootRender) {
     return _formControl.current;
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Ra0wu":[function() {},{}],"2xRiQ":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$e0e7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Ra0wu":[function() {},{}],"hZSh2":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$cdb3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$e0e7.prelude(module);
+$parcel$ReactRefreshHelpers$cdb3.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -77601,35 +77700,29 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactHookForm = require("react-hook-form");
-var _reactRouterDom = require("react-router-dom");
 var _signupScss = require("./Signup.scss");
 var _firebase = require("../../utilities/Auth/firebase");
+var _reactRouterDom = require("react-router-dom");
+var _app = require("firebase/app");
 var _s = $RefreshSig$();
-const SignUp = ()=>{
+const SignIn = ()=>{
     _s();
-    const { register, handleSubmit, watch, formState: { errors }, reset } = (0, _reactHookForm.useForm)();
+    const { register, handleSubmit, formState: { errors }, reset } = (0, _reactHookForm.useForm)();
     const [googleSigin, setGoogleSignin] = (0, _react.useState)(false);
     const navigate = (0, _reactRouterDom.useNavigate)();
     const onSubmit = async (data)=>{
-        const { firstname, lastname, email, password1 } = data;
-        const newdata = {
-            firstname: firstname.trim(),
-            lastname: lastname.trim(),
-            email: email,
-            password: password1.trim()
-        };
+        const { email, password } = data;
         if (!googleSigin) try {
-            const { user } = await (0, _firebase.createAuthUserWithEmailAndPass)(newdata.email, newdata.password);
-            const displayName = newdata.firstname + " " + newdata.lastname;
-            await (0, _firebase.createUserDocFromAuth)(user, {
-                firstname,
-                lastname,
-                displayName
-            });
+            await (0, _firebase.signinAuthUserWithEmailAndPass)(email, password);
             reset();
             navigate("/pokelister");
         } catch (error) {
-            console.log(error);
+            if (error instanceof (0, _app.FirebaseError)) {
+                if (error.code === "auth/wrong-password") alert("worng password");
+                if (error.code === "auth/email-already-exists") alert("Email already exists");
+                if (error.code === "auth/user-not-found") alert("invalid email please signup!");
+                if (error.code === "auth/too-many-request") alert("Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later");
+            } else console.log(error);
         }
         else try {
             await (0, _firebase.signInWithGooglePopup)();
@@ -77654,47 +77747,11 @@ const SignUp = ()=>{
                 children: !googleSigin ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            children: "First Name:"
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 74,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            placeholder: "First Name",
-                            ...register("firstname", {
-                                required: true,
-                                maxLength: 20
-                            })
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 75,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            children: "Last Name:"
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 79,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            placeholder: "Last Name",
-                            ...register("lastname", {
-                                required: true,
-                                maxLength: 20
-                            })
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 80,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                             children: "Email ID:"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 84,
-                            columnNumber: 9
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 62,
+                            columnNumber: 8
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             placeholder: "Email ID",
@@ -77704,91 +77761,62 @@ const SignUp = ()=>{
                                 pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i
                             })
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 85,
-                            columnNumber: 9
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 63,
+                            columnNumber: 8
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                             children: "Password:"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 89,
-                            columnNumber: 9
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 67,
+                            columnNumber: 8
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                             placeholder: "Password",
                             type: "password",
-                            ...register("password1", {
+                            ...register("password", {
                                 required: true,
                                 minLength: 8,
-                                maxLength: 15,
-                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/
+                                maxLength: 15
                             })
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 90,
-                            columnNumber: 9
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 68,
+                            columnNumber: 8
                         }, undefined),
-                        errors.password1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        errors.password && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             children: "Please enter correct password"
                         }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 96,
-                            columnNumber: 30
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            children: "Password:"
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 97,
-                            columnNumber: 9
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            placeholder: "retype Password",
-                            type: "password",
-                            ...register("password2", {
-                                required: true,
-                                minLength: 8,
-                                maxLength: 15,
-                                validate: (val)=>val === watch("password1")
-                            })
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 98,
-                            columnNumber: 9
-                        }, undefined),
-                        errors.password2 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                            children: "Please enter correct password"
-                        }, void 0, false, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 104,
-                            columnNumber: 30
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 73,
+                            columnNumber: 28
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "form-button",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "submit",
-                                    children: "Sign Up"
+                                    children: "Sign In"
                                 }, void 0, false, {
-                                    fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                                    lineNumber: 106,
-                                    columnNumber: 10
+                                    fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                                    lineNumber: 75,
+                                    columnNumber: 9
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     type: "button",
                                     onClick: changeSignInmethod,
-                                    children: "Sign up with different account"
+                                    children: "Sign In with different account"
                                 }, void 0, false, {
-                                    fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                                    lineNumber: 107,
-                                    columnNumber: 10
+                                    fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                                    lineNumber: 76,
+                                    columnNumber: 9
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                            lineNumber: 105,
-                            columnNumber: 9
+                            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                            lineNumber: 74,
+                            columnNumber: 8
                         }, undefined)
                     ]
                 }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -77797,43 +77825,43 @@ const SignUp = ()=>{
                         onClick: googleSubmit,
                         children: "Sign Up with Google"
                     }, void 0, false, {
-                        fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                        lineNumber: 110,
-                        columnNumber: 10
+                        fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                        lineNumber: 79,
+                        columnNumber: 9
                     }, undefined)
                 }, void 0, false)
             }, void 0, false, {
-                fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-                lineNumber: 72,
+                fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+                lineNumber: 60,
                 columnNumber: 5
             }, undefined)
         }, void 0, false, {
-            fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-            lineNumber: 71,
+            fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+            lineNumber: 59,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
-        fileName: "src/components/SignInAndSignUp/SignUp.tsx",
-        lineNumber: 70,
+        fileName: "src/components/SignInAndSignUp/SignIn.tsx",
+        lineNumber: 58,
         columnNumber: 10
     }, undefined);
 };
-_s(SignUp, "AaZ3STLAedytiuC8/Zm/o08qMlo=", false, function() {
+_s(SignIn, "Tv4gunCR+efGLK6bCLsPrPd0LrY=", false, function() {
     return [
         (0, _reactHookForm.useForm),
         (0, _reactRouterDom.useNavigate)
     ];
 });
-_c = SignUp;
-exports.default = SignUp;
+_c = SignIn;
+exports.default = SignIn;
 var _c;
-$RefreshReg$(_c, "SignUp");
+$RefreshReg$(_c, "SignIn");
 
-  $parcel$ReactRefreshHelpers$e0e7.postlude(module);
+  $parcel$ReactRefreshHelpers$cdb3.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-hook-form":"kRky9","react-router-dom":"9xmpe","./Signup.scss":"Ra0wu","../../utilities/Auth/firebase":"3RihC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"Ra0wu":[function() {},{}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-hook-form":"kRky9","./Signup.scss":"Ra0wu","../../utilities/Auth/firebase":"3RihC","react-router-dom":"9xmpe","firebase/app":"aM3Fo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"Ra0wu":[function() {},{}]},["79kPs","1xC6H","7F5Te"], "7F5Te", "parcelRequired8bb")
 
 //# sourceMappingURL=index.0513734e.js.map
