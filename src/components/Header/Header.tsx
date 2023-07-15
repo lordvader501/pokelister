@@ -37,11 +37,11 @@ const HeaderLayout: React.FC = () => {
 	return (
 		<header className="header">
 			<div className="logo-container">
-				<Link to='/pokelister'>
+				<Link to='/pokelister/'>
 					<img src={LOGO} alt="logo" className='logo'/>
 				</Link>
 			</div>
-			<Link to='/pokelister'>
+			<Link to='/pokelister/'>
 				<div className="site-title">
 					<h1 className="title-text">PokéLister</h1>
 				</div>
@@ -59,7 +59,7 @@ const HeaderLayout: React.FC = () => {
 						</div>
 						<ul className="nav-list">
 							<li className="nav-item">
-								<Link className={`nav-link ${(currLocation.pathname === '/pokelister') ? 'active':''}`} to="/pokelister">Home</Link>
+								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/') ? 'active':''}`} to="/pokelister/">Home</Link>
 							</li>
 							<li className="nav-item">
 								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/about') ? 'active':''}`} to="/pokelister/about">About</Link>

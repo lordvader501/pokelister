@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {User} from 'firebase/auth';
+import { User } from 'firebase/auth';
 import { createUserDocFromAuth, onAuthStateChangedListener } from './../Auth/firebase';
 
 interface UserProps {
@@ -26,7 +26,6 @@ export const UserProvider:React.FC<UserProviderProps> = ({children}) => {
 				const [firstname , lastname]  = user.displayName ? user.displayName.split(' ') : ['', ''];
 				await createUserDocFromAuth(user, {firstname, lastname});
 			}
-			console.log(user);
 			setCurrUser(user);
 		});
 

@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import './Signup.scss';
 import { signInWithGooglePopup, signinAuthUserWithEmailAndPass } from '../../utilities/Auth/firebase';
 import { useNavigate } from 'react-router-dom';
+import { FirebaseError } from 'firebase/app';
 
 interface SignInProps {
 	email:string;
@@ -20,16 +21,24 @@ const SignIn = () => {
 			try {
 				await signinAuthUserWithEmailAndPass( email, password);
 				reset();
-				navigate('/pokelister');
+				navigate('/pokelister/');
 
 			} catch (error) {
-				console.log(error);
+				if (error instanceof FirebaseError){
+					if (error.code === 'auth/wrong-password') alert('worng password');
+					if (error.code === 'auth/email-already-exists') alert('Email already exists');
+					if (error.code === 'auth/user-not-found') alert('invalid email please signup!');
+					if (error.code === 'auth/too-many-request') alert('Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later');
+				}
+				else{
+					console.log(error);
+				}
 			}
 		} else {
 			try {
 				await signInWithGooglePopup();
 				reset();
-				navigate('/pokelister');
+				navigate('/pokelister/');
 
 			} catch (error) {
 				console.log(error);

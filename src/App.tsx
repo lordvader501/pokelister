@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import BodyLayout from './components/Body';
 import AboutLayout from './components/About/About';
@@ -7,16 +7,16 @@ import ContactLayout from './components/Contacts/Contacts';
 import ShimmerUI from './components/ShimmerUI';
 import ErrorLayout from './components/ErrorPage/Error';
 import PokemonInfo from './components/PokemonInfo/PokemonInfo';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from 'react-router-dom';
 import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
 import store from './utilities/Store/store';
-import { useAppDispatch } from './utilities/hooks';
+import { useAppDispatch } from './utilities/Hooks/hooks';
 import { addItem } from './utilities/Store/pokemonSlice';
 import Results from './utilities/fetchTypes';
 import SignUp from './components/SignInAndSignUp/SignUp';
 import SignIn from './components/SignInAndSignUp/SignIn';
-import { UserProvider } from './utilities/Contexts/User.context';
+import { UserContext, UserProvider } from './utilities/Contexts/User.context';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -34,23 +34,21 @@ const Applayout: React.FC = () => {
 	}, []);
 	return (
 		<React.Suspense fallback={<ShimmerUI />}>
-			<UserProvider>
-				<HeaderLayout />
-				<Outlet />
-				<FooterLayout />
-			</UserProvider>
+			<HeaderLayout />
+			<Outlet />
+			<FooterLayout />
 		</React.Suspense>
 	);
 };
 
 const router = createBrowserRouter([
 	{
-		path:'/pokelister',
+		path:'/pokelister/',
 		element:<Applayout />,
 		errorElement: <ErrorLayout />,
 		children:[
 			{
-				path:'/pokelister',
+				path:'/pokelister/',
 				element: <BodyLayout />,
 			},
 			{
@@ -63,11 +61,29 @@ const router = createBrowserRouter([
 			},
 			{
 				path:'/pokelister/signup',
-				element: <SignUp />,
+				Component: () => {
+					const { currUser } = useContext(UserContext);
+					const navigate = useNavigate();
+					useEffect(() => {
+						if (currUser) {
+							navigate('/pokelister/');
+						}
+					}, [currUser]);
+					return !currUser && <SignUp />;
+				}
 			},
 			{
 				path:'/pokelister/signin',
-				element: <SignIn />,
+				Component: () => {
+					const { currUser } = useContext(UserContext);
+					const navigate = useNavigate();
+					useEffect(() => {
+						if (currUser) {
+							navigate('/pokelister/');
+						}
+					}, [currUser]);
+					return !currUser && <SignIn />;
+				}
 			},
 			{
 				path: '/pokelister/pokemon/:id',
@@ -82,4 +98,4 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<Provider store={store}><RouterProvider router={router}/></Provider>);
+root.render(<Provider store={store}><UserProvider><RouterProvider router={router}/></UserProvider></Provider>);

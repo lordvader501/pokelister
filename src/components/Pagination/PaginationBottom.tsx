@@ -1,6 +1,6 @@
 import React from 'react';
 import PaginationProps from './PaginatiionProps';
-import { useAppDispatch} from '../../utilities/hooks';
+import { useAppDispatch} from '../../utilities/Hooks/hooks';
 import './PaginationBottom.css';
 import { setCurrentPage } from '../../utilities/Store/pageSlice';
 

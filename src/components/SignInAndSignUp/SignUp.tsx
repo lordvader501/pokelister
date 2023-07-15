@@ -31,7 +31,7 @@ const SignUp = () => {
 				const displayName = newdata.firstname + ' ' + newdata.lastname;
 				await createUserDocFromAuth(user, {firstname, lastname, displayName});
 				reset();
-				navigate('/pokelister');
+				navigate('/pokelister/');
 
 			} catch (error) {
 				console.log(error);
@@ -40,7 +40,7 @@ const SignUp = () => {
 			try {
 				await signInWithGooglePopup();
 				reset();
-				navigate('/pokelister');
+				navigate('/pokelister/');
 
 			} catch (error) {
 				console.log(error);
