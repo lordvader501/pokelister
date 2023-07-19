@@ -21,7 +21,7 @@ const SignIn = () => {
 			try {
 				await signinAuthUserWithEmailAndPass( email, password);
 				reset();
-				navigate('/pokelister/');
+				navigate('/');
 
 			} catch (error) {
 				if (error instanceof FirebaseError){
@@ -38,7 +38,7 @@ const SignIn = () => {
 			try {
 				await signInWithGooglePopup();
 				reset();
-				navigate('/pokelister/');
+				navigate('/');
 
 			} catch (error) {
 				console.log(error);

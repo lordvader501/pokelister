@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import { LOGO } from '../../utilities/constanats';
 import Search from '../SearchBox/Search';
@@ -8,6 +8,7 @@ import { signOutUser } from '../../utilities/Auth/firebase';
 
 const HeaderLayout: React.FC = () => {
 	const currLocation = useLocation();
+	const navigate = useNavigate();
 	const [ menuOpen, setMenuOpen ] = useState(false);
 	const { currUser } = useContext(UserContext);
 
@@ -32,16 +33,21 @@ const HeaderLayout: React.FC = () => {
 	const handleMenuToggle = (): void => {
 		setMenuOpen(!menuOpen);
 	};
+
+	const signOutHandler = async () => {
+		await signOutUser();
+		navigate('/signin');
+	};
 	
 	
 	return (
 		<header className="header">
 			<div className="logo-container">
-				<Link to='/pokelister/'>
+				<Link to='/'>
 					<img src={LOGO} alt="logo" className='logo'/>
 				</Link>
 			</div>
-			<Link to='/pokelister/'>
+			<Link to='/'>
 				<div className="site-title">
 					<h1 className="title-text">PokéLister</h1>
 				</div>
@@ -59,27 +65,27 @@ const HeaderLayout: React.FC = () => {
 						</div>
 						<ul className="nav-list">
 							<li className="nav-item">
-								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/') ? 'active':''}`} to="/pokelister/">Home</Link>
+								<Link className={`nav-link ${(currLocation.pathname === '/') ? 'active':''}`} to="/">Home</Link>
 							</li>
 							<li className="nav-item">
-								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/about') ? 'active':''}`} to="/pokelister/about">About</Link>
+								<Link className={`nav-link ${(currLocation.pathname === '/about') ? 'active':''}`} to="/about">About</Link>
 							</li>
 							<li className="nav-item">
-								<Link className={`nav-link ${(currLocation.pathname === '/pokelister/contacts') ? 'active':''}`} to="/pokelister/contacts">Contacts</Link>
+								<Link className={`nav-link ${(currLocation.pathname === '/contacts') ? 'active':''}`} to="/contacts">Contacts</Link>
 							</li>
 							{
 								!currUser ? (
 									<>
 										<li className="nav-item">
-											<Link className={`nav-link signup ${(currLocation.pathname === '/pokelister/signup') ? 'active':''}`} to="/pokelister/signup">Sign Up</Link>
+											<Link className={`nav-link signup ${(currLocation.pathname === '/signup') ? 'active':''}`} to="/signup">Sign Up</Link>
 										</li>
 										<li className="nav-item">
-											<Link className={`nav-link signin ${(currLocation.pathname === '/pokelister/signin') ? 'active':''}`} to="/pokelister/signin">Sign In</Link>
+											<Link className={`nav-link signin ${(currLocation.pathname === '/signin') ? 'active':''}`} to="/signin">Sign In</Link>
 										</li>
 									</>
 								) : (
 									<li className='nav-item'>
-										<Link to='/pokelister/signin' onClick={signOutUser}>Sign Out</Link>
+										<Link to='/' onClick={signOutHandler}>Sign Out</Link>
 									</li>
 								)
 							}

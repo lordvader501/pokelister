@@ -43,51 +43,55 @@ const Applayout: React.FC = () => {
 
 const router = createBrowserRouter([
 	{
-		path:'/pokelister/',
+		path:'/',
 		element:<Applayout />,
 		errorElement: <ErrorLayout />,
 		children:[
 			{
-				path:'/pokelister/',
+				path:'/',
 				element: <BodyLayout />,
 			},
 			{
-				path:'/pokelister/about',
+				path:'/about',
 				element: <AboutLayout />,
 			},
 			{
-				path:'/pokelister/contacts',
+				path:'/contacts',
 				element: <ContactLayout />,
 			},
 			{
-				path:'/pokelister/signup',
+				path:'/signup',
 				Component: () => {
 					const { currUser } = useContext(UserContext);
 					const navigate = useNavigate();
 					useEffect(() => {
 						if (currUser) {
-							navigate('/pokelister/');
+							navigate('/');
 						}
 					}, [currUser]);
 					return !currUser && <SignUp />;
 				}
 			},
 			{
-				path:'/pokelister/signin',
+				path:'/signin',
 				Component: () => {
 					const { currUser } = useContext(UserContext);
 					const navigate = useNavigate();
 					useEffect(() => {
 						if (currUser) {
-							navigate('/pokelister/');
+							navigate('/');
 						}
 					}, [currUser]);
 					return !currUser && <SignIn />;
 				}
 			},
 			{
-				path: '/pokelister/pokemon/:id',
+				path: '/pokemon/:id',
 				element: <PokemonInfo />
+			},
+			{
+				path: '/pokelister',
+				element: <BodyLayout />
 			},
 			{
 				path: '*',

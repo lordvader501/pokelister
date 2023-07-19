@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 import { createAuthUserWithEmailAndPass, createUserDocFromAuth, signInWithGooglePopup } from '../../utilities/Auth/firebase';
+import { FirebaseError } from 'firebase/app';
 
 interface SignUpProps {
 	firstname: string;
@@ -31,16 +32,21 @@ const SignUp = () => {
 				const displayName = newdata.firstname + ' ' + newdata.lastname;
 				await createUserDocFromAuth(user, {firstname, lastname, displayName});
 				reset();
-				navigate('/pokelister/');
+				navigate('/');
 
 			} catch (error) {
 				console.log(error);
+				if (error instanceof FirebaseError){
+					if (error.code === 'auth/email-already-exists') alert('Email already exists');
+					else{
+						console.log(error);
+					}
+				}
 			}
-		} else {
 			try {
 				await signInWithGooglePopup();
 				reset();
-				navigate('/pokelister/');
+				navigate('/');
 
 			} catch (error) {
 				console.log(error);

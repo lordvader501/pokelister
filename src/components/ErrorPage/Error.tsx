@@ -14,7 +14,7 @@ const ErrorLayout = () => {
 			) : (
 				<>An unknown error occurred.</>
 			)}
-			<Link to='/pokelister'>
+			<Link to='/'>
 				<button>Home</button>
 			</Link>
 		</div>
