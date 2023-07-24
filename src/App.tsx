@@ -17,6 +17,7 @@ import Results from './utilities/fetchTypes';
 import SignUp from './components/SignInAndSignUp/SignUp';
 import SignIn from './components/SignInAndSignUp/SignIn';
 import { UserContext, UserProvider } from './utilities/Contexts/User.context';
+import Particle from './components/particle/Particle';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ const Applayout: React.FC = () => {
 		<React.Suspense fallback={<ShimmerUI />}>
 			<HeaderLayout />
 			<Outlet />
+			<Particle />
 			<FooterLayout />
 		</React.Suspense>
 	);
