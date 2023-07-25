@@ -41,10 +41,12 @@ body {
   cursor: pointer;
   background-color: #4b4b4b;
   border: 2px solid #fff;
-  border-radius: 12px;
+  border-radius: 6px;
+  align-items: center;
   margin: 3.5px;
-  padding: 5px 10px;
+  padding: 10px;
   transition: background-color .3s;
+  display: flex;
 }
 
 .pagination-item:hover {
@@ -111,7 +113,7 @@ a {
   margin: 10px;
   padding: 10px;
   display: flex;
-  box-shadow: 1px 1px 11px 2px #0003;
+  box-shadow: 5px 6px 11px 2px #514c5ab5;
 }
 
 .pokemon-image {
@@ -553,7 +555,7 @@ a {
 
 .form-container form input {
   color: #fff;
-  background: #534e4e;
+  background: #fff;
   border: 0;
   border-radius: 5px;
   width: 60%;
@@ -573,7 +575,7 @@ a {
 }
 
 .form-container ::placeholder {
-  color: #fff;
+  color: #000;
   font-weight: 500;
 }
 
