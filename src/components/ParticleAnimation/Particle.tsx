@@ -66,13 +66,13 @@ const Particle: React.FC = () => {
 							default: 'bounce',
 						},
 						random: false,
-						speed: 3,
+						speed: 2,
 						straight: false,
 					},
 					number: {
 						density: {
 							enable: true,
-							area: 600,
+							area: 800,
 						},
 						value: 100,
 					},

@@ -17,7 +17,7 @@ import Results from './utilities/fetchTypes';
 import SignUp from './components/SignInAndSignUp/SignUp';
 import SignIn from './components/SignInAndSignUp/SignIn';
 import { UserContext, UserProvider } from './utilities/Contexts/User.context';
-import Particle from './components/particle/Particle';
+import Particle from './components/ParticleAnimation/Particle';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -66,6 +66,7 @@ const router = createBrowserRouter([
 				Component: () => {
 					const { currUser } = useContext(UserContext);
 					const navigate = useNavigate();
+					console.log(currUser);
 					useEffect(() => {
 						if (currUser) {
 							navigate('/');

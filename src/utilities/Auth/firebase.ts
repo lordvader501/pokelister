@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithRedirect, signInWithPopup, signInWithEmailAndPassword, signOut, User, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDtU9ZDMId2MBgO3eQZgV5dRf68oiFipuY',
@@ -24,6 +24,39 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+export const addFavourites = async (userAuth: User, pokemonData = {}) => {
+	const favouritesRef = doc(db, 'favourites', userAuth.uid);
+	const favSnapshot = await getDoc(favouritesRef);
+	if (favSnapshot.exists()) {
+		try {
+			await updateDoc(favouritesRef, {
+				...pokemonData
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	else {
+		try {
+			await setDoc(favouritesRef, {
+				...pokemonData
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	return favouritesRef;
+};
+export const getFavourites = async (userAuth: User) => {
+	const favouritesRef = doc(db, 'favourites', userAuth.uid);
+	const favSnapshot = await getDoc(favouritesRef);
+
+
+};
+export const removeFavourites = async (userAuth: User) => {
+	const favouritesRef = doc(db, 'favourites', userAuth.uid);
+};
 
 
 export const createUserDocFromAuth = async (userAuth: User, aditionalInfo = {}) => {

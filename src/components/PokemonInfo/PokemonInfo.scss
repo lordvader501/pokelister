@@ -12,6 +12,7 @@
 }
 .poke-img {
 	width: fit-content;
+	margin-inline: 20px;
 	border-radius: 2rem;
 	box-shadow: 1px 1px 11px 2px rgba(0, 0, 0, 0.2);
 	background: rgb(34, 33, 39);
@@ -29,6 +30,29 @@
 .info-container {
 	justify-content: flex-start;
 }
+.name-fav-container {
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+
+	h1 {
+		margin-bottom: 15px;
+		margin-left:0;
+	}
+
+	.fav-button {
+			background-color: rgba(160, 173, 189, 0.785);
+			width: fit-content;
+			border-radius: 0.8rem;
+			border: 0.5px solid black;
+			padding: 10px;
+			font-weight: 700;
+			color: white;
+		}
+}
+
+
 
 @media screen and (max-width:600px) {
 	.poke-img>img {

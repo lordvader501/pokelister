@@ -85,7 +85,7 @@ const HeaderLayout: React.FC = () => {
 									</>
 								) : (
 									<li className='nav-item'>
-										<Link to='/' onClick={signOutHandler}>Sign Out</Link>
+										<Link className='nav-link' to='/' onClick={signOutHandler}>Sign Out</Link>
 									</li>
 								)
 							}

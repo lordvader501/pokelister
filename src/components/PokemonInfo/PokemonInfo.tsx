@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import PokemonInfoTypes from './PokemonInfoTypes';
-import './PokemonInfo.css';
+import './PokemonInfo.scss';
+import { addFavourites } from '../../utilities/Auth/firebase';
+import { UserContext } from '../../utilities/Contexts/User.context';
 
 const PokemonInfo: React.FC = () => {
 	const { id } = useParams();
 	const [pokemon, setPokemon] = useState<PokemonInfoTypes>();
+	const { currUser } = useContext(UserContext);
 
 	useEffect(()=>{
 		
@@ -22,6 +25,11 @@ const PokemonInfo: React.FC = () => {
 		fetchPokemonDetails();
 	},[]);
 	console.log(pokemon);
+	const handleFavourites = async () => {
+		if (currUser && id)
+			await addFavourites(currUser, {[id]: parseInt(id)});
+	};
+
 	return (
 		<div className='container info-container'>
 			<div className="info-div">
@@ -29,9 +37,11 @@ const PokemonInfo: React.FC = () => {
 					<div className="poke-img">
 						<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt={id} />
 					</div>
-					<h1>{pokemon?.species.name}</h1>
+					<div className='name-fav-container'>
+						<h1>{pokemon?.species.name}</h1>
+						{ currUser  && id && <button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button> }
+					</div>
 				</div>
-
 			</div>
 		</div>
 	);
