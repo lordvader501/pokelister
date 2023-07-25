@@ -148,6 +148,7 @@ a {
   border-radius: 2rem;
   width: -moz-fit-content;
   width: fit-content;
+  margin-inline: 20px;
   box-shadow: 1px 1px 11px 2px #0003;
 }
 
@@ -164,6 +165,28 @@ a {
 
 .info-container {
   justify-content: flex-start;
+}
+
+.name-fav-container {
+  flex-direction: column;
+  place-items: center;
+  display: flex;
+}
+
+.name-fav-container h1 {
+  margin-bottom: 15px;
+  margin-left: 0;
+}
+
+.name-fav-container .fav-button {
+  color: #fff;
+  background-color: #a0adbdc8;
+  border: .5px solid #000;
+  border-radius: .8rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  font-weight: 700;
 }
 
 @media screen and (width <= 600px) {
@@ -435,6 +458,8 @@ a {
   .nav-list {
     z-index: 1;
     background-color: #353d3a;
+    border: 2px solid #7fffd4;
+    border-radius: 2rem;
     width: 90%;
     height: 50%;
     padding-top: 15px;
