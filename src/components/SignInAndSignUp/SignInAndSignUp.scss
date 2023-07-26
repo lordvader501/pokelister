@@ -24,10 +24,10 @@
     display: flex;
     flex-direction: row;
     width: 50%;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 40px;
     .menu-option {
-      white-space: pre-wrap;
+      white-space: nowrap;
       cursor: pointer;
       color: #AEAEAE;
       h2 {
@@ -92,7 +92,6 @@
     font-size: 16px;
   }
 }
-
 @media screen and (max-width:1700px) {
   .form-container {
     width: 60% !important;
@@ -107,6 +106,22 @@
   .form-container {
     width: 80% !important;
   }
+}
+@media screen and (max-width:650px){
+  .menu{
+    width: 60% !important;
+  }
+  @media screen and (max-width:450px) {
+    .menu {
+      width:80% !important;
+    }
+    @media screen and (max-width:300px) {
+      .menu {
+        width: 90% !important;
+      }
+    }
+  }
+    
 }
 @media screen and (max-width:400px) {
   .form-container {

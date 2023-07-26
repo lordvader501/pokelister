@@ -5,7 +5,7 @@
   "homepage": "https://lordvader501.github.io/pokelister",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --public-url ./",
+    "build": "parcel build index.html --public-url ./ && echo '/* /index.html  200' | cat >build/_redirects",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"
   },

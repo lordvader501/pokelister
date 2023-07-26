@@ -48,7 +48,7 @@ const PokemonInfo: React.FC = () => {
 					</div>
 					<div className='name-fav-container'>
 						<h1>{pokemon?.species.name}</h1>
-						{ !(id in currFav) ? (<button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button>) :
+						{ id && !(id in currFav) ? (<button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button>) :
 							(<button className='fav-button danger' onClick={handleRemove}>➖ remove from Favourites</button>)
 						}
 					</div>
