@@ -192,6 +192,10 @@ a {
   font-weight: 700;
 }
 
+.name-fav-container .fav-button.danger {
+  background-color: #9e3636dc;
+}
+
 @media screen and (width <= 600px) {
   .poke-img > img {
     width: auto;
