@@ -14,10 +14,10 @@ import store from './utilities/Store/store';
 import { useAppDispatch } from './utilities/Hooks/hooks';
 import { addItem } from './utilities/Store/pokemonSlice';
 import Results from './utilities/fetchTypes';
-import SignUp from './components/SignInAndSignUp/SignUp';
-import SignIn from './components/SignInAndSignUp/SignIn';
+import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
 import { UserContext, UserProvider } from './utilities/Contexts/User.context';
 import Particle from './components/ParticleAnimation/Particle';
+import Favourites from './components/Favourites/Favourites';
 
 const Applayout: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -62,20 +62,6 @@ const router = createBrowserRouter([
 				element: <ContactLayout />,
 			},
 			{
-				path:'/signup',
-				Component: () => {
-					const { currUser } = useContext(UserContext);
-					const navigate = useNavigate();
-					console.log(currUser);
-					useEffect(() => {
-						if (currUser) {
-							navigate('/');
-						}
-					}, [currUser]);
-					return !currUser && <SignUp />;
-				}
-			},
-			{
 				path:'/signin',
 				Component: () => {
 					const { currUser } = useContext(UserContext);
@@ -85,7 +71,14 @@ const router = createBrowserRouter([
 							navigate('/');
 						}
 					}, [currUser]);
-					return !currUser && <SignIn />;
+					return !currUser && <SignInAndSignUp />;
+				}
+			},
+			{
+				path:'/favourites',
+				Component: () => {
+					const { currUser } = useContext(UserContext);
+					return currUser && <Favourites />;
 				}
 			},
 			{

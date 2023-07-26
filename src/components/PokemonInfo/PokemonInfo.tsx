@@ -25,9 +25,10 @@ const PokemonInfo: React.FC = () => {
 		fetchPokemonDetails();
 	},[]);
 	console.log(pokemon);
+	
 	const handleFavourites = async () => {
 		if (currUser && id)
-			await addFavourites(currUser, {[id]: parseInt(id)});
+			await addFavourites(currUser, {[id]: 'https://pokeapi.co/api/v2/pokemon/'+id});
 	};
 
 	return (

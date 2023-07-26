@@ -16,14 +16,16 @@
 }
 
 .pagination-item {
-  margin: 3.5px;
-  padding: 5px 10px;
-  border: 2px solid #ffffff;
-  background-color: #4b4b4b;
-  color: #ffffff;
-  border-radius: 12px;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #4b4b4b;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  margin: 3.5px;
+  padding: 10px;
+  transition: background-color .3s;
+  display: flex;
+  align-items: center;
 }
 
 .pagination-item:hover {

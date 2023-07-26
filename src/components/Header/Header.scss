@@ -10,7 +10,7 @@
 }
 
 .sticky .active {
-  background-color: #04aa6d63;
+  background-color: #04AA6D;
   border-radius: 50rem;
   padding: 9px 15px ;
 }
@@ -107,7 +107,7 @@
   white-space: nowrap;
 }
 
-.signup {
+.signin {
   border-color: rgb(21, 206, 145);
   border: 2px solid;
   background-color: #353d3a;
@@ -116,15 +116,6 @@
   }
   &.active {
     background-color: #04AA6D;
-  }
-}
-
-.signin {
-  background-color: #3e4442;
-  border: 2px solid #3e4442;
-  &.active {
-    background-color: #04AA6D;
-    border:none;
   }
 }
 
@@ -216,6 +207,9 @@
   }
 }
 @media screen and (max-width:750px) and (min-width:250px) {
+  .container {
+    justify-content: flex-start;
+  }
   .navcontainer.mobile-menu-open .nav-list{
     display: block;
   }

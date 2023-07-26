@@ -75,18 +75,18 @@ const HeaderLayout: React.FC = () => {
 							</li>
 							{
 								!currUser ? (
+									<li className="nav-item">
+										<Link className={`nav-link signin ${(currLocation.pathname === '/signin') ? 'active':''}`} to="/signin">Sign In</Link>
+									</li>
+								) : (
 									<>
 										<li className="nav-item">
-											<Link className={`nav-link signup ${(currLocation.pathname === '/signup') ? 'active':''}`} to="/signup">Sign Up</Link>
+											<Link className={`nav-link ${(currLocation.pathname === '/favourites') ? 'active':''}`} to="/favourites">Favourites</Link>
 										</li>
-										<li className="nav-item">
-											<Link className={`nav-link signin ${(currLocation.pathname === '/signin') ? 'active':''}`} to="/signin">Sign In</Link>
+										<li className='nav-item'>
+											<Link className='nav-link' to='/' onClick={signOutHandler}>Sign Out</Link>
 										</li>
 									</>
-								) : (
-									<li className='nav-item'>
-										<Link className='nav-link' to='/' onClick={signOutHandler}>Sign Out</Link>
-									</li>
 								)
 							}
 						</ul>

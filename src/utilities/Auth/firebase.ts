@@ -51,8 +51,7 @@ export const addFavourites = async (userAuth: User, pokemonData = {}) => {
 export const getFavourites = async (userAuth: User) => {
 	const favouritesRef = doc(db, 'favourites', userAuth.uid);
 	const favSnapshot = await getDoc(favouritesRef);
-
-
+	return favSnapshot.data();
 };
 export const removeFavourites = async (userAuth: User) => {
 	const favouritesRef = doc(db, 'favourites', userAuth.uid);
