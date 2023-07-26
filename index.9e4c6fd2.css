@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:500";
 body {
   margin: 0%;
 }
@@ -235,7 +236,7 @@ a {
 }
 
 .sticky .active {
-  background-color: #04aa6d63;
+  background-color: #04aa6d;
   border-radius: 50rem;
   padding: 9px 15px;
 }
@@ -333,23 +334,13 @@ a {
   text-decoration: none;
 }
 
-.signup {
+.signin {
   background-color: #353d3a;
   border: 2px solid;
 }
 
-.signup:hover, .signup.active {
+.signin:hover, .signin.active {
   background-color: #04aa6d;
-}
-
-.signin {
-  background-color: #3e4442;
-  border: 2px solid #3e4442;
-}
-
-.signin.active {
-  background-color: #04aa6d;
-  border: none;
 }
 
 .bar1, .bar2, .bar3 {
@@ -449,6 +440,10 @@ a {
 }
 
 @media screen and (width <= 750px) and (width >= 250px) {
+  .container {
+    justify-content: flex-start;
+  }
+
   .navcontainer.mobile-menu-open .nav-list {
     display: block;
   }
@@ -531,12 +526,58 @@ a {
   }
 }
 
-.form-container {
-  justify-content: center;
-  align-items: center;
+#tsparticles {
+  z-index: -1;
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-container {
+  background-image: linear-gradient(#ff03, #00f3);
+  border: 2px solid #fff;
+  border-radius: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin-block: 80px;
+  padding-block: 50px;
   display: flex;
+}
+
+.form-container hr {
+  opacity: .55;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  width: 65%;
+  margin-block-start: 15px;
+}
+
+.form-container .menu {
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.form-container .menu .menu-option {
+  white-space: pre-wrap;
+  cursor: pointer;
+  color: #aeaeae;
+}
+
+.form-container .menu .menu-option h2 {
+  margin-block-end: 5px;
+}
+
+.form-container .menu .selected {
+  color: #fff;
+  border-bottom: 4px solid #7fffd4;
+  transition: color .3s ease-in;
 }
 
 .form-container form {
@@ -548,29 +589,22 @@ a {
 }
 
 .form-container form label {
-  width: 60%;
+  width: 63%;
   font-size: 20px;
   font-weight: 600;
 }
 
 .form-container form input {
-  color: #fff;
+  color: #000;
   background: #fff;
   border: 0;
   border-radius: 5px;
   width: 60%;
-  margin: 10px 0;
+  margin: 15px 0;
+  margin-block-end: 20px;
   padding: 10px;
-  font-weight: 600;
-}
-
-.form-container form button {
-  background-color: #7fffd4;
-  border: 0;
-  border-radius: 5px;
-  width: 40%;
-  margin-bottom: 5px;
-  padding: 10px;
+  padding-block: 15px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -580,19 +614,112 @@ a {
 }
 
 .form-button {
+  padding-top: 10px;
   flex-direction: row;
   justify-content: space-between;
-  width: 50%;
+  width: 63%;
+  padding-block-end: 15px;
   display: flex;
 }
 
-#tsparticles {
-  z-index: -1;
-  width: 100%;
-  height: 100%;
+.form-button button {
+  background-color: #7fffd4;
+  border: 0;
+  border-radius: 5px;
+  width: 184px;
+  height: 42px;
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media screen and (width <= 1700px) {
+  .form-container {
+    width: 60% !important;
+  }
+}
+
+@media screen and (width <= 1200px) {
+  .form-container {
+    width: 70% !important;
+  }
+}
+
+@media screen and (width <= 750px) {
+  .form-container {
+    width: 80% !important;
+  }
+}
+
+@media screen and (width <= 400px) {
+  .form-container {
+    width: 90% !important;
+  }
+}
+
+@media screen and (width <= 950px) {
+  .form-button {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-button button {
+    width: 100% !important;
+  }
+
+  .form-button .google-btn {
+    margin-top: 10px;
+    width: 100% !important;
+  }
+
+  .form-button .btn-text {
+    float: right;
+  }
+}
+
+.google-btn {
+  background-color: #4285f4;
+  border-radius: 5px;
+  width: 184px;
+  height: 42px;
+  box-shadow: 0 3px 4px #00000040;
+}
+
+.google-btn .google-icon-wrapper {
+  background-color: #fff;
+  border-radius: 2px;
+  width: 40px;
+  height: 40px;
+  margin-top: 1px;
+  margin-left: 1px;
   position: absolute;
-  top: 0;
-  left: 0;
+}
+
+.google-btn .google-icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 11px;
+  margin-left: 11px;
+  position: absolute;
+}
+
+.google-btn .btn-text {
+  float: right;
+  color: #fff;
+  letter-spacing: .2px;
+  margin: 11px 11px 0 0;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+
+.google-btn:active {
+  background: #1669f2;
 }
 
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
