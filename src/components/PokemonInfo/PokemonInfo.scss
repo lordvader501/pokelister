@@ -49,6 +49,9 @@
 			padding: 10px;
 			font-weight: 700;
 			color: white;
+			&.danger {
+				background-color: rgba(158, 54, 54, 0.863);
+			}
 		}
 }
 

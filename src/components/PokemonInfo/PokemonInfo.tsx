@@ -2,18 +2,21 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import PokemonInfoTypes from './PokemonInfoTypes';
 import './PokemonInfo.scss';
-import { addFavourites } from '../../utilities/Auth/firebase';
+import { addFavourites , removeFavourites , getFavourites} from '../../utilities/Auth/firebase';
 import { UserContext } from '../../utilities/Contexts/User.context';
 
 const PokemonInfo: React.FC = () => {
 	const { id } = useParams();
 	const [pokemon, setPokemon] = useState<PokemonInfoTypes>();
 	const { currUser } = useContext(UserContext);
+	const [currFav, setCurrFav] = useState({});
 
 	useEffect(()=>{
 		
 		const fetchPokemonDetails = async () => {
 			try {
+				const fav = currUser && await getFavourites(currUser);
+				if (fav) setCurrFav(fav);
 				const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+id);
 				const data = await response.json();
 				setPokemon(data);
@@ -23,12 +26,17 @@ const PokemonInfo: React.FC = () => {
 			}
 		};
 		fetchPokemonDetails();
-	},[]);
+	},[currFav]);
 	console.log(pokemon);
 	
 	const handleFavourites = async () => {
 		if (currUser && id)
 			await addFavourites(currUser, {[id]: 'https://pokeapi.co/api/v2/pokemon/'+id});
+	};
+
+	const handleRemove = async () => {
+		if (currUser && id)
+			await removeFavourites(currUser, id);
 	};
 
 	return (
@@ -40,7 +48,9 @@ const PokemonInfo: React.FC = () => {
 					</div>
 					<div className='name-fav-container'>
 						<h1>{pokemon?.species.name}</h1>
-						{ currUser  && id && <button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button> }
+						{ !(id in currFav) ? (<button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button>) :
+							(<button className='fav-button danger' onClick={handleRemove}>➖ remove from Favourites</button>)
+						}
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithRedirect, signInWithPopup, signInWithEmailAndPassword, signOut, User, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteField } from 'firebase/firestore';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDtU9ZDMId2MBgO3eQZgV5dRf68oiFipuY',
@@ -53,8 +53,11 @@ export const getFavourites = async (userAuth: User) => {
 	const favSnapshot = await getDoc(favouritesRef);
 	return favSnapshot.data();
 };
-export const removeFavourites = async (userAuth: User) => {
+export const removeFavourites = async (userAuth: User, id: string) => {
 	const favouritesRef = doc(db, 'favourites', userAuth.uid);
+	await updateDoc(favouritesRef, {
+		[ id ]: deleteField()
+	});
 };
 
 
