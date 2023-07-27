@@ -4,7 +4,7 @@ Pokelister is a web application that allows users to create and manage their Pok
 
 ## Live Demo
 
-Check out the live demo of Pokelister at [pokelister](https://lordvader501.github.io/pokelister).
+Check out the live demo of Pokelister at [pokelister](https://chipper-squirrel-1f4a32.netlify.app).
 
 ## Features
 
@@ -53,7 +53,7 @@ npm install
 npm start
 ```
 
-5. Open your browser and navigate to [http://localhost:1234/pokelister](http://localhost:1234/pokelister) to see the app running.
+5. Open your browser and navigate to [http://localhost:1234](http://localhost:1234) to see the app running.
 
 ## Contributing
 

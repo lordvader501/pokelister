@@ -4,7 +4,6 @@ import BodyLayout from './components/Body';
 import AboutLayout from './components/About/About';
 import FooterLayout from './components/Footer/Footer';
 import ContactLayout from './components/Contacts/Contacts';
-import ShimmerUI from './components/ShimmerUI';
 import ErrorLayout from './components/ErrorPage/Error';
 import PokemonInfo from './components/PokemonInfo/PokemonInfo';
 import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from 'react-router-dom';
@@ -34,12 +33,12 @@ const Applayout: React.FC = () => {
 		fetchPokemon();
 	}, []);
 	return (
-		<React.Suspense fallback={<ShimmerUI />}>
+		<div className="global-container">
 			<HeaderLayout />
 			<Outlet />
 			<Particle />
 			<FooterLayout />
-		</React.Suspense>
+		</div>
 	);
 };
 

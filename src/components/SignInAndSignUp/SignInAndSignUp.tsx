@@ -4,6 +4,7 @@ import './SignInAndSignUp.scss';
 import { createAuthUserWithEmailAndPass, createUserDocFromAuth, signInWithGooglePopup, signinAuthUserWithEmailAndPass } from '../../utilities/Auth/firebase';
 import { useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
+import bgImg  from '../../assets/signinbackground.png';
 
 interface SignInProps {
 	email:string;
@@ -96,54 +97,59 @@ const SignInAndSignUp: React.FC = () => {
 
 	return (
 		<div className='container'>
-			<div className='form-container'>
-				<div className="menu">
-					<a onClick={signupMenuHandeler} className={`menu-option ${(!menuToggle) ? 'selected' : ''}`}><h2>SIGN UP</h2></a>
-					<a onClick={signinMenuHandeler} className={`menu-option ${(menuToggle) ? 'selected' : ''}`}><h2>SIGN IN</h2></a>
+			<div className="signin-container">
+				<div className="img-container">
+					<img className='bg-signin-img' src={bgImg} alt="bgimg" />
 				</div>
-				<form>
-					{(menuToggle) ? (
-						<>
-							<label>Email ID:</label>
-							<input placeholder= 'Email ID' type="email" {...register('email', {required:true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i})} />
-							<label>Password:</label>
-							<input placeholder='Password' type="password" {...register('password', { required: true, minLength: 8, maxLength: 15 })} />
-							{errors.password && <span>Please enter correct password</span>}
-						</>
-					) : (
-						<>
-							<label>First Name:</label>
-							<input placeholder='First Name' {...register('firstname', { required: true, maxLength: 20 })} />
-							<label>Last Name:</label>
-							<input placeholder='Last Name' {...register('lastname', { required: true, maxLength: 20 })} />
-							<label>Email ID:</label>
-							<input placeholder= 'Email ID' type="email" {...register('email', {required:true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i})} />
-							<label>Password:</label>
-							<input placeholder='Password' type="password" {...register('password1', { required: true, minLength: 8, maxLength: 15, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/})} />
-							{errors.password1 && <span>Please enter correct password</span>}
-							<label>Retype Password:</label>
-							<input placeholder='retype Password' type="password" {...register('password2', { required: true, minLength: 8, maxLength: 15, validate: (val:string) => (val === watch('password1')) })} />
-							{errors.password2 && <span>Please enter correct password</span>}
-						</>
-					)}
-					<div className="form-button">
-						{ (menuToggle) ? 
-							(<button type="submit" onClick={handleSubmit(onSubmitSignIn)}>Sign In</button>) :
-							(<button type="submit" onClick={handleSubmit(onSubmitSignUp)}>Sign Up</button>)
-						}
-						<div className="google-btn" onClick={handleGoogleSignin}>
-							<div className="google-icon-wrapper">
-								<img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-							</div>
-							<p className="btn-text"><b>Sign in with google</b></p>
-						</div>
+				<div className='form-container'>
+					<div className="menu">
+						<a onClick={signupMenuHandeler} className={`menu-option ${(!menuToggle) ? 'selected' : ''}`}><h2>SIGN UP</h2></a>
+						<a onClick={signinMenuHandeler} className={`menu-option ${(menuToggle) ? 'selected' : ''}`}><h2>SIGN IN</h2></a>
 					</div>
-				</form>
-				{(menuToggle) && 
+					<form>
+						{(menuToggle) ? (
+							<>
+								<label>Email ID:</label>
+								<input placeholder= 'Email ID' type="email" {...register('email', {required:true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i})} />
+								<label>Password:</label>
+								<input placeholder='Password' type="password" {...register('password', { required: true, minLength: 8, maxLength: 15 })} />
+								{errors.password && <span>Please enter correct password</span>}
+							</>
+						) : (
+							<>
+								<label htmlFor='Frist Name'>First Name:</label>
+								<input placeholder='First Name' {...register('firstname', { required: true, maxLength: 20 })} />
+								<label htmlFor='Last Name'>Last Name:</label>
+								<input placeholder='Last Name' {...register('lastname', { required: true, maxLength: 20 })} />
+								<label htmlFor='Email ID'>Email ID:</label>
+								<input placeholder= 'Email ID' type="email" {...register('email', {required:true, pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i})} />
+								<label htmlFor='Passowrd'>Password:</label>
+								<input placeholder='Password' type="password" {...register('password1', { required: true, minLength: 8, maxLength: 15, pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/})} />
+								{errors.password1 && <span>Please enter correct password</span>}
+								<label htmlFor='retype Password'>Retype Password:</label>
+								<input placeholder='retype Password' type="password" {...register('password2', { required: true, minLength: 8, maxLength: 15, validate: (val:string) => (val === watch('password1')) })} />
+								{errors.password2 && <span>Please enter correct password</span>}
+							</>
+						)}
+						<div className="form-button">
+							{ (menuToggle) ? 
+								(<button type="submit" onClick={handleSubmit(onSubmitSignIn)}>Sign In</button>) :
+								(<button type="submit" onClick={handleSubmit(onSubmitSignUp)}>Sign Up</button>)
+							}
+							<div className="google-btn" onClick={handleGoogleSignin}>
+								<div className="google-icon-wrapper">
+									<img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+								</div>
+								<p className="btn-text"><b>Sign in with google</b></p>
+							</div>
+						</div>
+					</form>
+					{(menuToggle) && 
 				<>
 					<hr />
-					<a href="#" target="_blank" rel="noreferrer"><h4>Forgot password?</h4></a>
+					<a href="#" target="_blank" rel="noreferrer">Forgot password?</a>
 				</>}
+				</div>
 			</div>
 		</div>
 	);

@@ -22,7 +22,7 @@ const Particle: React.FC = () => {
 			options={{
 				background: {
 					color: {
-						value: '#000000',
+						value: '#fff',
 					},
 				},
 				fpsLimit: 120,
@@ -50,10 +50,10 @@ const Particle: React.FC = () => {
 				},
 				particles: {
 					color: {
-						value: '#ffffff',
+						value: '#8000ff',
 					},
 					links: {
-						color: '#ffffff',
+						color: '#8000ff',
 						distance: 150,
 						enable: true,
 						opacity: 0.5,

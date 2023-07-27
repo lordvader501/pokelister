@@ -73,9 +73,9 @@
   padding: 8px;
   margin-bottom: 5px;
   font-family: Arial, sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  box-shadow: 0px 5px 9px 6px #04030ee0;
+  font-weight: 400;
+  font-size: 12px;
+  box-shadow: rgba(4, 3, 14, 0.88) -1px -1px 9px 6px;
 }
 
 .navdiv {
@@ -105,19 +105,21 @@
   color: #ffffff;
   text-decoration: none;
   padding: 5px;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   white-space: nowrap;
 }
 
 .signin {
-  border-color: rgb(21, 206, 145);
-  border: 2px solid;
-  background-color: #353d3a;
+  background-color: #8000ff;
+  box-shadow: 0 3px 4px rgba(91, 90, 92, 0.244);
+  transition: all 0.3s ease-in;
+  padding: 8px 15px !important;
   &:hover {
-    background-color: #04AA6D;
+    background-color: #8000ff;
+    transform: scale(1.2);
   }
   &.active {
-    background-color: #04AA6D;
+    background-color: #8000ff;
   }
 }
 
@@ -216,7 +218,7 @@
     display: block;
   }
   .nav-link:hover{
-    background-color: #04AA6D;
+    background-color: #4c0098;
   }
   .nav-list {
     display: none;

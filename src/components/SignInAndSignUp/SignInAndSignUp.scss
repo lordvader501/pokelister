@@ -1,3 +1,16 @@
+.signin-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row !important;
+  justify-content: space-between;
+
+  .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .form-container{
   display: flex;
   flex-direction: column;
@@ -7,13 +20,18 @@
   background-image: linear-gradient(to bottom,
       rgba(255, 255, 0, 0.2),
       rgba(0, 0, 255, 0.2));
-  border-radius: 2rem;
-  border: 2px solid white;
-  margin-block: 80px;
-  padding-block: 50px;
+  border-radius: 2.5rem;
+  border: 3px solid #4c0098;
+  padding-block: 10px;
+  padding-block-end: 20px;
+  
+  .bg-signin-img {
+    
+    object-fit: fill;
+  }
 
   hr {
-    border: 2px solid #fff;
+    border: 2px solid #9040e0;
     border-radius: 50px;
     opacity: 0.55;
     width: 65%;
@@ -25,18 +43,26 @@
     flex-direction: row;
     width: 50%;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    font-size: 12px;
     .menu-option {
       white-space: nowrap;
       cursor: pointer;
-      color: #AEAEAE;
+      color: #9c8cac;
       h2 {
         margin-block-end: 5px;
+        &:active {
+          transform: scaleX(0);
+          transition: transform 250ms ease-out;
+        }
+        &:hover:after {
+          transform: scaleX(1);
+        }
       }
     }
     .selected {
-      border-bottom: 4px solid aquamarine;
-      color: #fff;
+      border-bottom: 4px solid #9670bc;
+      color: #4e009c;
       transition: color 0.3s ease-in;
     }
   }
@@ -48,27 +74,27 @@
     width:100%;
     label {
       width:63%;
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 600;
+      margin-block-end: 3px;
     }
     
     input {
-      margin: 15px 0px;
-      margin-block-end: 20px;
+      margin-block-end: 15px;
       background: none;
-      background-color: rgb(255, 255, 255);
+      background-color: rgba(255, 255, 255, 0.772);
       padding: 10px 10px 10px 10px;
       border: 0;
       width: 60%;
-      font-weight: 600;
+      font-weight: 500;
       color: #000;
       border-radius: 5px;
-      padding-block:15px;
-      font-size: 20px;
+      padding-block:10px;
+      font-size: 16px;
     }
   }
   ::placeholder {
-    color: #000000;
+    color: #9762cb;
     font-weight: 500;
   }
 }
@@ -78,28 +104,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-block-end: 15px;
   button {
-    background-color: aquamarine;
+    background-color: #8000ff;
     border: 0;
-    width: 184px;
-    height: 42px;
+    width: 126px;
+    height: 34px;
     padding: 10px 10px 10px 10px;
     font-weight: 600;
     border-radius: 5px;
-    margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 12px;
+    color:#fff;
   }
 }
 @media screen and (max-width:1700px) {
   .form-container {
+    width: 40% !important;
+  }
+  .bg-signin-img {
     width: 60% !important;
   }
 }
 @media screen and (max-width:1200px) {
   .form-container {
-    width: 70% !important;
+    width: 60% !important;
+  }
+  .bg-signin-img {
+    width: 50% !important;
+    height: 60% !important;
   }
 }
 @media screen and (max-width:750px) {
@@ -113,11 +144,11 @@
   }
   @media screen and (max-width:450px) {
     .menu {
-      width:80% !important;
+      width:70% !important;
     }
     @media screen and (max-width:300px) {
       .menu {
-        width: 90% !important;
+        width: 85% !important;
       }
     }
   }
@@ -151,35 +182,33 @@ $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
 .google-btn {
-  width: 184px;
-  height: 42px;
+  width: 146px;
+  height: 34px;
   background-color: $google-blue;
   border-radius: 5px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
 
   .google-icon-wrapper {
     position: absolute;
-    margin-top: 1px;
-    margin-left: 1px;
     width: 40px;
-    height: 40px;
-    border-radius: 2px;
+    height: 34px;
+    border-radius: 5px;
     background-color: $white;
   }
 
   .google-icon {
     position: absolute;
-    margin-top: 11px;
-    margin-left: 11px;
-    width: 18px;
-    height: 18px;
+    margin-top: 9px;
+    margin-left: 12px;
+    width: 16px;
+    height: 16px;
   }
 
   .btn-text {
     float: right;
     margin: 11px 11px 0 0;
     color: $white;
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 0.2px;
     font-family: "Roboto";
   }
