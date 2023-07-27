@@ -18,7 +18,7 @@
 .pagination-item {
   color: #fff;
   cursor: pointer;
-  background-color: #4b4b4b;
+  background-color: #8000ff;
   border: 2px solid #fff;
   border-radius: 6px;
   margin: 3.5px;
@@ -29,11 +29,11 @@
 }
 
 .pagination-item:hover {
-  background-color: #626262;
+  background-color: #b391d5;
 }
 
 .pagination-item.active {
-  background-color: #ffffff;
+  background-color: #d8b9f7;
   color: #333333;
 }
 

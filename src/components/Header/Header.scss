@@ -1,21 +1,23 @@
 
 .nav-link:hover {
-  background-color: #353d3a;
+  background-color: #d0a8f8;
   color: white;
   padding: 6px 12px;
+  transform: scale(2);
+  transition: all 0.3s ease-in;
 }
 .active {
-  background-color: #04AA6D;
+  background-color: #8000ff;
   padding: 6px 8px !important;
 }
 
 .sticky .active {
-  background-color: #04AA6D;
+  background-color: #8000ff;
   border-radius: 50rem;
   padding: 9px 15px ;
 }
 .sticky .nav-link:hover {
-  background-color: #353d3a;
+  background-color: #d0a8f8;
   border-radius: 50rem;
   padding: 9px 15px ;
 }
@@ -64,9 +66,9 @@
 }
 
 .header {
-  background-color: #1a1b1f;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(121deg, rgba(0, 0, 0, 0.8810029871323529) 18%, rgba(67, 70, 71, 1) 100%);
+  background-color: #d6bbf2;
+  background: #d7b1fd;
+  background: linear-gradient(121deg, rgba(179, 0, 255, 0.881) 18%, rgb(129, 110, 130) 100%);
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -113,10 +115,9 @@
   background-color: #8000ff;
   box-shadow: 0 3px 4px rgba(91, 90, 92, 0.244);
   transition: all 0.3s ease-in;
-  padding: 8px 15px !important;
   &:hover {
     background-color: #8000ff;
-    transform: scale(1.2);
+    transform: scale3d(100);
   }
   &.active {
     background-color: #8000ff;
