@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import Pokemon from '../../utilities/PokeTypes';
-import './CardList.css';
+import './CardList.scss';
 import { Link } from 'react-router-dom';
 
 interface CardListProps {

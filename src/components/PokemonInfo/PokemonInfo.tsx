@@ -40,7 +40,7 @@ const PokemonInfo: React.FC = () => {
 	};
 
 	return (
-		<div className='container info-container'>
+		<div className='info-container'>
 			<div className="info-div">
 				<div className='poke-head'>
 					<div className="poke-img">
@@ -48,8 +48,8 @@ const PokemonInfo: React.FC = () => {
 					</div>
 					<div className='name-fav-container'>
 						<h1>{pokemon?.species.name}</h1>
-						{ id && !(id in currFav) ? (<button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button>) :
-							(<button className='fav-button danger' onClick={handleRemove}>➖ remove from Favourites</button>)
+						{ currUser && (id && !(id in currFav) ? (<button className='fav-button' onClick={handleFavourites}>➕ add to favourites</button>) :
+							(<button className='fav-button danger' onClick={handleRemove}>➖ remove from Favourites</button>))
 						}
 					</div>
 				</div>

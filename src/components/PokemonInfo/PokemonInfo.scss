@@ -1,3 +1,6 @@
+$white: #fff;
+$font-color: #8000ff;
+
 .poke-img>img{
 	height: 250px;
 	width:auto;
@@ -5,10 +8,11 @@
 	padding:10px;
 }
 .info-div {
-	width: 90%;
+	width: 100%;
 	height: auto;
 	position: relative;
 	top: 50px;
+	padding-left: 40px;
 }
 .poke-img {
 	width: fit-content;
@@ -16,7 +20,7 @@
 	border-radius: 2rem;
 	box-shadow: 1px 1px 11px 2px rgba(0, 0, 0, 0.2);
 	background: rgb(34, 33, 39);
-		background: linear-gradient(161deg, rgba(34, 33, 39, 1) 28%, rgba(110, 110, 118, 1) 100%, rgba(212, 216, 217, 1) 100%);
+		background: linear-gradient(170deg, rgb(205, 87, 248) 8%, rgb(133, 110, 133) 80%);
 }
 .poke-head {
 	display: inline-flex;
@@ -28,13 +32,17 @@
 	margin-left: 5%;
 }
 .info-container {
+	display: flex;
 	justify-content: flex-start;
+	position: absolute;
+	top: 15%;
 }
 .name-fav-container {
 	display: flex;
 	flex-direction: column;
 	justify-items: center;
 	align-items: center;
+	color: $font-color;
 
 	h1 {
 		margin-bottom: 15px;
@@ -69,6 +77,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+	.info-container{
+		left: 0;
+		position: absolute;
+		right: 0;
+		margin: 0 auto;
+	}
+	.info-div {
+		padding-left: 0 !important;
 	}
 }
 @media screen and (max-width:400px) {

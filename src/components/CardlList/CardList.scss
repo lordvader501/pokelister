@@ -1,5 +1,8 @@
+$white: #fff;
+$card-bg: #d0a8f8;
+
 a {
-  color: #ffffff;
+  color: $white;
   font-weight: 550;
   text-decoration: none;
 }
@@ -17,7 +20,7 @@ a {
   align-items: center;
   margin: 10px;
   width: 150px;
-  background-color: #444444;
+  background-color: $card-bg;
   border-radius: 4px;
   padding: 10px;
   box-shadow: 5px 6px 11px 2px #514c5ab5

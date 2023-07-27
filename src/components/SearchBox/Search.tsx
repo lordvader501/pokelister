@@ -1,6 +1,6 @@
 import React from 'react';
 // import SearchProps from './SearchProps';
-import './Search.css';
+import './Search.scss';
 import { useAppDispatch, useAppSelector } from '../../utilities/Hooks/hooks';
 import { setCurrentPage } from '../../utilities/Store/pageSlice';
 import { setSearchPokemon } from '../../utilities/Store/searchSlice';

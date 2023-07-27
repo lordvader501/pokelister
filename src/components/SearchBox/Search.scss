@@ -1,0 +1,15 @@
+$border: #4c0098;
+$white: #fff;
+.search-input {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #d6bbf2;
+  color: $white;
+  border: double $border;
+  border-radius: 2rem;
+  font-size: 18px;
+}
+
+::placeholder {
+  color: $white;
+}
