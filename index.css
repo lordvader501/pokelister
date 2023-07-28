@@ -9,13 +9,21 @@ body {
     justify-content: space-between;
 }
 .container {
-    color: #E7473C;
+    color: #fbf6ae;
     padding:  60px 30px;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.container.home {
+    background-image: url('src/assets/container-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #2d2d2d59;
+    background-blend-mode: darken;
 }
 
 .title {
