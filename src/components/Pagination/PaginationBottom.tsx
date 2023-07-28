@@ -26,7 +26,7 @@ const Pagination: React.FC<PaginationProps> = ({ filteredPokemonList, currentPag
 	const renderPagination = () => {
 		
 		const pageNumbers = [];
-		const maxPagesToShow = 4;
+		const maxPagesToShow = 3;
 		const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
 		let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
 		let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);

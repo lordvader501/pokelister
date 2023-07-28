@@ -22,7 +22,7 @@ const Applayout: React.FC = () => {
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			try {
-				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1281');
+				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1280');
 				const data: Results = await response.json();
 				dispatch(addItem(data.results));
 			} catch (error) {

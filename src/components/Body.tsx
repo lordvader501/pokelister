@@ -6,7 +6,7 @@ import { useAppSelector } from '../utilities/Hooks/hooks';
 import CardList from './CardlList/CardList';
 
 const BodyLayout: React.FC = () => {
-	const [pokemonsPerPage] = useState(30);
+	const [pokemonsPerPage] = useState(20);
 	const pokemonList = useAppSelector(store => store.pokemon.pokemonList);
 	const [filteredPokemonList, setFilteredPokemonList] = useState(pokemonList);
 	const currentPage = useAppSelector(store => store.pageNum.currentPage);
@@ -25,7 +25,6 @@ const BodyLayout: React.FC = () => {
 
 	return (
 		<div className="container home">
-			<h1 className="title">Pokémon List</h1>
 			<PaginationTop
 				filteredPokemonList={filteredPokemonList}
 				currentPage={currentPage}

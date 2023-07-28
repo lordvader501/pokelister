@@ -1,4 +1,4 @@
-$hover-color: #f99c9c;
+$hover-color: #dbc2c2;
 $header-bg: #E7473C;
 $color: #fbf6ae;
 $border: #ff0000;
@@ -12,11 +12,11 @@ $btn-color: rgba(223, 0, 0, 0.97);
   transition: all 0.3s ease-in;
 }
 .active {
-  background-color: $btn-color;
+  background-color: black;
 }
 
 .sticky .active {
-  background-color: $btn-color;
+  background-color: black;
   border-radius: 50rem;
   padding: 9px 15px ;
 }
