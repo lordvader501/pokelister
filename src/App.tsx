@@ -15,7 +15,6 @@ import { addItem } from './utilities/Store/pokemonSlice';
 import Results from './utilities/fetchTypes';
 import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
 import { UserContext, UserProvider } from './utilities/Contexts/User.context';
-import Particle from './components/ParticleAnimation/Particle';
 import Favourites from './components/Favourites/Favourites';
 
 const Applayout: React.FC = () => {
@@ -36,7 +35,6 @@ const Applayout: React.FC = () => {
 		<div className="global-container">
 			<HeaderLayout />
 			<Outlet />
-			<Particle />
 			<FooterLayout />
 		</div>
 	);

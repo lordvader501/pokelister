@@ -16,10 +16,10 @@
 }
 
 .pagination-item {
-  color: #fff;
+  color: #fbf6ae;
   cursor: pointer;
-  background-color: #8000ff;
-  border: 2px solid #fff;
+  background-color: rgba(223, 0, 0, 0.97);
+  border: 2px solid #fbf6ae;
   border-radius: 6px;
   margin: 3.5px;
   padding: 10px;

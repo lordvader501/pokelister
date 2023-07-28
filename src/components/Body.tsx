@@ -4,6 +4,7 @@ import PaginationBottom from './Pagination/PaginationBottom';
 import PaginationTop from './Pagination/PaginationTop';
 import { useAppSelector } from '../utilities/Hooks/hooks';
 import CardList from './CardlList/CardList';
+import bgImg from '../assets/container-bg.jpg';
 
 const BodyLayout: React.FC = () => {
 	const [pokemonsPerPage] = useState(30);
@@ -24,7 +25,7 @@ const BodyLayout: React.FC = () => {
 	const currentPokemons = filteredPokemonList.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
 	return (
-		<div className="container">
+		<div className="container" style={{ backgroundImage: `url(${bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
 			<h1 className="title">Pokémon List</h1>
 			<PaginationTop
 				filteredPokemonList={filteredPokemonList}

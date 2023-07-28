@@ -9,8 +9,8 @@ body {
     justify-content: space-between;
 }
 .container {
-    color: #8000ff;
-    padding:  60px 100px;
+    color: #E7473C;
+    padding:  60px 30px;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
