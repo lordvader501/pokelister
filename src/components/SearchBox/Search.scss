@@ -1,15 +1,19 @@
-$border: #4c0098;
-$white: #fff;
+$border: #000000;
+$pale-yellow: #fdf9c1;
 .search-input {
   width: 100%;
   padding: 5px 10px;
-  background-color: #d6bbf2;
-  color: $white;
+  background-color: #4d4646;
+  color: $pale-yellow;
   border: double $border;
-  border-radius: 2rem;
+  border-radius: 0.8rem;
   font-size: 18px;
+  box-shadow: 0px 0px 5px 0px black;
+  &:focus {
+    outline: 2px solid #000000;
+  }
 }
 
 ::placeholder {
-  color: $white;
+  color: $pale-yellow;
 }

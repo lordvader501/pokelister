@@ -104,6 +104,7 @@ $btn-color: rgba(223, 0, 0, 0.97);
   font-weight: 400;
   font-size: 16px;
   box-shadow: 0px -3px 8px 5px #e04040;
+  z-index: 1;
 }
 
 .navdiv {
@@ -220,7 +221,7 @@ $btn-color: rgba(223, 0, 0, 0.97);
   .navdiv {
     width: 40%;
   }
-  }
+}
 
 @media screen and (max-width: 550px) and (min-width: 450px) {
   .logo-container {

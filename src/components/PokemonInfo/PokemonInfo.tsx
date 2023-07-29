@@ -44,7 +44,7 @@ const PokemonInfo: React.FC = () => {
 			<div className="info-div">
 				<div className='poke-head'>
 					<div className="poke-img">
-						<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt={id} />
+						<img src={`https://img.pokemondb.net/sprites/home/normal/2x/${pokemon?.species.name}.jpg`} alt={id} loading='lazy'/>
 					</div>
 					<div className='name-fav-container'>
 						<h1>{pokemon?.species.name}</h1>

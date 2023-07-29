@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './SignInAndSignUp.scss';
 import { createAuthUserWithEmailAndPass, createUserDocFromAuth, signInWithGooglePopup, signinAuthUserWithEmailAndPass } from '../../utilities/Auth/firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
 import bgImg  from '../../assets/signinbackground.png';
+import bgAuthImg from '../../assets/signin-bg.jpg';
 
 interface SignInProps {
 	email:string;
@@ -31,6 +32,18 @@ const SignInAndSignUp: React.FC = () => {
 	const { register, handleSubmit, formState: { errors }, reset, watch } = useForm<FormProps>();
 	const navigate = useNavigate();
 	const [menuToggle, setMenuToggle] = useState(true);
+	const location = useLocation();
+
+	useEffect(() => {
+		if (location.pathname === '/signin') {
+			const toAddBackgroundImg = document.getElementById('gc');
+			if (toAddBackgroundImg) {
+				toAddBackgroundImg.style.backgroundImage = `url(${bgAuthImg})`;
+				toAddBackgroundImg.style.backgroundPosition = 'center';
+				toAddBackgroundImg.style.backgroundSize = 'cover';
+			}
+		}
+	}, []);
 
 	const onSubmitSignUp: SubmitHandler<SignUpProps> = async (data) => {
 		const {firstname, lastname, email, password1 } = data;

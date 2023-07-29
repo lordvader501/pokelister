@@ -32,7 +32,7 @@ const Applayout: React.FC = () => {
 		fetchPokemon();
 	}, []);
 	return (
-		<div className="global-container">
+		<div className="global-container" id='gc'>
 			<HeaderLayout />
 			<Outlet />
 			<FooterLayout />

@@ -75,6 +75,7 @@
       font-size: 14px;
       font-weight: 600;
       margin-block-end: 3px;
+      color: #8000ff;
     }
     
     input {
@@ -122,6 +123,11 @@
     width: 60% !important;
   }
 }
+@media screen and (max-width: 580px) {
+  .img-container {
+    display: none !important;
+  }
+}
 @media screen and (max-width:1200px) {
   .form-container {
     width: 60% !important;
@@ -133,7 +139,7 @@
 }
 @media screen and (max-width:750px) {
   .form-container {
-    width: 80% !important;
+    width: 100% !important;
   }
 }
 @media screen and (max-width:650px){
@@ -154,7 +160,7 @@
 }
 @media screen and (max-width:400px) {
   .form-container {
-    width: 90% !important;
+    width: 100% !important;
   }
 }
 @media screen and (max-width:950px) {
