@@ -13,7 +13,7 @@ const ContactLayout: React.FC = () => {
 				toAddBackgroundImg.style.backgroundPosition = 'center';
 				toAddBackgroundImg.style.backgroundSize = 'cover';
 				toAddBackgroundImg.style.backgroundBlendMode = 'darken';
-				toAddBackgroundImg.style.backgroundColor = '#2d2d2d59';
+				toAddBackgroundImg.style.backgroundColor = '#2d2d2d70';
 			}
 		}
 	}, []);
