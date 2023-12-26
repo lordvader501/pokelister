@@ -50,3 +50,11 @@ a {
     transition: all 550ms ease;
   }
 }
+
+.poke-types{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}

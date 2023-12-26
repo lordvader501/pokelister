@@ -4,11 +4,11 @@ import pageSlice from './pageSlice';
 import searchSlice from './searchSlice';
 
 const store = configureStore({
-	reducer: {
-		pokemon: pokemonSlice,
-		pageNum: pageSlice,
-		findPokemon: searchSlice,
-	},
+  reducer: {
+    pokemon: pokemonSlice,
+    pageNum: pageSlice,
+    findPokemon: searchSlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

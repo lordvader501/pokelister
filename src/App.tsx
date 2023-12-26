@@ -6,7 +6,12 @@ import FooterLayout from './components/Footer/Footer';
 import ContactLayout from './components/Contacts/Contacts';
 import ErrorLayout from './components/ErrorPage/Error';
 import PokemonInfo from './components/PokemonInfo/PokemonInfo';
-import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+} from 'react-router-dom';
 import HeaderLayout from './components/Header/Header';
 import { Provider } from 'react-redux';
 import store from './utilities/Store/store';
@@ -18,81 +23,91 @@ import { UserContext, UserProvider } from './utilities/Contexts/User.context';
 import Favourites from './components/Favourites/Favourites';
 
 const Applayout: React.FC = () => {
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		const fetchPokemon = async () => {
-			try {
-				const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1280');
-				const data: Results = await response.json();
-				dispatch(addItem(data.results));
-			} catch (error) {
-				console.log('Error:', error);
-			}
-		};
-		fetchPokemon();
-	}, []);
-	return (
-		<div className="global-container" id='gc'>
-			<HeaderLayout />
-			<Outlet />
-			<FooterLayout />
-		</div>
-	);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const response = await fetch(
+          'https://pokeapi.co/api/v2/pokemon?limit=1280'
+        );
+        const data: Results = await response.json();
+        dispatch(addItem(data.results));
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
+    fetchPokemon();
+  }, []);
+  return (
+    <div className="global-container" id="gc">
+      <HeaderLayout />
+      <Outlet />
+      <FooterLayout />
+    </div>
+  );
 };
 
 const router = createBrowserRouter([
-	{
-		path:'/',
-		element:<Applayout />,
-		errorElement: <ErrorLayout />,
-		children:[
-			{
-				path:'/',
-				element: <BodyLayout />,
-			},
-			{
-				path:'/about',
-				element: <AboutLayout />,
-			},
-			{
-				path:'/contacts',
-				element: <ContactLayout />,
-			},
-			{
-				path:'/signin',
-				Component: () => {
-					const { currUser } = useContext(UserContext);
-					const navigate = useNavigate();
-					useEffect(() => {
-						if (currUser) {
-							navigate('/');
-						}
-					}, [currUser]);
-					return !currUser && <SignInAndSignUp />;
-				}
-			},
-			{
-				path:'/favourites',
-				Component: () => {
-					const { currUser } = useContext(UserContext);
-					return currUser && <Favourites />;
-				}
-			},
-			{
-				path: '/pokemon/:id',
-				element: <PokemonInfo />
-			},
-			{
-				path: '/pokelister',
-				element: <BodyLayout />
-			},
-			{
-				path: '*',
-				element: <ErrorLayout />,
-			},
-		]
-	}
+  {
+    path: '/',
+    element: <Applayout />,
+    errorElement: <ErrorLayout />,
+    children: [
+      {
+        path: '/',
+        element: <BodyLayout />,
+      },
+      {
+        path: '/about',
+        element: <AboutLayout />,
+      },
+      {
+        path: '/contacts',
+        element: <ContactLayout />,
+      },
+      {
+        path: '/signin',
+        Component: () => {
+          const { currUser } = useContext(UserContext);
+          const navigate = useNavigate();
+          useEffect(() => {
+            if (currUser) {
+              navigate('/');
+            }
+          }, [currUser]);
+          return !currUser && <SignInAndSignUp />;
+        },
+      },
+      {
+        path: '/favourites',
+        Component: () => {
+          const { currUser } = useContext(UserContext);
+          return currUser && <Favourites />;
+        },
+      },
+      {
+        path: '/pokemon/:id',
+        element: <PokemonInfo />,
+      },
+      {
+        path: '/pokelister',
+        element: <BodyLayout />,
+      },
+      {
+        path: '*',
+        element: <ErrorLayout />,
+      },
+    ],
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<Provider store={store}><UserProvider><RouterProvider router={router}/></UserProvider></Provider>);
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <Provider store={store}>
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  </Provider>
+);
